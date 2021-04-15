@@ -1,0 +1,74 @@
+/*
+ * Copyright (c) Justin Watson 2017
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/dts-v1/;
+
+#include <atmel/sam4s16c.dtsi>
+
+/ {
+	model = "Atmel SAM4S Xplained Board with an Atmel SAM4S16C SoC";
+	compatible = "atmel,sam4s_xplained", "atmel,sam4s16c", "atmel,sam4s";
+
+	aliases {
+		i2c-0 = &twi0;
+		i2c-1 = &twi1;
+		led0 = &yellow_led_1;
+		led1 = &yellow_led_2;
+		sw0 = &user_button;
+	};
+
+	chosen {
+		zephyr,console = &uart0;
+		zephyr,shell-uart = &uart0;
+		zephyr,sram = &sram0;
+		zephyr,flash = &flash0;
+	};
+
+	leds {
+		compatible = "gpio-leds";
+		yellow_led_1: led_1 {
+			gpios = <&pioc 10 GPIO_ACTIVE_LOW>;
+			label = "LED 1";
+		};
+		yellow_led_2: led_2 {
+			gpios = <&pioc 17 GPIO_ACTIVE_LOW>;
+			label = "LED 2";
+		};
+	};
+
+	gpio_keys {
+		compatible = "gpio-keys";
+		user_button: button_1 {
+			label = "User Button";
+			gpios = <&pioa 5 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+		};
+	};
+};
+
+&cpu0 {
+	clock-frequency = <120000000>;
+};
+
+&twi0 {
+	status = "okay";
+};
+
+&spi0 {
+	status = "okay";
+};
+
+&uart0 {
+	current-speed = <115200>;
+	status = "okay";
+};
+
+&uart1 {
+	current-speed = <115200>;
+	status = "okay";
+};
+
+&wdt {
+	status = "okay";
+};

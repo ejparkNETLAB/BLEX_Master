@@ -1,0 +1,2345 @@
+./subsys/bluetooth/shell/bt.c:	if (!strcmp(argv[1], "conn-scan")) {
+./subsys/bluetooth/shell/bt.c:	} else if (!strcmp(argv[1], "conn-nscan")) {
+./subsys/bluetooth/shell/bt.c:	} else if (!strcmp(argv[1], "nconn-scan")) {
+./subsys/bluetooth/shell/bt.c:	} else if (!strcmp(argv[1], "nconn-nscan")) {
+./subsys/bluetooth/shell/bt.c:#define EXT_ADV_PARAM "<type: conn-scan conn-nscan, nconn-scan nconn-nscan> " \
+./subsys/bluetooth/shell/bt.c:	SHELL_CMD_ARG(conn-update, NULL, "<min> <max> <latency> <timeout>",
+./subsys/bluetooth/host/smp.c:	if (atomic_test_bit(conn->flags, BT_CONN_FORCE_PAIR)) {
+./subsys/bluetooth/host/smp.c:	if (!conn->le.keys) {
+./subsys/bluetooth/host/smp.c:		conn->le.keys = bt_keys_find(BT_KEYS_LTK_P256,
+./subsys/bluetooth/host/smp.c:						     conn->id, &conn->le.dst);
+./subsys/bluetooth/host/smp.c:		if (!conn->le.keys) {
+./subsys/bluetooth/host/smp.c:			conn->le.keys = bt_keys_find(BT_KEYS_LTK,
+./subsys/bluetooth/host/smp.c:						     conn->id,
+./subsys/bluetooth/host/smp.c:						     &conn->le.dst);
+./subsys/bluetooth/host/smp.c:	if (!conn->le.keys ||
+./subsys/bluetooth/host/smp.c:	    !(conn->le.keys->keys & (BT_KEYS_LTK | BT_KEYS_LTK_P256))) {
+./subsys/bluetooth/host/smp.c:	if (conn->required_sec_level > BT_SECURITY_L2 &&
+./subsys/bluetooth/host/smp.c:	    !(conn->le.keys->flags & BT_KEYS_AUTHENTICATED)) {
+./subsys/bluetooth/host/smp.c:	if (conn->required_sec_level > BT_SECURITY_L3 &&
+./subsys/bluetooth/host/smp.c:	    !(conn->le.keys->flags & BT_KEYS_AUTHENTICATED) &&
+./subsys/bluetooth/host/smp.c:	    !(conn->le.keys->keys & BT_KEYS_LTK_P256) &&
+./subsys/bluetooth/host/smp.c:	    !(conn->le.keys->enc_size == BT_SMP_MAX_ENC_KEY_SIZE)) {
+./subsys/bluetooth/host/smp.c:	if (!conn->le.keys) {
+./subsys/bluetooth/host/smp.c:		conn->le.keys = bt_keys_get_addr(conn->id, &conn->le.dst);
+./subsys/bluetooth/host/smp.c:	if (!conn->le.keys ||
+./subsys/bluetooth/host/smp.c:	    !(conn->le.keys->keys & (BT_KEYS_LTK_P256 | BT_KEYS_LTK))) {
+./subsys/bluetooth/host/smp.c:	if (conn->le.keys->enc_size > get_encryption_key_size(smp)) {
+./subsys/bluetooth/host/smp.c:	if ((conn->le.keys->keys & BT_KEYS_LTK_P256) &&
+./subsys/bluetooth/host/smp.c:	if ((conn->le.keys->flags & BT_KEYS_AUTHENTICATED) &&
+./subsys/bluetooth/host/smp.c:	    (!(conn->le.keys->flags & BT_KEYS_AUTHENTICATED)
+./subsys/bluetooth/host/smp.c:	if (!conn->le.keys) {
+./subsys/bluetooth/host/smp.c:		conn->le.keys = bt_keys_get_addr(conn->id, &conn->le.dst);
+./subsys/bluetooth/host/smp.c:	if (!conn->le.keys ||
+./subsys/bluetooth/host/smp.c:	    !(conn->le.keys->keys & (BT_KEYS_LTK_P256 | BT_KEYS_LTK))) {
+./subsys/bluetooth/host/smp.c:	if (conn->le.keys->flags & BT_KEYS_DEBUG) {
+./subsys/bluetooth/host/smp.c:	if (conn->type == BT_CONN_TYPE_LE) {
+./subsys/bluetooth/host/smp.c:	if (conn->type == BT_CONN_TYPE_BR) {
+./subsys/bluetooth/host/smp.c:	link_key = bt_keys_get_link_key(&conn->le.dst.a);
+./subsys/bluetooth/host/smp.c:		if (smp_h7(salt, conn->le.keys->ltk.val, ilk)) {
+./subsys/bluetooth/host/smp.c:		if (smp_h6(conn->le.keys->ltk.val, tmp1, ilk)) {
+./subsys/bluetooth/host/smp.c:	if (conn->le.keys->flags & BT_KEYS_AUTHENTICATED) {
+./subsys/bluetooth/host/smp.c:	bt_addr_copy(&addr.a, &conn->br.dst);
+./subsys/bluetooth/host/smp.c:	keys = bt_keys_find_addr(conn->id, &addr);
+./subsys/bluetooth/host/smp.c:	struct bt_keys_link_key *link_key = conn->br.link_key;
+./subsys/bluetooth/host/smp.c:	if (IS_ENABLED(CONFIG_BT_SMP_FORCE_BREDR) && conn->encrypt != 0x02) {
+./subsys/bluetooth/host/smp.c:	bt_addr_copy(&addr.a, &conn->br.dst);
+./subsys/bluetooth/host/smp.c:	keys = bt_keys_get_type(BT_KEYS_LTK_P256, conn->id, &addr);
+./subsys/bluetooth/host/smp.c:	bt_addr_copy(&addr.a, &conn->br.dst);
+./subsys/bluetooth/host/smp.c:	keys = bt_keys_get_addr(conn->id, &addr);
+./subsys/bluetooth/host/smp.c:		memcpy(id_info->irk, bt_dev.irk[conn->id], 16);
+./subsys/bluetooth/host/smp.c:		bt_addr_le_copy(&id_addr_info->addr, &bt_dev.id_addr[conn->id]);
+./subsys/bluetooth/host/smp.c:	if (smp->chan.chan.conn->encrypt == 0x02) {
+./subsys/bluetooth/host/smp.c:	    smp->chan.chan.conn->encrypt == 0x01) {
+./subsys/bluetooth/host/smp.c:	bt_addr_copy(&addr.a, &conn->br.dst);
+./subsys/bluetooth/host/smp.c:	keys = bt_keys_get_type(BT_KEYS_IRK, conn->id, &addr);
+./subsys/bluetooth/host/smp.c:	bt_addr_copy(&addr.a, &conn->br.dst);
+./subsys/bluetooth/host/smp.c:	if (conn->role == BT_CONN_ROLE_MASTER && !smp->remote_dist) {
+./subsys/bluetooth/host/smp.c:	bt_addr_copy(&addr.a, &conn->br.dst);
+./subsys/bluetooth/host/smp.c:	keys = bt_keys_get_type(BT_KEYS_REMOTE_CSRK, conn->id, &addr);
+./subsys/bluetooth/host/smp.c:	if (conn->role == BT_CONN_ROLE_MASTER && !smp->remote_dist) {
+./subsys/bluetooth/host/smp.c:	BT_DBG("conn %p handle %u", conn, conn->handle);
+./subsys/bluetooth/host/smp.c:	if (conn->required_sec_level != conn->sec_level) {
+./subsys/bluetooth/host/smp.c:		conn->required_sec_level = conn->sec_level;
+./subsys/bluetooth/host/smp.c:	    conn->role == BT_HCI_ROLE_MASTER) {
+./subsys/bluetooth/host/smp.c:			bt_keys_store(smp->chan.chan.conn->le.keys);
+./subsys/bluetooth/host/smp.c:		if (smp->chan.chan.conn->le.keys &&
+./subsys/bluetooth/host/smp.c:		    (!smp->chan.chan.conn->le.keys->enc_size ||
+./subsys/bluetooth/host/smp.c:			bt_keys_clear(smp->chan.chan.conn->le.keys);
+./subsys/bluetooth/host/smp.c:			smp->chan.chan.conn->le.keys = NULL;
+./subsys/bluetooth/host/smp.c:	struct bt_keys *keys = conn->le.keys;
+./subsys/bluetooth/host/smp.c:	struct bt_keys *keys = conn->le.keys;
+./subsys/bluetooth/host/smp.c:		BT_ERR("No keys space for %s", bt_addr_le_str(&conn->le.dst));
+./subsys/bluetooth/host/smp.c:		memcpy(id_info->irk, bt_dev.irk[conn->id], 16);
+./subsys/bluetooth/host/smp.c:		bt_addr_le_copy(&id_addr_info->addr, &bt_dev.id_addr[conn->id]);
+./subsys/bluetooth/host/smp.c:		if (smp->chan.chan.conn->role == BT_HCI_ROLE_MASTER) {
+./subsys/bluetooth/host/smp.c:	keys = bt_keys_find_addr(conn->id, &conn->le.dst);
+./subsys/bluetooth/host/smp.c:		   &conn->le.init_addr, &conn->le.resp_addr, req->val)) {
+./subsys/bluetooth/host/smp.c:		     &conn->le.init_addr, &conn->le.resp_addr, tmp);
+./subsys/bluetooth/host/smp.c:	    conn->role == BT_HCI_ROLE_MASTER) {
+./subsys/bluetooth/host/smp.c:	    smp->chan.chan.conn->role == BT_HCI_ROLE_MASTER) {
+./subsys/bluetooth/host/smp.c:	    smp->chan.chan.conn->role == BT_HCI_ROLE_MASTER) {
+./subsys/bluetooth/host/smp.c:		keys = bt_keys_get_type(BT_KEYS_LTK, conn->id, &conn->le.dst);
+./subsys/bluetooth/host/smp.c:			       bt_addr_le_str(&conn->le.dst));
+./subsys/bluetooth/host/smp.c:		keys = bt_keys_get_type(BT_KEYS_LTK, conn->id, &conn->le.dst);
+./subsys/bluetooth/host/smp.c:			       bt_addr_le_str(&conn->le.dst));
+./subsys/bluetooth/host/smp.c:	    conn->role == BT_HCI_ROLE_MASTER && !smp->remote_dist) {
+./subsys/bluetooth/host/smp.c:	    (conn->required_sec_level < BT_SECURITY_L3))) {
+./subsys/bluetooth/host/smp.c:	switch (conn->required_sec_level) {
+./subsys/bluetooth/host/smp.c:	if (!conn->le.keys) {
+./subsys/bluetooth/host/smp.c:		conn->le.keys = bt_keys_find(BT_KEYS_LTK_P256, conn->id,
+./subsys/bluetooth/host/smp.c:					     &conn->le.dst);
+./subsys/bluetooth/host/smp.c:		if (!conn->le.keys) {
+./subsys/bluetooth/host/smp.c:			conn->le.keys = bt_keys_find(BT_KEYS_SLAVE_LTK,
+./subsys/bluetooth/host/smp.c:						     conn->id, &conn->le.dst);
+./subsys/bluetooth/host/smp.c:	    conn->le.keys && (conn->le.keys->keys & BT_KEYS_LTK_P256)) {
+./subsys/bluetooth/host/smp.c:		enc_size = conn->le.keys->enc_size;
+./subsys/bluetooth/host/smp.c:		memcpy(ltk, conn->le.keys->ltk.val, enc_size);
+./subsys/bluetooth/host/smp.c:	if (conn->le.keys && (conn->le.keys->keys & BT_KEYS_SLAVE_LTK) &&
+./subsys/bluetooth/host/smp.c:	    !memcmp(conn->le.keys->slave_ltk.rand, &rand, 8) &&
+./subsys/bluetooth/host/smp.c:	    !memcmp(conn->le.keys->slave_ltk.ediv, &ediv, 2)) {
+./subsys/bluetooth/host/smp.c:		enc_size = conn->le.keys->enc_size;
+./subsys/bluetooth/host/smp.c:		memcpy(ltk, conn->le.keys->slave_ltk.val, enc_size);
+./subsys/bluetooth/host/smp.c:	if (!conn->le.keys) {
+./subsys/bluetooth/host/smp.c:		conn->le.keys = bt_keys_get_addr(conn->id, &conn->le.dst);
+./subsys/bluetooth/host/smp.c:		if (!conn->le.keys) {
+./subsys/bluetooth/host/smp.c:	if (!conn->le.keys) {
+./subsys/bluetooth/host/smp.c:		conn->le.keys = bt_keys_get_addr(conn->id, &conn->le.dst);
+./subsys/bluetooth/host/smp.c:		if (!conn->le.keys) {
+./subsys/bluetooth/host/smp.c:	     conn->required_sec_level == BT_SECURITY_L4) &&
+./subsys/bluetooth/host/smp.c:	     conn->required_sec_level == BT_SECURITY_L4) &&
+./subsys/bluetooth/host/smp.c:	if (!conn->le.keys) {
+./subsys/bluetooth/host/smp.c:		conn->le.keys = bt_keys_get_addr(conn->id, &conn->le.dst);
+./subsys/bluetooth/host/smp.c:		if (!conn->le.keys) {
+./subsys/bluetooth/host/smp.c:	     conn->required_sec_level == BT_SECURITY_L4) &&
+./subsys/bluetooth/host/smp.c:	     conn->required_sec_level == BT_SECURITY_L4) &&
+./subsys/bluetooth/host/smp.c:	    smp->chan.chan.conn->role == BT_HCI_ROLE_MASTER) {
+./subsys/bluetooth/host/smp.c:		   &smp->chan.chan.conn->le.init_addr,
+./subsys/bluetooth/host/smp.c:		   &smp->chan.chan.conn->le.resp_addr, smp->mackey,
+./subsys/bluetooth/host/smp.c:		   &smp->chan.chan.conn->le.init_addr,
+./subsys/bluetooth/host/smp.c:		   &smp->chan.chan.conn->le.resp_addr, e)) {
+./subsys/bluetooth/host/smp.c:		   &smp->chan.chan.conn->le.init_addr,
+./subsys/bluetooth/host/smp.c:		   &smp->chan.chan.conn->le.resp_addr, smp->mackey,
+./subsys/bluetooth/host/smp.c:		   &smp->chan.chan.conn->le.resp_addr,
+./subsys/bluetooth/host/smp.c:		   &smp->chan.chan.conn->le.init_addr, e)) {
+./subsys/bluetooth/host/smp.c:		   &smp->chan.chan.conn->le.init_addr,
+./subsys/bluetooth/host/smp.c:		   &smp->chan.chan.conn->le.resp_addr, re)) {
+./subsys/bluetooth/host/smp.c:		if (smp->chan.chan.conn->role == BT_HCI_ROLE_MASTER) {
+./subsys/bluetooth/host/smp.c:	    smp->chan.chan.conn->role == BT_HCI_ROLE_MASTER) {
+./subsys/bluetooth/host/smp.c:	if (smp->chan.chan.conn->role == BT_HCI_ROLE_MASTER) {
+./subsys/bluetooth/host/smp.c:		keys = bt_keys_get_type(BT_KEYS_IRK, conn->id, &conn->le.dst);
+./subsys/bluetooth/host/smp.c:			       bt_addr_le_str(&conn->le.dst));
+./subsys/bluetooth/host/smp.c:		BT_ERR(" for %s", bt_addr_le_str(&conn->le.dst));
+./subsys/bluetooth/host/smp.c:		keys = bt_keys_get_type(BT_KEYS_IRK, conn->id, &conn->le.dst);
+./subsys/bluetooth/host/smp.c:			       bt_addr_le_str(&conn->le.dst));
+./subsys/bluetooth/host/smp.c:		 * We can't use conn->dst here as this might already contain
+./subsys/bluetooth/host/smp.c:		if (conn->role == BT_HCI_ROLE_MASTER) {
+./subsys/bluetooth/host/smp.c:			dst = &conn->le.resp_addr;
+./subsys/bluetooth/host/smp.c:			dst = &conn->le.init_addr;
+./subsys/bluetooth/host/smp.c:			if (!bt_addr_le_is_identity(&conn->le.dst)) {
+./subsys/bluetooth/host/smp.c:				bt_addr_le_copy(&conn->le.dst, &req->addr);
+./subsys/bluetooth/host/smp.c:	    conn->role == BT_HCI_ROLE_MASTER && !smp->remote_dist) {
+./subsys/bluetooth/host/smp.c:		keys = bt_keys_get_type(BT_KEYS_REMOTE_CSRK, conn->id,
+./subsys/bluetooth/host/smp.c:					&conn->le.dst);
+./subsys/bluetooth/host/smp.c:			       bt_addr_le_str(&conn->le.dst));
+./subsys/bluetooth/host/smp.c:	    conn->role == BT_HCI_ROLE_MASTER && !smp->remote_dist) {
+./subsys/bluetooth/host/smp.c:	if (conn->le.keys) {
+./subsys/bluetooth/host/smp.c:		if (!(conn->le.keys->keys & (BT_KEYS_LTK_P256 | BT_KEYS_LTK))) {
+./subsys/bluetooth/host/smp.c:		conn->le.keys = bt_keys_find(BT_KEYS_LTK_P256, conn->id,
+./subsys/bluetooth/host/smp.c:					     &conn->le.dst);
+./subsys/bluetooth/host/smp.c:		if (!conn->le.keys) {
+./subsys/bluetooth/host/smp.c:			conn->le.keys = bt_keys_find(BT_KEYS_LTK, conn->id,
+./subsys/bluetooth/host/smp.c:						     &conn->le.dst);
+./subsys/bluetooth/host/smp.c:	if (!conn->le.keys) {
+./subsys/bluetooth/host/smp.c:	    !(conn->le.keys->flags & BT_KEYS_AUTHENTICATED)) {
+./subsys/bluetooth/host/smp.c:	    !(conn->le.keys->keys & BT_KEYS_LTK_P256)) {
+./subsys/bluetooth/host/smp.c:	if (bt_conn_le_start_encryption(conn, conn->le.keys->ltk.rand,
+./subsys/bluetooth/host/smp.c:					conn->le.keys->ltk.ediv,
+./subsys/bluetooth/host/smp.c:					conn->le.keys->ltk.val,
+./subsys/bluetooth/host/smp.c:					conn->le.keys->enc_size) < 0) {
+./subsys/bluetooth/host/smp.c:	    smp->chan.chan.conn->role == BT_HCI_ROLE_MASTER) {
+./subsys/bluetooth/host/smp.c:	    smp->chan.chan.conn->role == BT_HCI_ROLE_MASTER) {
+./subsys/bluetooth/host/smp.c:			   &smp->chan.chan.conn->le.resp_addr,
+./subsys/bluetooth/host/smp.c:			   &smp->chan.chan.conn->le.init_addr, e)) {
+./subsys/bluetooth/host/smp.c:	if (smp->chan.chan.conn->role == BT_HCI_ROLE_SLAVE) {
+./subsys/bluetooth/host/smp.c:		    smp->chan.chan.conn->role == BT_HCI_ROLE_MASTER) {
+./subsys/bluetooth/host/smp.c:	struct bt_keys *keys = chan->conn->le.keys;
+./subsys/bluetooth/host/smp.c:	       chan, conn, conn->handle, conn->encrypt, hci_status);
+./subsys/bluetooth/host/smp.c:	if (!conn->encrypt) {
+./subsys/bluetooth/host/smp.c:		bt_id_add(conn->le.keys);
+./subsys/bluetooth/host/smp.c:	    conn->role == BT_HCI_ROLE_MASTER && smp->remote_dist) {
+./subsys/bluetooth/host/smp.c:	keys = bt_keys_find(BT_KEYS_REMOTE_CSRK, conn->id, &conn->le.dst);
+./subsys/bluetooth/host/smp.c:		       bt_addr_le_str(&conn->le.dst));
+./subsys/bluetooth/host/smp.c:		       bt_addr_le_str(&conn->le.dst));
+./subsys/bluetooth/host/smp.c:		       bt_addr_le_str(&conn->le.dst));
+./subsys/bluetooth/host/smp.c:	keys = bt_keys_find(BT_KEYS_LOCAL_CSRK, conn->id, &conn->le.dst);
+./subsys/bluetooth/host/smp.c:		       bt_addr_le_str(&conn->le.dst));
+./subsys/bluetooth/host/smp.c:		       bt_addr_le_str(&conn->le.dst));
+./subsys/bluetooth/host/smp.c:	    smp->chan.chan.conn->role == BT_HCI_ROLE_MASTER) {
+./subsys/bluetooth/host/smp.c:		if (smp->chan.chan.conn->role == BT_HCI_ROLE_MASTER) {
+./subsys/bluetooth/host/smp.c:	    smp->chan.chan.conn->role == BT_HCI_ROLE_MASTER) {
+./subsys/bluetooth/host/smp.c:	    smp->chan.chan.conn->role == BT_HCI_ROLE_MASTER) {
+./subsys/bluetooth/host/smp.c:	    conn->role == BT_CONN_ROLE_MASTER) {
+./subsys/bluetooth/host/smp.c:	switch (conn->role) {
+./subsys/bluetooth/host/smp.c:						  conn->le.keys->ltk.rand,
+./subsys/bluetooth/host/smp.c:						  conn->le.keys->ltk.ediv,
+./subsys/bluetooth/host/smp.c:						  conn->le.keys->ltk.val,
+./subsys/bluetooth/host/smp.c:						  conn->le.keys->enc_size);
+./subsys/bluetooth/host/smp.c:	if (conn->le.keys) {
+./subsys/bluetooth/host/smp.c:		bt_keys_clear(conn->le.keys);
+./subsys/bluetooth/host/smp.c:	conn->le.keys = bt_keys_get_addr(conn->id, &conn->le.dst);
+./subsys/bluetooth/host/smp.c:	if (!conn->le.keys) {
+./subsys/bluetooth/host/smp.c:		       bt_addr_le_str(&conn->le.dst));
+./subsys/bluetooth/host/smp.c:		conn->le.keys->flags |= BT_KEYS_DEBUG;
+./subsys/bluetooth/host/smp.c:		conn->le.keys->flags |= BT_KEYS_AUTHENTICATED;
+./subsys/bluetooth/host/smp.c:		conn->le.keys->flags &= ~BT_KEYS_AUTHENTICATED;
+./subsys/bluetooth/host/smp.c:	conn->le.keys->enc_size = get_encryption_key_size(smp);
+./subsys/bluetooth/host/smp.c:		conn->le.keys->flags |= BT_KEYS_SC;
+./subsys/bluetooth/host/smp.c:			bt_keys_add_type(conn->le.keys, BT_KEYS_LTK_P256);
+./subsys/bluetooth/host/smp.c:			memcpy(conn->le.keys->ltk.val, smp->tk,
+./subsys/bluetooth/host/smp.c:			       sizeof(conn->le.keys->ltk.val));
+./subsys/bluetooth/host/smp.c:			(void)memset(conn->le.keys->ltk.rand, 0,
+./subsys/bluetooth/host/smp.c:				     sizeof(conn->le.keys->ltk.rand));
+./subsys/bluetooth/host/smp.c:			(void)memset(conn->le.keys->ltk.ediv, 0,
+./subsys/bluetooth/host/smp.c:				     sizeof(conn->le.keys->ltk.ediv));
+./subsys/bluetooth/host/smp.c:		conn->le.keys->flags &= ~BT_KEYS_SC;
+./subsys/bluetooth/host/smp.c:	BT_DBG("conn %p handle %u", conn, conn->handle);
+./subsys/bluetooth/host/smp_null.c:	BT_DBG("conn %p handle %u", conn, conn->handle);
+./subsys/bluetooth/host/a2dp.c:	*session = &(a2dp_conn->session);
+./subsys/bluetooth/host/a2dp.c:	BT_DBG("session: %p", &(a2dp_conn->session));
+./subsys/bluetooth/host/a2dp.c:	err = bt_avdtp_connect(conn, &(a2dp_conn->session));
+./subsys/bluetooth/host/l2cap_br.c:	SYS_SLIST_FOR_EACH_CONTAINER(&conn->channels, chan, node) {
+./subsys/bluetooth/host/l2cap_br.c:	SYS_SLIST_FOR_EACH_CONTAINER(&conn->channels, chan, node) {
+./subsys/bluetooth/host/l2cap_br.c:	    !BT_FEAT_HOST_SSP(chan->conn->br.features)) {
+./subsys/bluetooth/host/l2cap_br.c:		if (BT_FEAT_HOST_SSP(chan->conn->br.features)) {
+./subsys/bluetooth/host/l2cap_br.c:	    chan->conn->sec_level >= chan->required_sec_level) {
+./subsys/bluetooth/host/l2cap_br.c:	    BT_FEAT_HOST_SSP(conn->br.features) && !conn->encrypt) {
+./subsys/bluetooth/host/l2cap_br.c:	SYS_SLIST_FOR_EACH_CONTAINER(&conn->channels, chan, node) {
+./subsys/bluetooth/host/l2cap_br.c:			sys_slist_remove(&conn->channels, prev, &chan->node);
+./subsys/bluetooth/host/l2cap_br.c:	       chan->conn->encrypt);
+./subsys/bluetooth/host/l2cap_br.c:	if (!chan->conn->encrypt) {
+./subsys/bluetooth/host/l2cap_br.c:	SYS_SLIST_FOR_EACH_CONTAINER(&conn->channels, chan, node) {
+./subsys/bluetooth/host/l2cap_br.c:	BT_DBG("conn %p handle %u", conn, conn->handle);
+./subsys/bluetooth/host/rfcomm.c:	if (conn->sec_level >= dlc->required_sec_level) {
+./subsys/bluetooth/host/rfcomm.c:	       conn->encrypt);
+./subsys/bluetooth/host/rfcomm.c:		if (hci_status || !conn->encrypt ||
+./subsys/bluetooth/host/rfcomm.c:		    conn->sec_level < dlc->required_sec_level) {
+./subsys/bluetooth/host/rfcomm.c:	if (!conn || conn->state != BT_CONN_CONNECTED) {
+./subsys/bluetooth/host/hci_core.c:	if (conn->state != BT_CONN_CONNECTED &&
+./subsys/bluetooth/host/hci_core.c:	    conn->state != BT_CONN_DISCONNECT) {
+./subsys/bluetooth/host/hci_core.c:			if (conn->pending_no_cb) {
+./subsys/bluetooth/host/hci_core.c:				conn->pending_no_cb--;
+./subsys/bluetooth/host/hci_core.c:			node = sys_slist_get(&conn->tx_pending);
+./subsys/bluetooth/host/hci_core.c:			conn->pending_no_cb = tx->pending_no_cb;
+./subsys/bluetooth/host/hci_core.c:			sys_slist_append(&conn->tx_complete, &tx->node);
+./subsys/bluetooth/host/hci_core.c:			k_work_submit(&conn->tx_complete_work);
+./subsys/bluetooth/host/hci_core.c:	phy->conn_interval_min = sys_cpu_to_le16(conn->le.interval_min);
+./subsys/bluetooth/host/hci_core.c:	phy->conn_interval_max = sys_cpu_to_le16(conn->le.interval_max);
+./subsys/bluetooth/host/hci_core.c:	phy->conn_latency = sys_cpu_to_le16(conn->le.latency);
+./subsys/bluetooth/host/hci_core.c:	phy->supervision_timeout = sys_cpu_to_le16(conn->le.timeout);
+./subsys/bluetooth/host/hci_core.c:		use_filter = atomic_test_bit(conn->flags, BT_CONN_AUTO_CONNECT);
+./subsys/bluetooth/host/hci_core.c:		const bt_addr_le_t *peer_addr = &conn->le.dst;
+./subsys/bluetooth/host/hci_core.c:			peer_addr = &conn->le.resp_addr;
+./subsys/bluetooth/host/hci_core.c:		use_filter = atomic_test_bit(conn->flags, BT_CONN_AUTO_CONNECT);
+./subsys/bluetooth/host/hci_core.c:		const bt_addr_le_t *peer_addr = &conn->le.dst;
+./subsys/bluetooth/host/hci_core.c:			peer_addr = &conn->le.resp_addr;
+./subsys/bluetooth/host/hci_core.c:	cp->conn_interval_min = sys_cpu_to_le16(conn->le.interval_min);
+./subsys/bluetooth/host/hci_core.c:	cp->conn_interval_max = sys_cpu_to_le16(conn->le.interval_max);
+./subsys/bluetooth/host/hci_core.c:	cp->conn_latency = sys_cpu_to_le16(conn->le.latency);
+./subsys/bluetooth/host/hci_core.c:	cp->supervision_timeout = sys_cpu_to_le16(conn->le.timeout);
+./subsys/bluetooth/host/hci_core.c:	disconn->handle = sys_cpu_to_le16(handle);
+./subsys/bluetooth/host/hci_core.c:	disconn->reason = reason;
+./subsys/bluetooth/host/hci_core.c:	conn->err = evt->reason;
+./subsys/bluetooth/host/hci_core.c:	conn->handle = 0U;
+./subsys/bluetooth/host/hci_core.c:	if (conn->type != BT_CONN_TYPE_LE) {
+./subsys/bluetooth/host/hci_core.c:		if (conn->type == BT_CONN_TYPE_SCO) {
+./subsys/bluetooth/host/hci_core.c:		if (conn->type == BT_CONN_TYPE_BR &&
+./subsys/bluetooth/host/hci_core.c:		    atomic_test_and_clear_bit(conn->flags, BT_CONN_BR_NOBOND)) {
+./subsys/bluetooth/host/hci_core.c:			bt_keys_link_key_clear(conn->br.link_key);
+./subsys/bluetooth/host/hci_core.c:	if (atomic_test_bit(conn->flags, BT_CONN_AUTO_CONNECT)) {
+./subsys/bluetooth/host/hci_core.c:	cp->handle = sys_cpu_to_le16(conn->handle);
+./subsys/bluetooth/host/hci_core.c:	if (conn->state != BT_CONN_CONNECTED) {
+./subsys/bluetooth/host/hci_core.c:	if (atomic_test_bit(conn->flags, BT_CONN_AUTO_VERSION_INFO)) {
+./subsys/bluetooth/host/hci_core.c:	cp->handle = sys_cpu_to_le16(conn->handle);
+./subsys/bluetooth/host/hci_core.c:	cp->handle = sys_cpu_to_le16(conn->handle);
+./subsys/bluetooth/host/hci_core.c:	cp->handle = sys_cpu_to_le16(conn->handle);
+./subsys/bluetooth/host/hci_core.c:	conn->le.phy.tx_phy = get_phy(rp->tx_phy);
+./subsys/bluetooth/host/hci_core.c:	conn->le.phy.rx_phy = get_phy(rp->rx_phy);
+./subsys/bluetooth/host/hci_core.c:	cp->handle = sys_cpu_to_le16(conn->handle);
+./subsys/bluetooth/host/hci_core.c:	if (atomic_test_bit(conn->flags, BT_CONN_SLAVE_PARAM_UPDATE)) {
+./subsys/bluetooth/host/hci_core.c:	k_delayed_work_submit(&conn->update_work, CONN_UPDATE_TIMEOUT);
+./subsys/bluetooth/host/hci_core.c:	if (conn->state != BT_CONN_CONNECTED) {
+./subsys/bluetooth/host/hci_core.c:	if (!atomic_test_bit(conn->flags, BT_CONN_AUTO_FEATURE_EXCH) &&
+./subsys/bluetooth/host/hci_core.c:	    ((conn->role == BT_HCI_ROLE_MASTER) ||
+./subsys/bluetooth/host/hci_core.c:	    !atomic_test_bit(conn->flags, BT_CONN_AUTO_VERSION_INFO)) {
+./subsys/bluetooth/host/hci_core.c:	    !atomic_test_bit(conn->flags, BT_CONN_AUTO_PHY_COMPLETE) &&
+./subsys/bluetooth/host/hci_core.c:			atomic_set_bit(conn->flags, BT_CONN_AUTO_PHY_UPDATE);
+./subsys/bluetooth/host/hci_core.c:	    conn->role == BT_CONN_ROLE_SLAVE) {
+./subsys/bluetooth/host/hci_core.c:	conn->err = BT_HCI_ERR_UNKNOWN_CONN_ID;
+./subsys/bluetooth/host/hci_core.c:		if (atomic_test_bit(conn->flags, BT_CONN_AUTO_CONNECT)) {
+./subsys/bluetooth/host/hci_core.c:		if (atomic_test_bit(conn->flags, BT_CONN_AUTO_CONNECT)) {
+./subsys/bluetooth/host/hci_core.c:		conn->err = BT_HCI_ERR_ADV_TIMEOUT;
+./subsys/bluetooth/host/hci_core.c:	conn->handle = handle;
+./subsys/bluetooth/host/hci_core.c:	bt_addr_le_copy(&conn->le.dst, &id_addr);
+./subsys/bluetooth/host/hci_core.c:	conn->le.interval = sys_le16_to_cpu(evt->interval);
+./subsys/bluetooth/host/hci_core.c:	conn->le.latency = sys_le16_to_cpu(evt->latency);
+./subsys/bluetooth/host/hci_core.c:	conn->le.timeout = sys_le16_to_cpu(evt->supv_timeout);
+./subsys/bluetooth/host/hci_core.c:	conn->role = evt->role;
+./subsys/bluetooth/host/hci_core.c:	conn->err = 0U;
+./subsys/bluetooth/host/hci_core.c:	conn->le.data_len.tx_max_len = BT_GAP_DATA_LEN_DEFAULT;
+./subsys/bluetooth/host/hci_core.c:	conn->le.data_len.tx_max_time = BT_GAP_DATA_TIME_DEFAULT;
+./subsys/bluetooth/host/hci_core.c:	conn->le.data_len.rx_max_len = BT_GAP_DATA_LEN_DEFAULT;
+./subsys/bluetooth/host/hci_core.c:	conn->le.data_len.rx_max_time = BT_GAP_DATA_TIME_DEFAULT;
+./subsys/bluetooth/host/hci_core.c:	conn->le.phy.tx_phy = BT_GAP_LE_PHY_1M;
+./subsys/bluetooth/host/hci_core.c:	conn->le.phy.rx_phy = BT_GAP_LE_PHY_1M;
+./subsys/bluetooth/host/hci_core.c:	    conn->role == BT_HCI_ROLE_SLAVE) {
+./subsys/bluetooth/host/hci_core.c:		bt_addr_le_copy(&conn->le.init_addr, &peer_addr);
+./subsys/bluetooth/host/hci_core.c:				conn->le.resp_addr.type = BT_ADDR_LE_RANDOM;
+./subsys/bluetooth/host/hci_core.c:					bt_addr_copy(&conn->le.resp_addr.a,
+./subsys/bluetooth/host/hci_core.c:					bt_addr_copy(&conn->le.resp_addr.a,
+./subsys/bluetooth/host/hci_core.c:				bt_addr_le_copy(&conn->le.resp_addr,
+./subsys/bluetooth/host/hci_core.c:						&bt_dev.id_addr[conn->id]);
+./subsys/bluetooth/host/hci_core.c:			bt_addr_copy(&conn->le.resp_addr.a, &evt->local_rpa);
+./subsys/bluetooth/host/hci_core.c:	    conn->role == BT_HCI_ROLE_MASTER) {
+./subsys/bluetooth/host/hci_core.c:		bt_addr_le_copy(&conn->le.resp_addr, &peer_addr);
+./subsys/bluetooth/host/hci_core.c:			conn->le.init_addr.type = BT_ADDR_LE_RANDOM;
+./subsys/bluetooth/host/hci_core.c:				bt_addr_copy(&conn->le.init_addr.a,
+./subsys/bluetooth/host/hci_core.c:				bt_addr_copy(&conn->le.init_addr.a,
+./subsys/bluetooth/host/hci_core.c:			bt_addr_le_copy(&conn->le.init_addr,
+./subsys/bluetooth/host/hci_core.c:					&bt_dev.id_addr[conn->id]);
+./subsys/bluetooth/host/hci_core.c:			    conn->le.phy.tx_phy == BT_HCI_LE_PHY_PREFER_2M &&
+./subsys/bluetooth/host/hci_core.c:			    conn->le.phy.rx_phy == BT_HCI_LE_PHY_PREFER_2M) {
+./subsys/bluetooth/host/hci_core.c:				atomic_set_bit(conn->flags,
+./subsys/bluetooth/host/hci_core.c:	    conn->role == BT_HCI_ROLE_MASTER) {
+./subsys/bluetooth/host/hci_core.c:		memcpy(conn->le.features, evt->features,
+./subsys/bluetooth/host/hci_core.c:		       sizeof(conn->le.features));
+./subsys/bluetooth/host/hci_core.c:	atomic_set_bit(conn->flags, BT_CONN_AUTO_FEATURE_EXCH);
+./subsys/bluetooth/host/hci_core.c:		atomic_set_bit(conn->flags, BT_CONN_AUTO_DATA_LEN_COMPLETE);
+./subsys/bluetooth/host/hci_core.c:	conn->le.data_len.tx_max_len = max_tx_octets;
+./subsys/bluetooth/host/hci_core.c:	conn->le.data_len.tx_max_time = max_tx_time;
+./subsys/bluetooth/host/hci_core.c:	conn->le.data_len.rx_max_len = max_rx_octets;
+./subsys/bluetooth/host/hci_core.c:	conn->le.data_len.rx_max_time = max_rx_time;
+./subsys/bluetooth/host/hci_core.c:	    atomic_test_and_clear_bit(conn->flags, BT_CONN_AUTO_PHY_UPDATE)) {
+./subsys/bluetooth/host/hci_core.c:		atomic_set_bit(conn->flags, BT_CONN_AUTO_PHY_COMPLETE);
+./subsys/bluetooth/host/hci_core.c:	conn->le.phy.tx_phy = get_phy(evt->tx_phy);
+./subsys/bluetooth/host/hci_core.c:	conn->le.phy.rx_phy = get_phy(evt->rx_phy);
+./subsys/bluetooth/host/hci_core.c:		conn->le.interval = sys_le16_to_cpu(evt->interval);
+./subsys/bluetooth/host/hci_core.c:		conn->le.latency = sys_le16_to_cpu(evt->latency);
+./subsys/bluetooth/host/hci_core.c:		conn->le.timeout = sys_le16_to_cpu(evt->supv_timeout);
+./subsys/bluetooth/host/hci_core.c:		   conn->role == BT_HCI_ROLE_SLAVE &&
+./subsys/bluetooth/host/hci_core.c:		   !atomic_test_and_set_bit(conn->flags,
+./subsys/bluetooth/host/hci_core.c:		param.interval_min = conn->le.interval_min;
+./subsys/bluetooth/host/hci_core.c:		param.interval_max = conn->le.interval_max;
+./subsys/bluetooth/host/hci_core.c:		param.latency = conn->le.pending_latency;
+./subsys/bluetooth/host/hci_core.c:		param.timeout = conn->le.pending_timeout;
+./subsys/bluetooth/host/hci_core.c:	bt_addr_le_copy(&conn->le.resp_addr, addr);
+./subsys/bluetooth/host/hci_core.c:	conn->err = BT_HCI_ERR_UNSPECIFIED;
+./subsys/bluetooth/host/hci_core.c:		/* Clear the conn->le.keys pointer since we'll invalidate it,
+./subsys/bluetooth/host/hci_core.c:		if (conn->type == BT_CONN_TYPE_LE) {
+./subsys/bluetooth/host/hci_core.c:			keys = conn->le.keys;
+./subsys/bluetooth/host/hci_core.c:			conn->le.keys = NULL;
+./subsys/bluetooth/host/hci_core.c:	if (conn->type == BT_CONN_TYPE_BR) {
+./subsys/bluetooth/host/hci_core.c:		atomic_clear_bit(conn->flags, BT_CONN_BR_PAIRING);
+./subsys/bluetooth/host/hci_core.c:		atomic_clear_bit(conn->flags, BT_CONN_BR_PAIRING_INITIATOR);
+./subsys/bluetooth/host/hci_core.c:		atomic_clear_bit(conn->flags, BT_CONN_BR_LEGACY_SECURE);
+./subsys/bluetooth/host/hci_core.c:	conn->required_sec_level = conn->sec_level;
+./subsys/bluetooth/host/hci_core.c:	cp->pkt_type = sco_conn->sco.pkt_type;
+./subsys/bluetooth/host/hci_core.c:	sco_conn->role = BT_HCI_ROLE_SLAVE;
+./subsys/bluetooth/host/hci_core.c:	conn->role = BT_HCI_ROLE_SLAVE;
+./subsys/bluetooth/host/hci_core.c:	cp->handle = sys_cpu_to_le16(conn->handle);
+./subsys/bluetooth/host/hci_core.c:	if (conn->sec_level == BT_SECURITY_L4) {
+./subsys/bluetooth/host/hci_core.c:	if (!conn->encrypt) {
+./subsys/bluetooth/host/hci_core.c:		conn->sec_level = BT_SECURITY_L1;
+./subsys/bluetooth/host/hci_core.c:	if (conn->br.link_key) {
+./subsys/bluetooth/host/hci_core.c:		if (conn->br.link_key->flags & BT_LINK_KEY_AUTHENTICATED) {
+./subsys/bluetooth/host/hci_core.c:			if (conn->encrypt == 0x02) {
+./subsys/bluetooth/host/hci_core.c:				conn->sec_level = BT_SECURITY_L4;
+./subsys/bluetooth/host/hci_core.c:				conn->sec_level = BT_SECURITY_L3;
+./subsys/bluetooth/host/hci_core.c:			conn->sec_level = BT_SECURITY_L2;
+./subsys/bluetooth/host/hci_core.c:		conn->sec_level = BT_SECURITY_L2;
+./subsys/bluetooth/host/hci_core.c:	if (conn->required_sec_level > conn->sec_level) {
+./subsys/bluetooth/host/hci_core.c:		sco_conn->err = evt->status;
+./subsys/bluetooth/host/hci_core.c:	sco_conn->handle = handle;
+./subsys/bluetooth/host/hci_core.c:		conn->err = evt->status;
+./subsys/bluetooth/host/hci_core.c:	conn->handle = handle;
+./subsys/bluetooth/host/hci_core.c:	conn->err = 0U;
+./subsys/bluetooth/host/hci_core.c:	conn->encrypt = evt->encr_enabled;
+./subsys/bluetooth/host/hci_core.c:	if (!conn->br.link_key) {
+./subsys/bluetooth/host/hci_core.c:		conn->br.link_key = bt_keys_get_link_key(&evt->bdaddr);
+./subsys/bluetooth/host/hci_core.c:	if (!conn->br.link_key) {
+./subsys/bluetooth/host/hci_core.c:	conn->br.link_key->flags = 0U;
+./subsys/bluetooth/host/hci_core.c:		if (atomic_test_and_clear_bit(conn->flags,
+./subsys/bluetooth/host/hci_core.c:			conn->br.link_key->flags |= BT_LINK_KEY_AUTHENTICATED;
+./subsys/bluetooth/host/hci_core.c:		memcpy(conn->br.link_key->val, evt->link_key, 16);
+./subsys/bluetooth/host/hci_core.c:		conn->br.link_key->flags |= BT_LINK_KEY_AUTHENTICATED;
+./subsys/bluetooth/host/hci_core.c:			atomic_set_bit(conn->flags, BT_CONN_BR_NOBOND);
+./subsys/bluetooth/host/hci_core.c:		memcpy(conn->br.link_key->val, evt->link_key, 16);
+./subsys/bluetooth/host/hci_core.c:		conn->br.link_key->flags |= BT_LINK_KEY_AUTHENTICATED;
+./subsys/bluetooth/host/hci_core.c:		conn->br.link_key->flags |= BT_LINK_KEY_SC;
+./subsys/bluetooth/host/hci_core.c:			atomic_set_bit(conn->flags, BT_CONN_BR_NOBOND);
+./subsys/bluetooth/host/hci_core.c:		memcpy(conn->br.link_key->val, evt->link_key, 16);
+./subsys/bluetooth/host/hci_core.c:		(void)memset(conn->br.link_key->val, 0,
+./subsys/bluetooth/host/hci_core.c:			     sizeof(conn->br.link_key->val));
+./subsys/bluetooth/host/hci_core.c:	if (!conn->br.link_key) {
+./subsys/bluetooth/host/hci_core.c:		conn->br.link_key = bt_keys_find_link_key(&evt->bdaddr);
+./subsys/bluetooth/host/hci_core.c:	if (!conn->br.link_key) {
+./subsys/bluetooth/host/hci_core.c:	if (!(conn->br.link_key->flags & BT_LINK_KEY_AUTHENTICATED) &&
+./subsys/bluetooth/host/hci_core.c:	    conn->required_sec_level > BT_SECURITY_L2) {
+./subsys/bluetooth/host/hci_core.c:	link_key_reply(&evt->bdaddr, conn->br.link_key->val);
+./subsys/bluetooth/host/hci_core.c:	conn->br.remote_io_capa = evt->capability;
+./subsys/bluetooth/host/hci_core.c:	conn->br.remote_auth = evt->authentication;
+./subsys/bluetooth/host/hci_core.c:	atomic_set_bit(conn->flags, BT_CONN_BR_PAIRING);
+./subsys/bluetooth/host/hci_core.c:	if (atomic_test_bit(conn->flags, BT_CONN_BR_PAIRING_INITIATOR)) {
+./subsys/bluetooth/host/hci_core.c:		if (conn->state == BT_CONN_CONNECTED) {
+./subsys/bluetooth/host/hci_core.c:	memcpy(conn->br.features[0], evt->features, sizeof(evt->features));
+./subsys/bluetooth/host/hci_core.c:	if (!BT_FEAT_EXT_FEATURES(conn->br.features)) {
+./subsys/bluetooth/host/hci_core.c:		memcpy(conn->br.features[1], evt->features,
+./subsys/bluetooth/host/hci_core.c:		       sizeof(conn->br.features[1]));
+./subsys/bluetooth/host/hci_core.c:		conn->role = BT_CONN_ROLE_SLAVE;
+./subsys/bluetooth/host/hci_core.c:		conn->role = BT_CONN_ROLE_MASTER;
+./subsys/bluetooth/host/hci_core.c:	if (!conn->encrypt) {
+./subsys/bluetooth/host/hci_core.c:		conn->sec_level = BT_SECURITY_L1;
+./subsys/bluetooth/host/hci_core.c:	if (conn->le.keys && (conn->le.keys->flags & BT_KEYS_AUTHENTICATED)) {
+./subsys/bluetooth/host/hci_core.c:		if (conn->le.keys->flags & BT_KEYS_SC &&
+./subsys/bluetooth/host/hci_core.c:		    conn->le.keys->enc_size == BT_SMP_MAX_ENC_KEY_SIZE) {
+./subsys/bluetooth/host/hci_core.c:			conn->sec_level = BT_SECURITY_L4;
+./subsys/bluetooth/host/hci_core.c:			conn->sec_level = BT_SECURITY_L3;
+./subsys/bluetooth/host/hci_core.c:		conn->sec_level = BT_SECURITY_L2;
+./subsys/bluetooth/host/hci_core.c:	if (conn->required_sec_level > conn->sec_level) {
+./subsys/bluetooth/host/hci_core.c:	conn->encrypt = evt->encrypt;
+./subsys/bluetooth/host/hci_core.c:	if (conn->type == BT_CONN_TYPE_LE) {
+./subsys/bluetooth/host/hci_core.c:		if (conn->encrypt) {
+./subsys/bluetooth/host/hci_core.c:	if (conn->type == BT_CONN_TYPE_BR) {
+./subsys/bluetooth/host/hci_core.c:			if (atomic_test_bit(conn->flags, BT_CONN_BR_PAIRING) &&
+./subsys/bluetooth/host/hci_core.c:			    conn->role == BT_CONN_ROLE_MASTER) {
+./subsys/bluetooth/host/hci_core.c:	if (conn->type == BT_CONN_TYPE_LE) {
+./subsys/bluetooth/host/hci_core.c:	if (conn->type == BT_CONN_TYPE_BR) {
+./subsys/bluetooth/host/hci_core.c:		conn->rv.version = evt->version;
+./subsys/bluetooth/host/hci_core.c:		conn->rv.manufacturer = sys_le16_to_cpu(evt->manufacturer);
+./subsys/bluetooth/host/hci_core.c:		conn->rv.subversion = sys_le16_to_cpu(evt->subversion);
+./subsys/bluetooth/host/hci_core.c:	atomic_set_bit(conn->flags, BT_CONN_AUTO_VERSION_INFO);
+./subsys/bluetooth/host/hci_core.c:		conn->err = status;
+./subsys/bluetooth/host/hci_core.c:				conn->le.resp_addr.type = BT_ADDR_LE_RANDOM;
+./subsys/bluetooth/host/hci_core.c:				if (bt_addr_cmp(&conn->le.resp_addr.a,
+./subsys/bluetooth/host/hci_core.c:					bt_addr_copy(&conn->le.resp_addr.a,
+./subsys/bluetooth/host/hci_core.c:				bt_addr_le_copy(&conn->le.resp_addr,
+./subsys/bluetooth/host/hci_core.c:					&bt_dev.id_addr[conn->id]);
+./subsys/bluetooth/host/hci_core.c:	if (conn->state != BT_CONN_CONNECTED) {
+./subsys/bluetooth/host/hci_core.c:	*conn_handle = conn->handle;
+./subsys/bluetooth/host/conn.c:	if (conn->type == BT_CONN_TYPE_BR || !bt_dev.le.mtu) {
+./subsys/bluetooth/host/conn.c:			cb->connected(conn, conn->err);
+./subsys/bluetooth/host/conn.c:	if (!conn->err) {
+./subsys/bluetooth/host/conn.c:			cb->disconnected(conn, conn->err);
+./subsys/bluetooth/host/conn.c:	if (atomic_test_bit(conn->flags, BT_CONN_SLAVE_PARAM_SET) &&
+./subsys/bluetooth/host/conn.c:	    conn->le.interval >= conn->le.interval_min &&
+./subsys/bluetooth/host/conn.c:	    conn->le.interval <= conn->le.interval_max &&
+./subsys/bluetooth/host/conn.c:	    conn->le.latency == conn->le.pending_latency &&
+./subsys/bluetooth/host/conn.c:	    conn->le.timeout == conn->le.pending_timeout) {
+./subsys/bluetooth/host/conn.c:		atomic_clear_bit(conn->flags, BT_CONN_SLAVE_PARAM_SET);
+./subsys/bluetooth/host/conn.c:			cb->le_param_updated(conn, conn->le.interval,
+./subsys/bluetooth/host/conn.c:					     conn->le.latency,
+./subsys/bluetooth/host/conn.c:					     conn->le.timeout);
+./subsys/bluetooth/host/conn.c:			cb->le_data_len_updated(conn, &conn->le.data_len);
+./subsys/bluetooth/host/conn.c:			cb->le_phy_updated(conn, &conn->le.phy);
+./subsys/bluetooth/host/conn.c:	       conn->le.features[0], param->interval_min,
+./subsys/bluetooth/host/conn.c:	     BT_FEAT_LE_CONN_PARAM_REQ_PROC(conn->le.features) &&
+./subsys/bluetooth/host/conn.c:	     !atomic_test_bit(conn->flags, BT_CONN_SLAVE_PARAM_L2CAP)) ||
+./subsys/bluetooth/host/conn.c:	     (conn->role == BT_HCI_ROLE_MASTER)) {
+./subsys/bluetooth/host/conn.c:			conn->le.pending_latency = param->latency;
+./subsys/bluetooth/host/conn.c:			conn->le.pending_timeout = param->timeout;
+./subsys/bluetooth/host/conn.c:		if (sys_slist_is_empty(&conn->tx_complete)) {
+./subsys/bluetooth/host/conn.c:		tx = (void *)sys_slist_get_not_empty(&conn->tx_complete);
+./subsys/bluetooth/host/conn.c:	if (conn->state == BT_CONN_DISCONNECTED) {
+./subsys/bluetooth/host/conn.c:	if (conn->type != BT_CONN_TYPE_LE) {
+./subsys/bluetooth/host/conn.c:	    conn->role == BT_CONN_ROLE_MASTER) {
+./subsys/bluetooth/host/conn.c:		if (atomic_test_and_clear_bit(conn->flags,
+./subsys/bluetooth/host/conn.c:			param = BT_LE_CONN_PARAM(conn->le.interval_min,
+./subsys/bluetooth/host/conn.c:						conn->le.interval_max,
+./subsys/bluetooth/host/conn.c:						conn->le.pending_latency,
+./subsys/bluetooth/host/conn.c:						conn->le.pending_timeout);
+./subsys/bluetooth/host/conn.c:	atomic_set_bit(conn->flags, BT_CONN_SLAVE_PARAM_UPDATE);
+./subsys/bluetooth/host/conn.c:	k_delayed_work_init(&conn->update_work, conn_update_timeout);
+./subsys/bluetooth/host/conn.c:	k_work_init(&conn->tx_complete_work, tx_complete_work);
+./subsys/bluetooth/host/conn.c:	atomic_set(&conn->ref, 1);
+./subsys/bluetooth/host/conn.c:	bt_conn_unref(sco_conn->sco.acl);
+./subsys/bluetooth/host/conn.c:	sco_conn->sco.acl = NULL;
+./subsys/bluetooth/host/conn.c:	atomic_set(&sco_conn->ref, 1);
+./subsys/bluetooth/host/conn.c:		switch (conn->state) {
+./subsys/bluetooth/host/conn.c:	conn->role = BT_CONN_ROLE_MASTER;
+./subsys/bluetooth/host/conn.c:		switch (sco_conn->state) {
+./subsys/bluetooth/host/conn.c:	BT_ERR("handle : %x", sco_conn->sco.acl->handle);
+./subsys/bluetooth/host/conn.c:	cp->handle = sco_conn->sco.acl->handle;
+./subsys/bluetooth/host/conn.c:	cp->pkt_type = sco_conn->sco.pkt_type;
+./subsys/bluetooth/host/conn.c:	sco_conn->sco.acl = bt_conn_lookup_addr_br(peer);
+./subsys/bluetooth/host/conn.c:	sco_conn->type = BT_CONN_TYPE_SCO;
+./subsys/bluetooth/host/conn.c:			sco_conn->sco.pkt_type = (bt_dev.br.esco_pkt_type &
+./subsys/bluetooth/host/conn.c:			sco_conn->sco.pkt_type = (bt_dev.br.esco_pkt_type &
+./subsys/bluetooth/host/conn.c:		sco_conn->sco.pkt_type = (bt_dev.br.esco_pkt_type &
+./subsys/bluetooth/host/conn.c:	bt_addr_copy(&conn->br.dst, peer);
+./subsys/bluetooth/host/conn.c:	conn->type = BT_CONN_TYPE_BR;
+./subsys/bluetooth/host/conn.c:	bt_addr_copy(&cp->bdaddr, &conn->br.dst);
+./subsys/bluetooth/host/conn.c:	if (conn->type != BT_CONN_TYPE_BR) {
+./subsys/bluetooth/host/conn.c:	if (conn->required_sec_level == BT_SECURITY_L3 && len < 16) {
+./subsys/bluetooth/host/conn.c:			bt_addr_str(&conn->br.dst));
+./subsys/bluetooth/host/conn.c:	if (!atomic_test_and_clear_bit(conn->flags, BT_CONN_USER)) {
+./subsys/bluetooth/host/conn.c:		atomic_set_bit(conn->flags, BT_CONN_BR_LEGACY_SECURE);
+./subsys/bluetooth/host/conn.c:		if (conn->required_sec_level == BT_SECURITY_L3) {
+./subsys/bluetooth/host/conn.c:		atomic_set_bit(conn->flags, BT_CONN_USER);
+./subsys/bluetooth/host/conn.c:		atomic_set_bit(conn->flags, BT_CONN_BR_PAIRING);
+./subsys/bluetooth/host/conn.c:		pin_code_neg_reply(&conn->br.dst);
+./subsys/bluetooth/host/conn.c:	return ssp_method[conn->br.remote_io_capa][bt_conn_get_io_capa()];
+./subsys/bluetooth/host/conn.c:	if ((conn->br.remote_auth == BT_HCI_NO_BONDING) ||
+./subsys/bluetooth/host/conn.c:	    ((conn->br.remote_auth == BT_HCI_NO_BONDING_MITM) &&
+./subsys/bluetooth/host/conn.c:		return conn->br.remote_auth;
+./subsys/bluetooth/host/conn.c:		return conn->br.remote_auth | BT_MITM;
+./subsys/bluetooth/host/conn.c:	return (conn->br.remote_auth & ~BT_MITM);
+./subsys/bluetooth/host/conn.c:	bt_addr_copy(&cp->bdaddr, &conn->br.dst);
+./subsys/bluetooth/host/conn.c:	bt_addr_copy(&cp->bdaddr, &conn->br.dst);
+./subsys/bluetooth/host/conn.c:		bool bond = !atomic_test_bit(conn->flags, BT_CONN_BR_NOBOND);
+./subsys/bluetooth/host/conn.c:	conn->br.pairing_method = ssp_pair_method(conn);
+./subsys/bluetooth/host/conn.c:	if (conn->required_sec_level > BT_SECURITY_L2 &&
+./subsys/bluetooth/host/conn.c:	    conn->br.pairing_method == JUST_WORKS) {
+./subsys/bluetooth/host/conn.c:	switch (conn->br.pairing_method) {
+./subsys/bluetooth/host/conn.c:		atomic_set_bit(conn->flags, BT_CONN_USER);
+./subsys/bluetooth/host/conn.c:		atomic_set_bit(conn->flags, BT_CONN_USER);
+./subsys/bluetooth/host/conn.c:		atomic_set_bit(conn->flags, BT_CONN_USER);
+./subsys/bluetooth/host/conn.c:		    !atomic_test_bit(conn->flags,
+./subsys/bluetooth/host/conn.c:			atomic_set_bit(conn->flags, BT_CONN_USER);
+./subsys/bluetooth/host/conn.c:	bt_addr_copy(&cp->bdaddr, &conn->br.dst);
+./subsys/bluetooth/host/conn.c:	bt_addr_copy(&cp->bdaddr, &conn->br.dst);
+./subsys/bluetooth/host/conn.c:	memcpy(&cp->bdaddr, &conn->br.dst, sizeof(cp->bdaddr));
+./subsys/bluetooth/host/conn.c:	auth->handle = sys_cpu_to_le16(conn->handle);
+./subsys/bluetooth/host/conn.c:	atomic_set_bit(conn->flags, BT_CONN_BR_PAIRING_INITIATOR);
+./subsys/bluetooth/host/conn.c:	if (conn->role == BT_HCI_ROLE_MASTER) {
+./subsys/bluetooth/host/conn.c:		rpa = &conn->le.resp_addr;
+./subsys/bluetooth/host/conn.c:		rpa = &conn->le.init_addr;
+./subsys/bluetooth/host/conn.c:			cb->identity_resolved(conn, rpa, &conn->le.dst);
+./subsys/bluetooth/host/conn.c:	cp->handle = sys_cpu_to_le16(conn->handle);
+./subsys/bluetooth/host/conn.c:	if (!conn->encrypt) {
+./subsys/bluetooth/host/conn.c:	    conn->type == BT_CONN_TYPE_BR) {
+./subsys/bluetooth/host/conn.c:		cp->handle = sys_cpu_to_le16(conn->handle);
+./subsys/bluetooth/host/conn.c:		return conn->le.keys ? conn->le.keys->enc_size : 0;
+./subsys/bluetooth/host/conn.c:			cb->security_changed(conn, conn->sec_level, err);
+./subsys/bluetooth/host/conn.c:	if (!err && conn->sec_level >= BT_SECURITY_L2) {
+./subsys/bluetooth/host/conn.c:		bt_keys_update_usage(conn->id, bt_conn_get_dst(conn));
+./subsys/bluetooth/host/conn.c:	if (conn->type == BT_CONN_TYPE_BR) {
+./subsys/bluetooth/host/conn.c:		if (atomic_test_bit(conn->flags, BT_CONN_BR_PAIRING)) {
+./subsys/bluetooth/host/conn.c:		if (conn->required_sec_level > BT_SECURITY_L3) {
+./subsys/bluetooth/host/conn.c:		    conn->required_sec_level > BT_SECURITY_L2) {
+./subsys/bluetooth/host/conn.c:	if (conn->state != BT_CONN_CONNECTED) {
+./subsys/bluetooth/host/conn.c:	if (conn->sec_level >= sec || conn->required_sec_level >= sec) {
+./subsys/bluetooth/host/conn.c:	atomic_set_bit_to(conn->flags, BT_CONN_FORCE_PAIR,
+./subsys/bluetooth/host/conn.c:	conn->required_sec_level = sec & ~BT_SECURITY_FORCE_PAIR;
+./subsys/bluetooth/host/conn.c:		conn->required_sec_level = conn->sec_level;
+./subsys/bluetooth/host/conn.c:	return conn->sec_level;
+./subsys/bluetooth/host/conn.c:	if (!conn->rx_len) {
+./subsys/bluetooth/host/conn.c:	net_buf_unref(conn->rx);
+./subsys/bluetooth/host/conn.c:	conn->rx = NULL;
+./subsys/bluetooth/host/conn.c:	conn->rx_len = 0U;
+./subsys/bluetooth/host/conn.c:	BT_DBG("handle %u len %u flags %02x", conn->handle, buf->len, flags);
+./subsys/bluetooth/host/conn.c:		if (conn->rx_len) {
+./subsys/bluetooth/host/conn.c:		conn->rx_len = (sizeof(*hdr) + len) - buf->len;
+./subsys/bluetooth/host/conn.c:		BT_DBG("rx_len %u", conn->rx_len);
+./subsys/bluetooth/host/conn.c:		if (conn->rx_len) {
+./subsys/bluetooth/host/conn.c:			conn->rx = buf;
+./subsys/bluetooth/host/conn.c:		if (!conn->rx_len) {
+./subsys/bluetooth/host/conn.c:		if (buf->len > conn->rx_len) {
+./subsys/bluetooth/host/conn.c:		BT_DBG("Cont, len %u rx_len %u", buf->len, conn->rx_len);
+./subsys/bluetooth/host/conn.c:		if (buf->len > net_buf_tailroom(conn->rx)) {
+./subsys/bluetooth/host/conn.c:		net_buf_add_mem(conn->rx, buf->data, buf->len);
+./subsys/bluetooth/host/conn.c:		conn->rx_len -= buf->len;
+./subsys/bluetooth/host/conn.c:		if (conn->rx_len) {
+./subsys/bluetooth/host/conn.c:		buf = conn->rx;
+./subsys/bluetooth/host/conn.c:		conn->rx = NULL;
+./subsys/bluetooth/host/conn.c:		conn->rx_len = 0U;
+./subsys/bluetooth/host/conn.c:	BT_DBG("conn handle %u buf len %u cb %p user_data %p", conn->handle,
+./subsys/bluetooth/host/conn.c:	if (conn->state != BT_CONN_CONNECTED) {
+./subsys/bluetooth/host/conn.c:		if (conn->state != BT_CONN_CONNECTED) {
+./subsys/bluetooth/host/conn.c:	net_buf_put(&conn->tx_queue, buf);
+./subsys/bluetooth/host/conn.c:	if (conn->state != BT_CONN_CONNECTED) {
+./subsys/bluetooth/host/conn.c:	hdr->handle = sys_cpu_to_le16(bt_acl_handle_pack(conn->handle, flags));
+./subsys/bluetooth/host/conn.c:		sys_slist_append(&conn->tx_pending, &tx->node);
+./subsys/bluetooth/host/conn.c:		tail_tx = (void *)sys_slist_peek_tail(&conn->tx_pending);
+./subsys/bluetooth/host/conn.c:			pending_no_cb = &conn->pending_no_cb;
+./subsys/bluetooth/host/conn.c:			sys_slist_find_and_remove(&conn->tx_pending, &tx->node);
+./subsys/bluetooth/host/conn.c:	if (conn->type == BT_CONN_TYPE_BR || !bt_dev.le.mtu) {
+./subsys/bluetooth/host/conn.c:	if (conn->state != BT_CONN_CONNECTED) {
+./subsys/bluetooth/host/conn.c:	while ((buf = net_buf_get(&conn->tx_queue, K_NO_WAIT))) {
+./subsys/bluetooth/host/conn.c:	__ASSERT(sys_slist_is_empty(&conn->tx_pending), "Pending TX packets");
+./subsys/bluetooth/host/conn.c:	__ASSERT_NO_MSG(conn->pending_no_cb == 0);
+./subsys/bluetooth/host/conn.c:	k_delayed_work_submit(&conn->update_work, K_NO_WAIT);
+./subsys/bluetooth/host/conn.c:		if (!atomic_get(&conn->ref)) {
+./subsys/bluetooth/host/conn.c:		if (conn->state == BT_CONN_DISCONNECTED &&
+./subsys/bluetooth/host/conn.c:		    atomic_test_and_clear_bit(conn->flags, BT_CONN_CLEANUP)) {
+./subsys/bluetooth/host/conn.c:		if (conn->state != BT_CONN_CONNECTED) {
+./subsys/bluetooth/host/conn.c:				  &conn->tx_queue);
+./subsys/bluetooth/host/conn.c:	if (conn->state == BT_CONN_DISCONNECTED &&
+./subsys/bluetooth/host/conn.c:	    atomic_test_and_clear_bit(conn->flags, BT_CONN_CLEANUP)) {
+./subsys/bluetooth/host/conn.c:		BT_DBG("handle %u disconnected - cleaning up", conn->handle);
+./subsys/bluetooth/host/conn.c:	buf = net_buf_get(&conn->tx_queue, K_NO_WAIT);
+./subsys/bluetooth/host/conn.c:			state2str(conn->state));
+./subsys/bluetooth/host/conn.c:	conn->id = id;
+./subsys/bluetooth/host/conn.c:	bt_addr_le_copy(&conn->le.dst, peer);
+./subsys/bluetooth/host/conn.c:	conn->sec_level = BT_SECURITY_L1;
+./subsys/bluetooth/host/conn.c:	conn->required_sec_level = BT_SECURITY_L1;
+./subsys/bluetooth/host/conn.c:	conn->type = BT_CONN_TYPE_LE;
+./subsys/bluetooth/host/conn.c:	conn->le.interval_min = BT_GAP_INIT_CONN_INT_MIN;
+./subsys/bluetooth/host/conn.c:	conn->le.interval_max = BT_GAP_INIT_CONN_INT_MAX;
+./subsys/bluetooth/host/conn.c:		if (conn->pending_no_cb) {
+./subsys/bluetooth/host/conn.c:			conn->pending_no_cb--;
+./subsys/bluetooth/host/conn.c:		node = sys_slist_get(&conn->tx_pending);
+./subsys/bluetooth/host/conn.c:		conn->pending_no_cb = tx->pending_no_cb;
+./subsys/bluetooth/host/conn.c:	BT_DBG("%s -> %s", state2str(conn->state), state2str(state));
+./subsys/bluetooth/host/conn.c:	if (conn->state == state) {
+./subsys/bluetooth/host/conn.c:	old_state = conn->state;
+./subsys/bluetooth/host/conn.c:	conn->state = state;
+./subsys/bluetooth/host/conn.c:		    conn->type == BT_CONN_TYPE_LE) {
+./subsys/bluetooth/host/conn.c:			k_delayed_work_cancel(&conn->update_work);
+./subsys/bluetooth/host/conn.c:	switch (conn->state) {
+./subsys/bluetooth/host/conn.c:		if (conn->type == BT_CONN_TYPE_SCO) {
+./subsys/bluetooth/host/conn.c:		k_fifo_init(&conn->tx_queue);
+./subsys/bluetooth/host/conn.c:		sys_slist_init(&conn->channels);
+./subsys/bluetooth/host/conn.c:		if (conn->type == BT_CONN_TYPE_SCO) {
+./subsys/bluetooth/host/conn.c:			if (conn->type == BT_CONN_TYPE_LE) {
+./subsys/bluetooth/host/conn.c:				k_delayed_work_cancel(&conn->update_work);
+./subsys/bluetooth/host/conn.c:			atomic_set_bit(conn->flags, BT_CONN_CLEANUP);
+./subsys/bluetooth/host/conn.c:			if (conn->err) {
+./subsys/bluetooth/host/conn.c:			if (conn->err) {
+./subsys/bluetooth/host/conn.c:			if (conn->err) {
+./subsys/bluetooth/host/conn.c:			 * advertiser, conn->err is never set in this case.
+./subsys/bluetooth/host/conn.c:		if (conn->type == BT_CONN_TYPE_SCO) {
+./subsys/bluetooth/host/conn.c:		    conn->type == BT_CONN_TYPE_LE) {
+./subsys/bluetooth/host/conn.c:			k_delayed_work_submit(&conn->update_work,
+./subsys/bluetooth/host/conn.c:	if (id != conn->id) {
+./subsys/bluetooth/host/conn.c:	if (!bt_addr_le_cmp(peer, &conn->le.dst)) {
+./subsys/bluetooth/host/conn.c:	if (conn->role == BT_HCI_ROLE_MASTER) {
+./subsys/bluetooth/host/conn.c:		return bt_addr_le_cmp(peer, &conn->le.resp_addr) == 0;
+./subsys/bluetooth/host/conn.c:	return bt_addr_le_cmp(peer, &conn->le.init_addr) == 0;
+./subsys/bluetooth/host/conn.c:	atomic_val_t old = atomic_inc(&conn->ref);
+./subsys/bluetooth/host/conn.c:	BT_DBG("handle %u ref %u -> %u", conn->handle, old,
+./subsys/bluetooth/host/conn.c:	       atomic_get(&conn->ref));
+./subsys/bluetooth/host/conn.c:	atomic_val_t old = atomic_dec(&conn->ref);
+./subsys/bluetooth/host/conn.c:	BT_DBG("handle %u ref %u -> %u", conn->handle, old,
+./subsys/bluetooth/host/conn.c:	       atomic_get(&conn->ref));
+./subsys/bluetooth/host/conn.c:	return &conn->le.dst;
+./subsys/bluetooth/host/conn.c:	info->type = conn->type;
+./subsys/bluetooth/host/conn.c:	info->role = conn->role;
+./subsys/bluetooth/host/conn.c:	info->id = conn->id;
+./subsys/bluetooth/host/conn.c:	switch (conn->type) {
+./subsys/bluetooth/host/conn.c:		info->le.dst = &conn->le.dst;
+./subsys/bluetooth/host/conn.c:		info->le.src = &bt_dev.id_addr[conn->id];
+./subsys/bluetooth/host/conn.c:		if (conn->role == BT_HCI_ROLE_MASTER) {
+./subsys/bluetooth/host/conn.c:			info->le.local = &conn->le.init_addr;
+./subsys/bluetooth/host/conn.c:			info->le.remote = &conn->le.resp_addr;
+./subsys/bluetooth/host/conn.c:			info->le.local = &conn->le.resp_addr;
+./subsys/bluetooth/host/conn.c:			info->le.remote = &conn->le.init_addr;
+./subsys/bluetooth/host/conn.c:		info->le.interval = conn->le.interval;
+./subsys/bluetooth/host/conn.c:		info->le.latency = conn->le.latency;
+./subsys/bluetooth/host/conn.c:		info->le.timeout = conn->le.timeout;
+./subsys/bluetooth/host/conn.c:		info->le.phy = &conn->le.phy;
+./subsys/bluetooth/host/conn.c:		info->le.data_len = &conn->le.data_len;
+./subsys/bluetooth/host/conn.c:		info->br.dst = &conn->br.dst;
+./subsys/bluetooth/host/conn.c:	if (!atomic_test_bit(conn->flags, BT_CONN_AUTO_FEATURE_EXCH) ||
+./subsys/bluetooth/host/conn.c:	     !atomic_test_bit(conn->flags, BT_CONN_AUTO_VERSION_INFO))) {
+./subsys/bluetooth/host/conn.c:	remote_info->type = conn->type;
+./subsys/bluetooth/host/conn.c:	/* The conn->rv values will be just zeroes if the operation failed */
+./subsys/bluetooth/host/conn.c:	remote_info->version = conn->rv.version;
+./subsys/bluetooth/host/conn.c:	remote_info->manufacturer = conn->rv.manufacturer;
+./subsys/bluetooth/host/conn.c:	remote_info->subversion = conn->rv.subversion;
+./subsys/bluetooth/host/conn.c:	switch (conn->type) {
+./subsys/bluetooth/host/conn.c:		remote_info->le.features = conn->le.features;
+./subsys/bluetooth/host/conn.c:	err = bt_hci_disconnect(conn->handle, reason);
+./subsys/bluetooth/host/conn.c:	       conn->le.features[0], param->interval_min,
+./subsys/bluetooth/host/conn.c:	if (conn->le.interval >= param->interval_min &&
+./subsys/bluetooth/host/conn.c:	    conn->le.interval <= param->interval_max &&
+./subsys/bluetooth/host/conn.c:	    conn->le.latency == param->latency &&
+./subsys/bluetooth/host/conn.c:	    conn->le.timeout == param->timeout) {
+./subsys/bluetooth/host/conn.c:		atomic_clear_bit(conn->flags, BT_CONN_SLAVE_PARAM_SET);
+./subsys/bluetooth/host/conn.c:	    conn->role == BT_CONN_ROLE_MASTER) {
+./subsys/bluetooth/host/conn.c:		if (atomic_test_bit(conn->flags, BT_CONN_SLAVE_PARAM_UPDATE)) {
+./subsys/bluetooth/host/conn.c:		conn->le.interval_min = param->interval_min;
+./subsys/bluetooth/host/conn.c:		conn->le.interval_max = param->interval_max;
+./subsys/bluetooth/host/conn.c:		conn->le.pending_latency = param->latency;
+./subsys/bluetooth/host/conn.c:		conn->le.pending_timeout = param->timeout;
+./subsys/bluetooth/host/conn.c:		atomic_set_bit(conn->flags, BT_CONN_SLAVE_PARAM_SET);
+./subsys/bluetooth/host/conn.c:	if (conn->le.data_len.tx_max_len == param->tx_max_len &&
+./subsys/bluetooth/host/conn.c:	    conn->le.data_len.tx_max_time == param->tx_max_time) {
+./subsys/bluetooth/host/conn.c:	    !atomic_test_bit(conn->flags, BT_CONN_AUTO_DATA_LEN_COMPLETE)) {
+./subsys/bluetooth/host/conn.c:	    !atomic_test_bit(conn->flags, BT_CONN_AUTO_PHY_COMPLETE)) {
+./subsys/bluetooth/host/conn.c:	    conn->type == BT_CONN_TYPE_LE) {
+./subsys/bluetooth/host/conn.c:		bt_le_set_auto_conn(&conn->le.dst, NULL);
+./subsys/bluetooth/host/conn.c:	switch (conn->state) {
+./subsys/bluetooth/host/conn.c:		conn->err = reason;
+./subsys/bluetooth/host/conn.c:		conn->err = reason;
+./subsys/bluetooth/host/conn.c:		if (conn->type == BT_CONN_TYPE_BR) {
+./subsys/bluetooth/host/conn.c:			k_delayed_work_cancel(&conn->update_work);
+./subsys/bluetooth/host/conn.c:	conn->le.interval_min = param->interval_min;
+./subsys/bluetooth/host/conn.c:	conn->le.interval_max = param->interval_max;
+./subsys/bluetooth/host/conn.c:	conn->le.latency = param->latency;
+./subsys/bluetooth/host/conn.c:	conn->le.timeout = param->timeout;
+./subsys/bluetooth/host/conn.c:	atomic_set_bit(conn->flags, BT_CONN_AUTO_CONNECT);
+./subsys/bluetooth/host/conn.c:		conn->err = 0;
+./subsys/bluetooth/host/conn.c:		conn->err = 0;
+./subsys/bluetooth/host/conn.c:		if (!atomic_test_and_set_bit(conn->flags,
+./subsys/bluetooth/host/conn.c:		if (atomic_test_and_clear_bit(conn->flags,
+./subsys/bluetooth/host/conn.c:			if (conn->state == BT_CONN_CONNECT_SCAN) {
+./subsys/bluetooth/host/conn.c:	if (conn->state == BT_CONN_DISCONNECTED &&
+./subsys/bluetooth/host/conn.c:	conn_update->handle = sys_cpu_to_le16(conn->handle);
+./subsys/bluetooth/host/conn.c:	conn_update->handle = sys_cpu_to_le16(conn->handle);
+./subsys/bluetooth/host/conn.c:	if (IS_ENABLED(CONFIG_BT_SMP) && conn->type == BT_CONN_TYPE_LE) {
+./subsys/bluetooth/host/conn.c:	if (conn->type == BT_CONN_TYPE_BR) {
+./subsys/bluetooth/host/conn.c:		if (!atomic_test_and_clear_bit(conn->flags, BT_CONN_USER)) {
+./subsys/bluetooth/host/conn.c:		if (conn->br.pairing_method == PASSKEY_INPUT) {
+./subsys/bluetooth/host/conn.c:	    conn->type == BT_CONN_TYPE_LE) {
+./subsys/bluetooth/host/conn.c:	if (conn->type == BT_CONN_TYPE_BR) {
+./subsys/bluetooth/host/conn.c:		if (!atomic_test_and_clear_bit(conn->flags, BT_CONN_USER)) {
+./subsys/bluetooth/host/conn.c:	if (IS_ENABLED(CONFIG_BT_SMP) && conn->type == BT_CONN_TYPE_LE) {
+./subsys/bluetooth/host/conn.c:	if (conn->type == BT_CONN_TYPE_BR) {
+./subsys/bluetooth/host/conn.c:		if (!atomic_test_and_clear_bit(conn->flags, BT_CONN_USER)) {
+./subsys/bluetooth/host/conn.c:		switch (conn->br.pairing_method) {
+./subsys/bluetooth/host/conn.c:			return pin_code_neg_reply(&conn->br.dst);
+./subsys/bluetooth/host/conn.c:	switch (conn->type) {
+./subsys/bluetooth/host/conn.c:	if (!atomic_get(&conn->ref)) {
+./subsys/bluetooth/host/conn.c:			if (!atomic_get(&conn->ref)) {
+./subsys/bluetooth/host/conn.c:			if (atomic_test_bit(conn->flags,
+./subsys/bluetooth/host/conn.c:				conn->id = BT_ID_DEFAULT;
+./subsys/bluetooth/host/gatt.c:	if (bt_addr_le_is_bonded(conn->id, &conn->le.dst)) {
+./subsys/bluetooth/host/gatt.c:		err = bt_gatt_clear_sc(conn->id, &conn->le.dst);
+./subsys/bluetooth/host/gatt.c:		cfg = find_sc_cfg(conn->id, &conn->le.dst);
+./subsys/bluetooth/host/gatt.c:		sc_save(conn->id, &conn->le.dst, 0, 0);
+./subsys/bluetooth/host/gatt.c:	bt_addr_le_copy(&cfg->peer, &conn->le.dst);
+./subsys/bluetooth/host/gatt.c:	cfg->id = conn->id;
+./subsys/bluetooth/host/gatt.c:	if (!bt_addr_le_is_bonded(conn->id, &conn->le.dst)) {
+./subsys/bluetooth/host/gatt.c:		bt_addr_le_copy(&cfg->peer, &conn->le.dst);
+./subsys/bluetooth/host/gatt.c:		if (bt_addr_le_is_bonded(conn->id, &conn->le.dst)) {
+./subsys/bluetooth/host/gatt.c:			bt_gatt_store_ccc(conn->id, &conn->le.dst);
+./subsys/bluetooth/host/gatt.c:		bt_addr_le_copy(&cfg->peer, &conn->le.dst);
+./subsys/bluetooth/host/gatt.c:		cfg->id = conn->id;
+./subsys/bluetooth/host/gatt.c:		    bt_addr_le_is_bonded(conn->id, &conn->le.dst)) {
+./subsys/bluetooth/host/gatt.c:		if (conn->state != BT_CONN_CONNECTED) {
+./subsys/bluetooth/host/gatt.c:	if (conn && conn->state != BT_CONN_CONNECTED) {
+./subsys/bluetooth/host/gatt.c:	if (conn && conn->state != BT_CONN_CONNECTED) {
+./subsys/bluetooth/host/gatt.c:		if (!conn->encrypt) {
+./subsys/bluetooth/host/gatt.c:	cfg = find_sc_cfg(conn->id, &conn->le.dst);
+./subsys/bluetooth/host/gatt.c:			if (!bt_addr_le_is_bonded(conn->id, &conn->le.dst)) {
+./subsys/bluetooth/host/gatt.c:				bt_addr_le_copy(&cfg->peer, &conn->le.dst);
+./subsys/bluetooth/host/gatt.c:	if (conn->state != BT_CONN_CONNECTED) {
+./subsys/bluetooth/host/gatt.c:		bt_addr_le_copy(&free_sub->peer, &conn->le.dst);
+./subsys/bluetooth/host/gatt.c:		free_sub->id = conn->id;
+./subsys/bluetooth/host/gatt.c:	bt_addr_le_copy(&sub->peer, &conn->le.dst);
+./subsys/bluetooth/host/gatt.c:		if (!bt_addr_le_is_bonded(conn->id, &conn->le.dst) ||
+./subsys/bluetooth/host/gatt.c:	if (conn->state != BT_CONN_CONNECTED) {
+./subsys/bluetooth/host/gatt.c:	if (conn->state != BT_CONN_CONNECTED) {
+./subsys/bluetooth/host/gatt.c:	if (conn->state != BT_CONN_CONNECTED) {
+./subsys/bluetooth/host/gatt.c:	if (conn->state != BT_CONN_CONNECTED) {
+./subsys/bluetooth/host/gatt.c:	if (conn->encrypt) {
+./subsys/bluetooth/host/gatt.c:	if (conn->state != BT_CONN_CONNECTED) {
+./subsys/bluetooth/host/gatt.c:	if (conn->state != BT_CONN_CONNECTED) {
+./subsys/bluetooth/host/gatt.c:	if (conn->state != BT_CONN_CONNECTED) {
+./subsys/bluetooth/host/gatt.c:		if (bt_addr_le_is_bonded(conn->id, &conn->le.dst) &&
+./subsys/bluetooth/host/gatt.c:	    bt_addr_le_is_bonded(conn->id, &conn->le.dst)) {
+./subsys/bluetooth/host/gatt.c:		if (conn->id) {
+./subsys/bluetooth/host/gatt.c:			u8_to_dec(id_str, sizeof(id_str), conn->id);
+./subsys/bluetooth/host/gatt.c:					       &conn->le.dst, id_str);
+./subsys/bluetooth/host/gatt.c:					       &conn->le.dst, NULL);
+./subsys/bluetooth/host/gatt.c:		if (conn->id) {
+./subsys/bluetooth/host/gatt.c:			u8_to_dec(id_str, sizeof(id_str), conn->id);
+./subsys/bluetooth/host/gatt.c:					       &conn->le.dst, id_str);
+./subsys/bluetooth/host/gatt.c:	if (!cfg || !conn->id) {
+./subsys/bluetooth/host/gatt.c:				       &conn->le.dst, NULL);
+./subsys/bluetooth/host/gatt.c:	BT_DBG("Stored CF for %s (%s)", bt_addr_le_str(&conn->le.dst), log_strdup(key));
+./subsys/bluetooth/host/gatt.c:	    bt_addr_le_is_bonded(conn->id, &conn->le.dst)) {
+./subsys/bluetooth/host/gatt.c:		bt_gatt_store_ccc(conn->id, &conn->le.dst);
+./subsys/bluetooth/host/l2cap.c:	SYS_SLIST_FOR_EACH_CONTAINER(&conn->channels, chan, node) {
+./subsys/bluetooth/host/l2cap.c:				sys_slist_remove(&conn->channels, prev,
+./subsys/bluetooth/host/l2cap.c:	SYS_SLIST_FOR_EACH_CONTAINER(&conn->channels, chan, node) {
+./subsys/bluetooth/host/l2cap.c:			sys_slist_remove(&conn->channels, prev, &chan->node);
+./subsys/bluetooth/host/l2cap.c:	sys_slist_append(&conn->channels, &chan->node);
+./subsys/bluetooth/host/l2cap.c:	    conn->type == BT_CONN_TYPE_BR) {
+./subsys/bluetooth/host/l2cap.c:	SYS_SLIST_FOR_EACH_CONTAINER_SAFE(&conn->channels, chan, next, node) {
+./subsys/bluetooth/host/l2cap.c:	    conn->type == BT_CONN_TYPE_BR) {
+./subsys/bluetooth/host/l2cap.c:	SYS_SLIST_FOR_EACH_CONTAINER(&conn->channels, chan, node) {
+./subsys/bluetooth/host/l2cap.c:	if (conn->role != BT_HCI_ROLE_MASTER) {
+./subsys/bluetooth/host/l2cap.c:	SYS_SLIST_FOR_EACH_CONTAINER(&conn->channels, chan, node) {
+./subsys/bluetooth/host/l2cap.c:	SYS_SLIST_FOR_EACH_CONTAINER(&conn->channels, chan, node) {
+./subsys/bluetooth/host/l2cap.c:	if (conn->sec_level < server->sec_level) {
+./subsys/bluetooth/host/l2cap.c:	if (conn->sec_level < server->sec_level) {
+./subsys/bluetooth/host/l2cap.c:	SYS_SLIST_FOR_EACH_CONTAINER(&conn->channels, chan, node) {
+./subsys/bluetooth/host/l2cap.c:			sys_slist_remove(&conn->channels, prev, &chan->node);
+./subsys/bluetooth/host/l2cap.c:	if (conn->type != BT_CONN_TYPE_LE) {
+./subsys/bluetooth/host/l2cap.c:	    conn->type == BT_CONN_TYPE_BR) {
+./subsys/bluetooth/host/l2cap.c:	BT_DBG("conn %p handle %u", conn, conn->handle);
+./subsys/bluetooth/host/l2cap.c:	if (!conn || conn->state != BT_CONN_CONNECTED) {
+./subsys/bluetooth/host/l2cap.c:	    conn->type == BT_CONN_TYPE_BR) {
+./subsys/bluetooth/host/l2cap.c:	    conn->type == BT_CONN_TYPE_BR) {
+./subsys/bluetooth/host/l2cap.c:	if (!chan->conn || chan->conn->state != BT_CONN_CONNECTED) {
+./subsys/bluetooth/host/l2cap.c:	    chan->conn->type == BT_CONN_TYPE_BR) {
+./subsys/bluetooth/host/att.c:	return (chan->att->conn->state != BT_CONN_CONNECTED ||
+./subsys/bluetooth/host/att.c:		if (conn->sec_level >= BT_SECURITY_L2)
+./subsys/bluetooth/host/att.c:		if (conn->sec_level < BT_SECURITY_L2) {
+./subsys/bluetooth/host/att.c:		} else if (conn->sec_level < BT_SECURITY_L3) {
+./subsys/bluetooth/host/att.c:		} else if (conn->sec_level < BT_SECURITY_L4) {
+./subsys/bluetooth/host/att.c:	if (conn->state != BT_CONN_CONNECTED) {
+./subsys/bluetooth/host/att.c:	       conn, conn->handle, conn->sec_level, hci_status);
+./subsys/bluetooth/host/att.c:	if (conn->sec_level == BT_SECURITY_L1) {
+./subsys/bluetooth/host/att.c:	BT_DBG("conn %p handle %u", conn, conn->handle);
+./subsys/bluetooth/host/att.c:	BT_DBG("conn %p handle %u", conn, conn->handle);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	if (conn->lll.handle != handle) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	if (conn->lll.role && conn->lll.latency_event &&
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	    !conn->slave.latency_cancel) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->slave.latency_cancel = 1U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (!conn->llcp_conn_param.disabled &&
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		    (!conn->common.fex_valid ||
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		     (conn->llcp_feature.features_conn &
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		} else if (conn->lll.role) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (conn->lll.role) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (conn->llcp_cu.req != conn->llcp_cu.ack) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_cu.win_size = 1U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_cu.win_offset_us = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_cu.state = LLCP_CUI_STATE_USE;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_cu.cmd = 1U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_cu.req++;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			if ((conn->llcp_conn_param.req ==
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			     conn->llcp_conn_param.ack) ||
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			    (conn->llcp_conn_param.state !=
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.status = status;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.state = cmd;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.cmd = 1U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			if (conn->llcp_conn_param.req !=
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			    conn->llcp_conn_param.ack) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.status = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.interval_min = conn->lll.interval;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.interval_max = conn->lll.interval;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.state = cmd;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.cmd = 1U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.req++;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:conn->llcp_conn_param.offset0 = offset;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			//printk("[ejpark] entered?: %u offset %u\n", offset, conn->llcp_conn_param.offset0);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (!conn->llcp_conn_param.disabled &&
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		    (!conn->common.fex_valid ||
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		     (conn->llcp_feature.features_conn &
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		} else if (conn->lll.role) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (conn->lll.role) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (conn->llcp_cu.req != conn->llcp_cu.ack) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_cu.win_size = 1U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_cu.win_offset_us = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_cu.interval = interval_max;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_cu.latency = latency;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_cu.timeout = timeout;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_cu.state = LLCP_CUI_STATE_USE;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_cu.cmd = 1U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_cu.req++;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			if ((conn->llcp_conn_param.req ==
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			     conn->llcp_conn_param.ack) ||
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			    (conn->llcp_conn_param.state !=
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.status = status;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.state = cmd;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.cmd = 1U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			if (conn->llcp_conn_param.req !=
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			    conn->llcp_conn_param.ack) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.status = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.interval_min = interval_min;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.interval_max = interval_max;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.latency = latency;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.timeout = timeout;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.state = cmd;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.cmd = 1U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.req++;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:conn->llcp_conn_param.offset0 = offset;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			//printk("[ejpark] entered?: %u offset %u\n", offset, conn->llcp_conn_param.offset0);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (!conn->llcp_conn_param.disabled &&
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		    (!conn->common.fex_valid ||
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		     (conn->llcp_feature.features_conn &
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		} else if (conn->lll.role) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (conn->lll.role) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (conn->llcp_cu.req != conn->llcp_cu.ack) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_cu.win_size = 1U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_cu.win_offset_us = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_cu.interval = interval_max;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_cu.latency = latency;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_cu.timeout = timeout;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_cu.state = LLCP_CUI_STATE_USE;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_cu.cmd = 1U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_cu.req++;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			if ((conn->llcp_conn_param.req ==
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			     conn->llcp_conn_param.ack) ||
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			    (conn->llcp_conn_param.state !=
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.status = status;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.state = cmd;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.cmd = 1U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			if (conn->llcp_conn_param.req !=
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			    conn->llcp_conn_param.ack) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.status = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.interval_min = interval_min;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.interval_max = interval_max;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.latency = latency;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.timeout = timeout;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.state = cmd;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.cmd = 1U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.req++;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->chm_updated = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		memcpy(chm, conn->lll.data_chan_map,
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		       sizeof(conn->lll.data_chan_map));
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	} while (conn->chm_updated);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp_terminate.reason_own = reason;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp_terminate.req++;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	if (conn->llcp_feature.req != conn->llcp_feature.ack) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp_feature.req++;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	if (conn->llcp_version.req != conn->llcp_version.ack) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp_version.req++;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	if (conn->llcp_length.disabled ||
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	    (conn->common.fex_valid &&
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	     !(conn->llcp_feature.features_conn & BIT(BT_LE_FEAT_BIT_DLE)))) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	if (conn->llcp_length.req != conn->llcp_length.ack) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		switch (conn->llcp_length.state) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			if (!conn->llcp_length.cache.tx_octets) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_length.cache.tx_octets = tx_octets;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_length.cache.tx_time = tx_time;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp_length.state = LLCP_LENGTH_STATE_REQ;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp_length.tx_octets = tx_octets;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp_length.tx_time = tx_time;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp_length.req++;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	*tx = conn->lll.phy_tx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	*rx = conn->lll.phy_rx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	if (conn->llcp_phy.disabled ||
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	    (conn->common.fex_valid &&
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	     !(conn->llcp_feature.features_conn & BIT(BT_LE_FEAT_BIT_PHY_2M)) &&
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	     !(conn->llcp_feature.features_conn &
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	if ((conn->llcp_req != conn->llcp_ack) ||
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	    (conn->llcp_phy.req != conn->llcp_phy.ack)) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp_phy.state = LLCP_PHY_STATE_REQ;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp_phy.cmd = 1U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp_phy.tx = tx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp_phy.flags = flags;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp_phy.rx = rx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp_phy.req++;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	*rssi = conn->lll.rssi_latest;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	*apto = conn->apto_reload * conn->lll.interval * 125U / 1000;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->apto_reload = RADIO_CONN_EVENTS(apto * 10U * 1000U,
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:					      conn->lll.interval * 1250);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (conn->llcp_enc.pause_rx) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_terminate.reason_peer =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (conn->llcp_enc.pause_rx) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_terminate.reason_peer =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	LL_ASSERT(conn->lll.handle != 0xFFFF);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	if(update_signal && conn->lll.handle == first_handle){
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	int conn_handle = conn->lll.handle;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if(conn_handle == 0 && conn->lll.interval != 32) printk("[ejpark] error!!!!\n");
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn_int_table[conn_handle] = conn->lll.interval;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				printk("[ejpark] point 4: %u, %u, %u // ", array_index, array1[(array_index-2)%table_size, conn->lll.interval]);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	if ((conn->llcp_ack == conn->llcp_req) &&
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	    !conn->llcp_enc.pause_rx) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (conn->llcp_cu.ack != conn->llcp_cu.req) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_type = LLCP_CONN_UPD;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_ack -= 2U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		} else if (conn->llcp_feature.ack != conn->llcp_feature.req) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		} else if (conn->llcp_version.ack != conn->llcp_version.req) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		} else if (conn->llcp_conn_param.ack !=
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			   conn->llcp_conn_param.req) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			struct lll_conn *lll = &conn->lll;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		} else if (conn->llcp_length.ack != conn->llcp_length.req) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		} else if (conn->llcp_phy.ack != conn->llcp_phy.req) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	if (((conn->llcp_req - conn->llcp_ack) & 0x03) == 0x02) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		} else if (conn->llcp_length.ack != conn->llcp_length.req) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			if ((conn->llcp_length.state ==
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			    (conn->llcp_length.state ==
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		switch (conn->llcp_type) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			struct lll_conn *lll = &conn->lll;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			struct lll_conn *lll = &conn->lll;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	if (conn->llcp_terminate.ack != conn->llcp_terminate.req) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_terminate.ack = conn->llcp_terminate.req;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_terminate.reason_own;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (!conn->procedure_expire) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->procedure_expire = conn->supervision_reload;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			if (conn->procedure_expire <= 1U) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->procedure_expire++;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (lll->enc_rx || conn->llcp_enc.pause_rx) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			appto_reload_new = (conn->apto_reload >
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:					   (conn->apto_reload -
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:					   conn->apto_reload;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			if (conn->appto_reload != appto_reload_new) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->appto_reload = appto_reload_new;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->apto_expire = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			if (conn->apto_expire == 0U) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->appto_expire = conn->appto_reload;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->apto_expire = conn->apto_reload;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->appto_expire = conn->apto_expire = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_terminate.reason_peer =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	reason_peer = conn->llcp_terminate.reason_peer;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			    conn->master.terminate_ack ||
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	if(conn->tx_data)
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn_int_table[conn_handle] = conn->lll.interval;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			if (!conn->tx_head) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			if (conn->tx_head || memq_peek(lll->memq_tx.head,
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->master.terminate_ack = 1;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->connect_expire = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->supervision_expire = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	else if (conn->connect_expire) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (conn->connect_expire > elapsed_event) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->connect_expire -= elapsed_event;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (!conn->supervision_expire) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->supervision_expire = conn->supervision_reload;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	if (conn->supervision_expire) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (conn->supervision_expire > elapsed_event) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->supervision_expire -= elapsed_event;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			if (conn->supervision_expire <= 6U) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:					force = conn->slave.force & 0x01;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:					conn->slave.force >>= 1;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:						conn->slave.force |= BIT(31);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	if (conn->procedure_expire != 0U) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (conn->procedure_expire > elapsed_event) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->procedure_expire -= elapsed_event;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	if (conn->apto_expire != 0U) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (conn->apto_expire > elapsed_event) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->apto_expire -= elapsed_event;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->apto_expire = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->apto_expire = 1U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	if (conn->appto_expire != 0U) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (conn->appto_expire > elapsed_event) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->appto_expire -= elapsed_event;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->appto_expire = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			if ((conn->procedure_expire == 0U) &&
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			    (conn->llcp_req == conn->llcp_ack)) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_type = LLCP_PING;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_ack -= 2U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	if (((((conn->llcp_req - conn->llcp_ack) & 0x03) == 0x02) &&
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	     ((conn->llcp_type == LLCP_CONN_UPD) ||
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	      (conn->llcp_type == LLCP_CHAN_MAP))) ||
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	    (conn->llcp_cu.req != conn->llcp_cu.ack)) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			if (!conn->tx_data) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->tx_data = tx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				if (!conn->tx_head) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:					conn->tx_head = tx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:					conn->tx_data_last = NULL;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			if (conn->tx_data_last) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->tx_data_last->next = tx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->tx_data_last = tx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	if (!conn->tx_ctrl && (conn->tx_head != conn->tx_data)) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		pdu_data_tx = (void *)conn->tx_head->pdu;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->tx_ctrl = conn->tx_ctrl_last = conn->tx_head;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	if (conn->tx_head == conn->tx_ctrl) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->tx_head = conn->tx_head->next;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (conn->tx_ctrl == conn->tx_ctrl_last) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->tx_ctrl = NULL;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->tx_ctrl_last = NULL;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->tx_ctrl = conn->tx_head;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (conn->tx_head == conn->tx_data) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->tx_data = conn->tx_data->next;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->tx_head = conn->tx_head->next;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	while (conn->tx_head &&
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		 !conn->llcp_phy.pause_tx &&
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		 !conn->llcp_enc.pause_tx &&
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		(!pause_tx && (conn->tx_head == conn->tx_ctrl))) && count--) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		tx = tx_ull_dequeue(conn, conn->tx_head);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		memq_enqueue(link, tx, &conn->lll.memq_tx.tail);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->slave.latency_cancel = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		ret = ull_disable(&conn->lll);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->lll.link_tx_free = NULL;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	struct lll_conn *lll = &conn->lll;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	rx = (void *)&conn->llcp_terminate.node_rx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	rx->hdr.handle = conn->lll.handle;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	rx = conn->llcp_rx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	while (conn->tx_head) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		tx = tx_ull_dequeue(conn, conn->tx_head);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		memq_enqueue(link, tx, &conn->lll.memq_tx.tail);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	rx = (void *)&conn->llcp_terminate.node_rx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->start_empty = 1U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		ll_tx_ack_put(conn->lll.handle, tx);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	} else if (p->len && conn->start_empty) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->start_empty = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	tx->next = conn->tx_ctrl_last->next;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->tx_ctrl_last->next = tx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->tx_ctrl_last = tx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	    conn->tx_head &&
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	    !conn->llcp_enc.pause_tx &&
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	    !conn->llcp_phy.pause_tx &&
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (conn->tx_head == conn->tx_data) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->tx_data = conn->tx_data->next;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (!conn->tx_ctrl) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			tx->next = conn->tx_head->next;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->tx_head->next = tx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->tx_ctrl = tx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->tx_ctrl_last = tx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (!conn->tx_ctrl) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			tx->next = conn->tx_head;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->tx_head = tx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->tx_ctrl = tx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->tx_ctrl_last = tx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->tx_data_last = tx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	if (conn->llcp_enc.pause_tx) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (!conn->tx_ctrl) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			tx->next = conn->tx_head;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->tx_head = tx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			tx->next = conn->tx_ctrl_last->next;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->tx_ctrl_last->next = tx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->tx_data_last = tx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (conn->tx_head) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			pdu_data_tx = (void *)conn->tx_head->pdu;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			if ((conn->llcp_req != conn->llcp_ack) &&
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			    (conn->llcp_type == LLCP_ENCRYPTION) &&
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	pdu_data_tx = (void *)conn->tx_head->pdu;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (((conn->llcp_req != conn->llcp_ack) &&
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		     (conn->llcp_type != LLCP_ENCRYPTION)) ||
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		    ((conn->llcp_req == conn->llcp_ack) &&
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		     ((conn->llcp_feature.ack != conn->llcp_feature.req) ||
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		      (conn->llcp_version.ack != conn->llcp_version.req) ||
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		      (conn->llcp_conn_param.ack !=
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		       conn->llcp_conn_param.req) ||
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		      (conn->llcp_length.ack != conn->llcp_length.req) ||
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		      (conn->llcp_phy.ack != conn->llcp_phy.req) ||
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			tx = conn->tx_head;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			    (tx->next == conn->tx_ctrl)) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->tx_head = tx->next;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				tx->next = conn->tx_ctrl_last->next;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->tx_ctrl_last->next = tx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->tx_data = tx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				if (!conn->tx_data_last) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:					conn->tx_data_last = tx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (conn->llcp_req == conn->llcp_ack) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp.encryption.state = LLCP_ENC_STATE_INIT;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_type = LLCP_ENCRYPTION;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_ack -= 2U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			LL_ASSERT(conn->llcp_type == LLCP_ENCRYPTION);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp_cu.state = LLCP_CUI_STATE_INPROG;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp.conn_upd.instant = event_counter + conn->lll.latency + 6;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	pdu_ctrl_tx->llctrl.conn_update_ind.win_size = conn->llcp_cu.win_size;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		sys_cpu_to_le16(conn->llcp_cu.win_offset_us / 1250U);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		sys_cpu_to_le16(conn->llcp_cu.interval);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		sys_cpu_to_le16(conn->llcp_cu.latency);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		sys_cpu_to_le16(conn->llcp_cu.timeout);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		sys_cpu_to_le16(conn->llcp.conn_upd.instant);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp.conn_upd.ticks_anchor = ticks_at_expire;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (conn->evt.ticks_xtal_to_start & XON_BITMASK) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				MAX(conn->evt.ticks_active_to_start,
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				    conn->evt.ticks_preempt_to_start);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp.conn_upd.ticks_anchor -=
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				(conn->evt.ticks_xtal_to_start &
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp.conn_upd.pdu_win_offset = (uint16_t *)
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	struct lll_conn *lll = &conn->lll;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	instant_latency = (event_counter - conn->llcp.conn_upd.instant) &
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	if (conn->llcp_cu.state != LLCP_CUI_STATE_INPROG) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		rx->hdr.link->mem = conn->llcp_rx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_rx = rx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		switch (conn->llcp_cu.state) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_cu.ack = conn->llcp_cu.req;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_ack = conn->llcp_req;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if ((conn->llcp_conn_param.req != conn->llcp_conn_param.ack) &&
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		    (conn->llcp_conn_param.state == LLCP_CPR_STATE_UPD)) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.ack = conn->llcp_conn_param.req;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->procedure_expire = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		lll = &conn->lll;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		rx = conn->llcp_rx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_rx = rx->hdr.link->mem;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if ((conn->llcp_cu.interval != lll->interval) ||
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		    (conn->llcp_cu.latency != lll->latency) ||
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		    (RADIO_CONN_EVENTS(conn->llcp_cu.timeout * 10000U,
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		     conn->supervision_reload)) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			cu->interval = conn->llcp_cu.interval;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			cu->latency = conn->llcp_cu.latency;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			cu->timeout = conn->llcp_cu.timeout;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (conn->evt.ticks_xtal_to_start & XON_BITMASK) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				MAX(conn->evt.ticks_active_to_start,
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				    conn->evt.ticks_preempt_to_start);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->evt.ticks_xtal_to_start &= ~XON_BITMASK;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			ticks_at_expire -= (conn->evt.ticks_xtal_to_start -
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		latency = conn_interval_old / conn->llcp_cu.interval;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn_interval_new = latency * conn->llcp_cu.interval;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				MAX(conn->evt.ticks_active_to_start,
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				    conn->evt.ticks_xtal_to_start);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn_interval_us = conn->llcp_cu.interval * 1250U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				   lll_conn_ppm_get(conn->slave.sca)) *
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_cu.win_size * 1250U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->slave.ticks_to_offset = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				(conn->llcp_cu.win_offset_us / 1250U) * 1250U);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			printk("[ejpark4]DEBUG%u,  %u\n",lll->handle,  conn->llcp_conn_param.offset0);	
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_cu.win_offset_us);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:                        ticks_at_expire += HAL_TICKER_US_TO_TICKS(conn->llcp_conn_param.offset0*1250U);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:                        conn->llcp_conn_param.offset0 = 0;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		lll->interval = conn->llcp_cu.interval;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		lll->latency = conn->llcp_cu.latency;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->supervision_reload =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			RADIO_CONN_EVENTS((conn->llcp_cu.timeout * 10U * 1000U),
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->procedure_reload =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->apto_reload = RADIO_CONN_EVENTS((30 * 1000 * 1000),
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->appto_reload = (conn->apto_reload > (lll->latency + 6)) ?
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				     (conn->apto_reload - (lll->latency + 6)) :
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				     conn->apto_reload;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (conn->llcp_cu.cmd) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->supervision_expire = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				      conn->evt.ticks_slot),
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	if (conn->llcp.chan_map.initiate) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp.chan_map.initiate = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp.chan_map.instant = event_counter +
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:						      conn->lll.latency + 6;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			       &conn->llcp.chan_map.chm[0],
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				sys_cpu_to_le16(conn->llcp.chan_map.instant);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	} else if (((event_counter - conn->llcp.chan_map.instant) & 0xFFFF)
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		struct lll_conn *lll = &conn->lll;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_ack = conn->llcp_req;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		       &conn->llcp.chan_map.chm[0],
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->chm_updated = 1U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	if (conn->common.fex_valid &&
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	    (conn->llcp_feature.features_conn &
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		p->error_code = conn->llcp.encryption.error_code;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		p->error_code =	conn->llcp.encryption.error_code;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp.encryption.error_code = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	struct lll_conn *lll = &conn->lll;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	if (conn->llcp.encryption.state) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		    (conn->llcp.encryption.state == LLCP_ENC_STATE_INIT)) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			rx->hdr.handle = conn->lll.handle;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			       &conn->llcp_enc.rand[0],
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			pdu->llctrl.enc_req.ediv[0] = conn->llcp_enc.ediv[0];
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			pdu->llctrl.enc_req.ediv[1] = conn->llcp_enc.ediv[1];
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp.encryption.state = LLCP_ENC_STATE_LTK_WAIT;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		ecb_encrypt(&conn->llcp_enc.ltk[0],
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			    &conn->llcp.encryption.skd[0], NULL,
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (conn->llcp.encryption.error_code) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			ecb_encrypt(&conn->llcp_enc.ltk[0],
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				    &conn->llcp.encryption.skd[0], NULL,
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_enc.pause_rx = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_enc.pause_tx = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp_ack = conn->llcp_req;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	if (!((conn->llcp_feature.ack - conn->llcp_feature.req) & 0x01)) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	if (conn->common.fex_valid) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_feature.ack = conn->llcp_feature.req;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		rx->hdr.handle = conn->lll.handle;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		sys_put_le24(conn->llcp_feature.features_peer,
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_feature.ack--;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_feature.features_conn = LL_FEAT;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		pdu->llctrl.opcode = !conn->lll.role ?
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		sys_put_le24(conn->llcp_feature.features_conn,
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->procedure_expire = conn->procedure_reload;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	if (!((conn->llcp_version.ack - conn->llcp_version.req) & 0x01)) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	if (conn->llcp_version.tx == 0U) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_version.ack--;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_version.tx = 1U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->procedure_expire = conn->procedure_reload;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	} else if (conn->llcp_version.rx) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_version.ack = conn->llcp_version.req;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		rx->hdr.handle = conn->lll.handle;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_version.version_number;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			sys_cpu_to_le16(conn->llcp_version.company_id);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			sys_cpu_to_le16(conn->llcp_version.sub_version_number);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp_conn_param.state = LLCP_CPR_STATE_RSP_WAIT;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	p->interval_min = sys_cpu_to_le16(conn->llcp_conn_param.interval_min);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	p->interval_max = sys_cpu_to_le16(conn->llcp_conn_param.interval_max);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	p->latency = sys_cpu_to_le16(conn->llcp_conn_param.latency);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	p->timeout = sys_cpu_to_le16(conn->llcp_conn_param.timeout);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	p->offset0 = sys_cpu_to_le16((uint16_t)(conn->llcp_conn_param.offset0));
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	printk("[ejpark]entered 2: %u offset %u, %u\n", sys_cpu_to_le16(conn->llcp_conn_param.offset0), p->offset0, p->offset1);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->procedure_expire = conn->procedure_reload;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_conn_param.ticks_ref = ticks_at_expire;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (conn->evt.ticks_xtal_to_start & XON_BITMASK) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				MAX(conn->evt.ticks_active_to_start,
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				    conn->evt.ticks_preempt_to_start);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.ticks_ref -=
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				(conn->evt.ticks_xtal_to_start &
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_conn_param.pdu_win_offset0 = (uint16_t *)&p->offset0;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	if (conn->llcp_conn_param.status) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		rej->error_code = conn->llcp_conn_param.status;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_conn_param.ack = conn->llcp_conn_param.req;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	if (!conn->lll.role) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (conn->llcp_cu.req != conn->llcp_cu.ack) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_conn_param.state = LLCP_CPR_STATE_UPD;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_cu.win_size = 1U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_cu.win_offset_us = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (conn->llcp_conn_param.preferred_periodicity) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_cu.interval =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				((conn->llcp_conn_param.interval_min /
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				  conn->llcp_conn_param.preferred_periodicity) +
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_conn_param.preferred_periodicity;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_cu.interval =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_conn_param.interval_max;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_cu.latency = conn->llcp_conn_param.latency;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_cu.timeout = conn->llcp_conn_param.timeout;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_cu.state = LLCP_CUI_STATE_SELECT;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_cu.cmd = conn->llcp_conn_param.cmd;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_cu.ack--;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		sys_cpu_to_le16(conn->llcp_conn_param.interval_min);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		sys_cpu_to_le16(conn->llcp_conn_param.interval_max);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		sys_cpu_to_le16(conn->llcp_conn_param.latency);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		sys_cpu_to_le16(conn->llcp_conn_param.timeout);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_conn_param.preferred_periodicity;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		sys_cpu_to_le16(conn->llcp_conn_param.reference_conn_event_count);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	rsp->offset0 = sys_cpu_to_le16(conn->llcp_conn_param.offset0);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	rsp->offset1 = sys_cpu_to_le16(conn->llcp_conn_param.offset1);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	rsp->offset2 = sys_cpu_to_le16(conn->llcp_conn_param.offset2);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	rsp->offset3 = sys_cpu_to_le16(conn->llcp_conn_param.offset3);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	rsp->offset4 = sys_cpu_to_le16(conn->llcp_conn_param.offset4);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	rsp->offset5 = sys_cpu_to_le16(conn->llcp_conn_param.offset5);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp_conn_param.ack = conn->llcp_conn_param.req;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	if (conn->llcp_enc.pause_tx) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp_conn_param.state = LLCP_CPR_STATE_APP_WAIT;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	rx->hdr.handle = conn->lll.handle;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	p->interval_min = sys_cpu_to_le16(conn->llcp_conn_param.interval_min);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	p->interval_max = sys_cpu_to_le16(conn->llcp_conn_param.interval_max);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	p->latency = sys_cpu_to_le16(conn->llcp_conn_param.latency);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	p->timeout = sys_cpu_to_le16(conn->llcp_conn_param.timeout);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	switch (conn->llcp_conn_param.state) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_ack = conn->llcp_req;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->procedure_expire = conn->procedure_reload;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	feature_coded_phy = (conn->llcp_feature.features_conn &
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	feature_phy_2m = (conn->llcp_feature.features_conn &
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	if (!conn->common.fex_valid ||
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				  conn->default_tx_time),
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		tx_time = PKT_US(conn->default_tx_octets, PHY_1M);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			      conn->default_tx_time);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				  conn->default_tx_time));
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	switch (conn->llcp_length.state) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_length.state = LLCP_LENGTH_STATE_REQ_ACK_WAIT;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->default_tx_octets = conn->llcp_length.tx_octets;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->default_tx_time = conn->llcp_length.tx_time;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		lr->max_tx_octets = sys_cpu_to_le16(conn->default_tx_octets);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->procedure_expire = conn->procedure_reload;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		lll = &conn->lll;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		lll->max_rx_octets = conn->llcp_length.rx_octets;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		tx_octets = conn->llcp_length.tx_octets;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		lll->max_rx_time = conn->llcp_length.rx_time;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		uint16_t tx_time = conn->llcp_length.tx_time;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (conn->llcp_length.state == LLCP_LENGTH_STATE_RESIZE) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			if (!conn->llcp_length.cache.tx_octets) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_length.ack = conn->llcp_length.req;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->procedure_expire = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_length.tx_octets =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:					conn->llcp_length.cache.tx_octets;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_length.cache.tx_octets = 0;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_length.tx_time =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:					conn->llcp_length.cache.tx_time;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_length.state = LLCP_LENGTH_STATE_REQ;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_length.state =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		rx = conn->llcp_rx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_rx = rx->hdr.link->mem;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		rx->hdr.handle = conn->lll.handle;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	switch (conn->llcp_phy.state) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_phy.state = LLCP_PHY_STATE_ACK_WAIT;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->phy_pref_tx = conn->llcp_phy.tx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->phy_pref_rx = conn->llcp_phy.rx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->phy_pref_flags = conn->llcp_phy.flags;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		pr->tx_phys = conn->llcp_phy.tx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		pr->rx_phys = conn->llcp_phy.rx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->procedure_expire = conn->procedure_reload;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (conn->llcp_ack != conn->llcp_req) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_phy.ack = conn->llcp_phy.req;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (conn->llcp_phy.tx & BIT(1)) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_phy.tx = BIT(1);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		} else if (conn->llcp_phy.tx & BIT(0)) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_phy.tx = BIT(0);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		} else if (conn->llcp_phy.tx & BIT(2)) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_phy.tx = BIT(2);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_phy.tx = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (conn->llcp_phy.rx & BIT(1)) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_phy.rx = BIT(1);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		} else if (conn->llcp_phy.rx & BIT(0)) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_phy.rx = BIT(0);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		} else if (conn->llcp_phy.rx & BIT(2)) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_phy.rx = BIT(2);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_phy.rx = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (conn->llcp_phy.tx != conn->lll.phy_tx) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp.phy_upd_ind.tx = conn->llcp_phy.tx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp.phy_upd_ind.tx = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (conn->llcp_phy.rx != conn->lll.phy_rx) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp.phy_upd_ind.rx = conn->llcp_phy.rx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp.phy_upd_ind.rx = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		/* conn->llcp.phy_upd_ind.instant = 0; */
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp.phy_upd_ind.initiate = 1U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp.phy_upd_ind.cmd = conn->llcp_phy.cmd;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_type = LLCP_PHY_UPD;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_ack -= 2U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	if (conn->llcp.phy_upd_ind.initiate) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp.phy_upd_ind.initiate = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (!((conn->llcp.phy_upd_ind.tx |
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		       conn->llcp.phy_upd_ind.rx) & 0x07)) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_ack = conn->llcp_req;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp.phy_upd_ind.instant = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			if (conn->llcp.phy_upd_ind.cmd) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				struct lll_conn *lll = &conn->lll;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			struct lll_conn *lll = &conn->lll;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp.phy_upd_ind.instant = event_counter +
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			rx->hdr.link->mem = conn->llcp_rx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_rx = rx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			rx->hdr.link->mem = conn->llcp_rx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_rx = rx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		ind->m_to_s_phy = conn->llcp.phy_upd_ind.tx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		ind->s_to_m_phy = conn->llcp.phy_upd_ind.rx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		ind->instant = sys_cpu_to_le16(conn->llcp.phy_upd_ind.instant);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	} else if (((event_counter - conn->llcp.phy_upd_ind.instant) &
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		struct lll_conn *lll = &conn->lll;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_ack = conn->llcp_req;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (conn->llcp.phy_upd_ind.tx) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			lll->phy_tx = conn->llcp.phy_upd_ind.tx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (conn->llcp.phy_upd_ind.rx) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			lll->phy_rx = conn->llcp.phy_upd_ind.rx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		lll->phy_flags = conn->phy_pref_flags;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		rx = conn->llcp_rx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_rx = rx->hdr.link->mem;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (!conn->llcp.phy_upd_ind.cmd && (lll->phy_tx == old_tx) &&
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				rx = conn->llcp_rx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_rx = rx->hdr.link->mem;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		rx = conn->llcp_rx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_rx = rx->hdr.link->mem;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	if (((instant - conn->lll.event_counter) & 0xFFFF) > 0x7FFF) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	if (((conn->llcp_req - conn->llcp_ack) & 0x03) == 0x02) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		LL_ASSERT(conn->lll.role);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp_cu.win_size = pdu->llctrl.conn_update_ind.win_size;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp_cu.win_offset_us =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp_cu.interval =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp_cu.latency =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp_cu.timeout =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp.conn_upd.instant = instant;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp_cu.state = LLCP_CUI_STATE_INPROG;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp_cu.cmd = 1U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp_cu.ack--;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	link->mem = conn->llcp_rx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp_rx = *rx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	if ((conn->llcp_conn_param.req != conn->llcp_conn_param.ack) &&
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	    (conn->llcp_conn_param.state == LLCP_CPR_STATE_RSP_WAIT)) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_conn_param.ack = conn->llcp_conn_param.req;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	if (((instant - conn->lll.event_counter) & 0xffff) > 0x7fff) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	if (((conn->llcp_req - conn->llcp_ack) & 0x03) == 0x02) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	memcpy(&conn->llcp.chan_map.chm[0], &pdu->llctrl.chan_map_ind.chm[0],
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	       sizeof(conn->llcp.chan_map.chm));
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp.chan_map.instant = instant;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp.chan_map.initiate = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp_type = LLCP_CHAN_MAP;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp_ack -= 2U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp_terminate.reason_peer = pdu->llctrl.terminate_ind.error_code;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	memcpy(&pdu_ctrl_tx->llctrl.enc_req.rand[0], &conn->llcp_enc.rand[0],
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	pdu_ctrl_tx->llctrl.enc_req.ediv[0] = conn->llcp_enc.ediv[0];
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	pdu_ctrl_tx->llctrl.enc_req.ediv[1] = conn->llcp_enc.ediv[1];
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	memcpy(&conn->llcp.encryption.skd[8],
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	memcpy(&conn->lll.ccm_rx.iv[4],
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->lll.enc_tx = 1;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	return (!conn->lll.role &&
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		((!conn->llcp_enc.refresh &&
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		 (conn->llcp_enc.refresh &&
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	       (conn->lll.role &&
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		((!conn->llcp_enc.refresh &&
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		 (conn->llcp_enc.refresh &&
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp_feature.features_conn &= feat_get(&req->features[0]);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp_feature.features_peer =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->common.fex_valid = 1U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	feat = feat_land_octet0(LL_FEAT, conn->llcp_feature.features_conn);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp_feature.features_conn &= feat_get(&rsp->features[0]);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp_feature.features_peer =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->common.fex_valid = 1U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp_feature.ack = conn->llcp_feature.req;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->procedure_expire = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_enc.refresh = 1U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	} else if (!conn->lll.role) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->lll.enc_tx = 0;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->lll.enc_tx = 0;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp_enc.pause_rx = 1U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->lll.enc_rx = 0;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	if (!conn->llcp_version.tx) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_version.tx = 1U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	} else if (!conn->llcp_version.rx) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_version.ack = conn->llcp_version.req;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->procedure_expire = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp_version.version_number = v->version_number;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp_version.company_id = sys_le16_to_cpu(v->company_id);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp_version.sub_version_number =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp_version.rx = 1U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	lll = &conn->lll;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		LL_ASSERT(conn->llcp_cu.req == conn->llcp_cu.ack);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_conn_param.state = LLCP_CPR_STATE_UPD;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_cu.win_size = 1U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_cu.win_offset_us = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_cu.interval = conn->llcp_conn_param.interval_max;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_cu.latency = conn->llcp_conn_param.latency;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_cu.timeout = conn->llcp_conn_param.timeout;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_cu.state = LLCP_CUI_STATE_USE;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_cu.cmd = conn->llcp_conn_param.cmd;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_cu.ack--;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->slave.ticks_to_offset =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			    conn->llcp_conn_param.ticks_to_offset_next;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	if (conn->llcp_conn_param.state == LLCP_CPR_STATE_RSP_WAIT) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_conn_param.ack = conn->llcp_conn_param.req;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->procedure_expire = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	if (!conn->llcp_conn_param.cmd) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	cu->timeout = conn->supervision_reload *
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp_length.ack = conn->llcp_length.req;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->procedure_expire = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	lr->max_rx_octets = sys_cpu_to_le16(conn->lll.max_rx_octets);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	lr->max_tx_octets = sys_cpu_to_le16(conn->lll.max_tx_octets);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		sys_cpu_to_le16(PKT_US(conn->lll.max_rx_octets, PHY_1M));
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		sys_cpu_to_le16(PKT_US(conn->lll.max_tx_octets, PHY_1M));
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	lr->max_rx_time = sys_cpu_to_le16(conn->lll.max_rx_time);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	lr->max_tx_time = sys_cpu_to_le16(conn->lll.max_tx_time);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_phy.ack = conn->llcp_phy.req;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->lll.phy_tx_time = conn->lll.phy_tx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_phy.pause_tx = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->procedure_expire = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	if (!conn->llcp_phy.cmd) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	p->tx = conn->lll.phy_tx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	p->rx = conn->lll.phy_rx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp_enc.pause_rx = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp_enc.pause_tx = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp_ack = conn->llcp_req;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->procedure_expire = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if ((conn->llcp_ack != conn->llcp_req) &&
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		    (conn->llcp_type == LLCP_ENCRYPTION)) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (conn->llcp_phy.ack != conn->llcp_phy.req) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (conn->llcp_conn_param.ack != conn->llcp_conn_param.req) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (conn->llcp_length.ack != conn->llcp_length.req) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	eff_rx_octets = conn->lll.max_rx_octets;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	eff_tx_octets = conn->lll.max_tx_octets;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	eff_rx_time = conn->lll.max_rx_time;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	eff_tx_time = conn->lll.max_tx_time;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	    ((conn->llcp_length.req == conn->llcp_length.ack) && tx) ||
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	    ((conn->llcp_length.req != conn->llcp_length.ack) &&
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	     ((((conn->llcp_length.state == LLCP_LENGTH_STATE_REQ) ||
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		(conn->llcp_length.state == LLCP_LENGTH_STATE_REQ_ACK_WAIT)) &&
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	      (conn->llcp_length.state == LLCP_LENGTH_STATE_RSP_WAIT)))) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:					    conn->default_tx_octets);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:						 conn->lll.phy_tx));
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:						 conn->lll.phy_rx));
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (eff_rx_octets != conn->lll.max_rx_octets) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_length.rx_octets = eff_rx_octets;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_length.tx_octets = eff_tx_octets;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_length.rx_time = eff_rx_time;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_length.tx_time = eff_tx_time;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_length.ack = conn->llcp_length.req - 1;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_length.state =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->lll.max_tx_octets = eff_tx_octets;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->lll.max_tx_time = eff_tx_time;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_length.state =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			link->mem = conn->llcp_rx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_rx = *rx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_length.ack = conn->llcp_length.req;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->procedure_expire = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			if (eff_tx_octets == conn->lll.max_tx_octets &&
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			    eff_tx_time == conn->lll.max_tx_time &&
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			    eff_rx_time == conn->lll.max_rx_time &&
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->lll.max_rx_time = eff_rx_time;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_length.rx_octets = eff_rx_octets;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_length.tx_octets = eff_tx_octets;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_length.rx_time = eff_rx_time;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_length.tx_time = eff_tx_time;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_length.ack =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:					(conn->llcp_length.req - 1);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_length.state =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->lll.max_tx_octets = eff_tx_octets;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->lll.max_tx_time = eff_tx_time;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			if (conn->llcp_length.state ==
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp_phy.state = LLCP_PHY_STATE_RSP_WAIT;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	if (conn->llcp_phy.ack ==
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	    conn->llcp_phy.req) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_phy.ack--;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_phy.cmd = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_phy.tx =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->phy_pref_tx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_phy.rx =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->phy_pref_rx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->procedure_expire =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->procedure_reload;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp_phy.tx &= p->rx_phys;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp_phy.rx &= p->tx_phys;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	pdu_ctrl_tx->llctrl.phy_rsp.tx_phys = conn->phy_pref_tx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	pdu_ctrl_tx->llctrl.phy_rsp.rx_phys = conn->phy_pref_rx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if ((conn->llcp_phy.ack == conn->llcp_phy.req) ||
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		    (conn->llcp_phy.state != LLCP_PHY_STATE_RSP_WAIT)) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_phy.ack = conn->llcp_phy.req;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_phy.pause_tx = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->procedure_expire = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->lll.phy_tx_time = conn->lll.phy_tx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (!conn->llcp_phy.cmd) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		p->tx = conn->lll.phy_tx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		p->rx = conn->lll.phy_rx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	if (((instant - conn->lll.event_counter) & 0xffff) > 0x7fff) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	if (((conn->llcp_req - conn->llcp_ack) & 0x03) == 0x02) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	if ((conn->llcp_phy.ack != conn->llcp_phy.req) &&
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	    (conn->llcp_phy.state == LLCP_PHY_STATE_RSP_WAIT)) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_phy.ack = conn->llcp_phy.req;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_phy.pause_tx = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->procedure_expire = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp.phy_upd_ind.cmd = conn->llcp_phy.cmd;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp.phy_upd_ind.tx = ind->s_to_m_phy;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp.phy_upd_ind.rx = ind->m_to_s_phy;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp.phy_upd_ind.instant = instant;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp.phy_upd_ind.initiate = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	link->mem = conn->llcp_rx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp_rx = *rx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	rx_dle->hdr.link->mem = conn->llcp_rx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp_rx = rx_dle;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp_type = LLCP_PHY_UPD;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	conn->llcp_ack -= 2U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	if (conn->llcp.phy_upd_ind.tx) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->lll.phy_tx_time = conn->llcp.phy_upd_ind.tx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (!conn->lll.role) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_enc.pause_tx = 1U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_phy.pause_tx = 1U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		memcpy(&conn->llcp.encryption.skd[0],
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		memcpy(&conn->lll.ccm_rx.iv[0],
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_enc.pause_tx = 1U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->procedure_expire = conn->procedure_reload;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_enc.ack = conn->llcp_enc.req;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_enc.pause_tx = 1U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_enc.pause_tx = 1U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_enc.refresh = 1U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->procedure_expire = conn->procedure_reload;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_enc.ack = conn->llcp_enc.req;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (!conn->lll.role) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_enc.pause_tx = 1U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_enc.pause_rx = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_enc.pause_tx = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->procedure_expire = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_length.state = LLCP_LENGTH_STATE_RSP_WAIT;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (conn->llcp_length.req != conn->llcp_length.ack) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			switch (conn->llcp_length.state) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->lll.max_tx_octets =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:					conn->llcp_length.tx_octets;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->lll.max_tx_time =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:					conn->llcp_length.tx_time;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				if (conn->llcp_length.state ==
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:					conn->llcp_length.state =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				if (!conn->llcp_length.cache.tx_octets) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:					conn->llcp_length.ack =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:						conn->llcp_length.req;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:					conn->procedure_expire = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_length.tx_octets =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:					conn->llcp_length.cache.tx_octets;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_length.cache.tx_octets = 0;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_length.tx_time =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:					conn->llcp_length.cache.tx_time;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_length.state = LLCP_LENGTH_STATE_REQ;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_phy.state = LLCP_PHY_STATE_RSP_WAIT;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (conn->lll.role) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			struct lll_conn *lll = &conn->lll;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			phys = conn->llcp_phy.tx | lll->phy_tx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_phy.pause_tx = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->lll.phy_tx_time = conn->llcp.phy_upd_ind.tx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_phy.pause_tx = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:	if (conn->llcp_enc.pause_rx && ctrl_is_unexpected(conn, opcode)) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_terminate.reason_peer =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (!conn->lll.role ||
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_terminate.reason_peer = err;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->procedure_expire = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (!conn->lll.role ||
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_terminate.reason_peer = err;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (!conn->lll.role ||
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp.encryption.state = LLCP_ENC_STATE_LTK_WAIT;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		memcpy(&conn->llcp_enc.rand[0],
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		       sizeof(conn->llcp_enc.rand));
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_enc.ediv[0] = pdu_rx->llctrl.enc_req.ediv[0];
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_enc.ediv[1] = pdu_rx->llctrl.enc_req.ediv[1];
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp.encryption.state = LLCP_ENC_STATE_INIT;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_type = LLCP_ENCRYPTION;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_ack -= 2U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		memcpy(&conn->llcp.encryption.skd[0],
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		memcpy(&conn->lll.ccm_rx.iv[0],
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_enc.pause_rx = 1U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->procedure_expire = conn->procedure_reload;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (conn->lll.role ||
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		memcpy(&conn->llcp.encryption.skd[8],
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		memcpy(&conn->lll.ccm_rx.iv[4],
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_enc.pause_rx = 1U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (conn->lll.role || (conn->llcp_req == conn->llcp_ack) ||
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		    (conn->llcp_type != LLCP_ENCRYPTION) ||
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp.encryption.state = LLCP_ENC_STATE_INPROG;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (conn->lll.role) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			if ((conn->llcp_req != conn->llcp_ack) &&
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			    (conn->llcp_type != LLCP_ENCRYPTION)) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp.encryption.state = LLCP_ENC_STATE_INPROG;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			if (conn->llcp_req == conn->llcp_ack) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_type = LLCP_ENCRYPTION;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_ack -= 2U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_enc.pause_rx = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_enc.pause_tx = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_enc.pause_rx = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_enc.pause_tx = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (conn->llcp_enc.refresh) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_enc.refresh = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->procedure_expire = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (!conn->lll.role ||
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (conn->lll.role ||
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		     conn->lll.role) ||
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (!conn->lll.role ||
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_enc.pause_rx = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_enc.pause_tx = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->llcp_ack = conn->llcp_req;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->procedure_expire = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (!conn->lll.role) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			if ((conn->llcp_conn_param.req !=
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:					conn->llcp_conn_param.ack) &&
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			    ((conn->llcp_conn_param.state ==
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			     (conn->llcp_conn_param.state ==
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			     (conn->llcp_conn_param.state ==
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			} else if (((((conn->llcp_req - conn->llcp_ack) &
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				    (conn->llcp_type != LLCP_ENCRYPTION)) ||
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				   (conn->llcp_phy.req != conn->llcp_phy.ack)) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			} else if ((((conn->llcp_req - conn->llcp_ack) &
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				   (conn->llcp_phy.req != conn->llcp_phy.ack)) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			} else if ((((conn->llcp_req - conn->llcp_ack) &
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				   (conn->llcp_type != LLCP_ENCRYPTION)) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			} else if (((conn->llcp_req - conn->llcp_ack) &
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				struct lll_conn *lll = &conn->lll;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_conn_param.interval_min =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_conn_param.interval_max =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_conn_param.latency =	latency;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_conn_param.timeout =	timeout;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_conn_param.preferred_periodicity =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_conn_param.reference_conn_event_count =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_conn_param.offset0 =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_conn_param.offset1 =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_conn_param.offset2 =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_conn_param.offset3 =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_conn_param.offset4 =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_conn_param.offset5 =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				if ((conn->llcp_conn_param.interval_max !=
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				    (conn->llcp_conn_param.latency !=
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				    (RADIO_CONN_EVENTS(conn->llcp_conn_param.timeout *
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				     conn->supervision_reload)) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:					if (conn->llcp_enc.pause_tx) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:						conn->llcp_conn_param.state =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:						conn->llcp_conn_param.state =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:					conn->llcp_conn_param.status = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:					conn->llcp_conn_param.cmd = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:					conn->llcp_conn_param.state =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_conn_param.ack--;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		} else if ((conn->llcp_conn_param.req ==
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			    conn->llcp_conn_param.ack) ||
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			   (conn->llcp_conn_param.state ==
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			   (conn->llcp_conn_param.state ==
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			struct lll_conn *lll = &conn->lll;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.interval_min = interval_min;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.interval_max = interval_max;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.latency =	latency;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.timeout =	timeout;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.preferred_periodicity =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.reference_conn_event_count =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.offset0 =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.offset1 =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.offset2 =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.offset3 =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.offset4 =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.offset5 =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			if ((conn->llcp_conn_param.interval_max !=
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			    (conn->llcp_conn_param.latency != lll->latency) ||
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			    (RADIO_CONN_EVENTS(conn->llcp_conn_param.timeout *
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			     conn->supervision_reload)) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_conn_param.state =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_conn_param.status = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_conn_param.cmd = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_conn_param.state =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.ack--;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (conn->lll.role ||
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (!conn->lll.role &&
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		    (conn->llcp_conn_param.req !=
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		     conn->llcp_conn_param.ack) &&
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		    (conn->llcp_conn_param.state ==
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->procedure_expire = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.interval_min = interval_min;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.interval_max = interval_max;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.latency =	latency;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.timeout =	timeout;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.preferred_periodicity =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.reference_conn_event_count =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.offset0 =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.offset1 =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.offset2 =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.offset3 =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.offset4 =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.offset5 =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.state = LLCP_CPR_STATE_RSP;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->procedure_expire = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		} else if ((conn->llcp_conn_param.ack !=
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			    conn->llcp_conn_param.req) &&
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			struct lll_conn *lll = &conn->lll;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.disabled = 1U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			if (!conn->lll.role) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				LL_ASSERT(conn->llcp_cu.req ==
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:					  conn->llcp_cu.ack);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_conn_param.state =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_cu.win_size = 1U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_cu.win_offset_us = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_cu.interval =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:					conn->llcp_conn_param.interval_max;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_cu.latency =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:					conn->llcp_conn_param.latency;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_cu.timeout =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:					conn->llcp_conn_param.timeout;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_cu.state = LLCP_CUI_STATE_USE;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_cu.cmd = conn->llcp_conn_param.cmd;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_cu.ack--;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_conn_param.ack = conn->llcp_conn_param.req;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			if (!conn->llcp_conn_param.cmd) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			cu->timeout = conn->supervision_reload *
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		} else if ((conn->llcp_length.req != conn->llcp_length.ack) &&
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_length.disabled = 1U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_length.ack = conn->llcp_length.req;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		} else if ((conn->llcp_phy.req != conn->llcp_phy.ack) &&
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			struct lll_conn *lll = &conn->lll;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_phy.disabled = 1U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_phy.ack = conn->llcp_phy.req;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_phy.pause_tx = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			if (conn->llcp_phy.cmd) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		conn->procedure_expire = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (!conn->lll.role) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			if ((conn->llcp_phy.ack !=
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			     conn->llcp_phy.req) &&
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			    ((conn->llcp_phy.state ==
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			     (conn->llcp_phy.state ==
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			     (conn->llcp_phy.state ==
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			} else if (((((conn->llcp_req - conn->llcp_ack) &
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				    (conn->llcp_type !=
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				   (conn->llcp_conn_param.req !=
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				    conn->llcp_conn_param.ack)) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			} else if ((((conn->llcp_req - conn->llcp_ack) &
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				   (conn->llcp_conn_param.req !=
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				    conn->llcp_conn_param.ack)) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			} else if ((((conn->llcp_req - conn->llcp_ack) &
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				   (conn->llcp_type !=
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			} else if (((conn->llcp_req - conn->llcp_ack) &
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_phy.state =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				if (conn->llcp_phy.ack ==
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				    conn->llcp_phy.req) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:					conn->llcp_phy.ack--;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:					conn->llcp_phy.cmd = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:					conn->llcp_phy.tx =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:						conn->phy_pref_tx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:					conn->llcp_phy.rx =
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:						conn->phy_pref_rx;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_phy.tx &= p->rx_phys;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_phy.rx &= p->tx_phys;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				if (!conn->llcp_phy.tx || !conn->llcp_phy.rx) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:					conn->llcp_phy.tx = 0;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:					conn->llcp_phy.rx = 0;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_phy.pause_tx = 1U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (conn->lll.role ||
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (!conn->lll.role &&
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		    (conn->llcp_phy.ack != conn->llcp_phy.req) &&
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		    (conn->llcp_phy.state == LLCP_PHY_STATE_RSP_WAIT)) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_phy.state = LLCP_PHY_STATE_UPD;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_phy.tx &= p->rx_phys;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_phy.rx &= p->tx_phys;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			if (!conn->llcp_phy.tx || !conn->llcp_phy.rx) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_phy.tx = 0;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:				conn->llcp_phy.rx = 0;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_phy.pause_tx = 1U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->procedure_expire = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (!conn->lll.role ||
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_terminate.reason_peer = err;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (conn->lll.role ||
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:		if (!conn->lll.role) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			if (!(p->phys & (conn->lll.phy_tx |
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:					 conn->lll.phy_rx))) {
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			if (((conn->llcp_req - conn->llcp_ack) & 0x03) ==
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			ull_chan_map_get(conn->llcp.chan_map.chm);
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			/* conn->llcp.chan_map.instant     = 0; */
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp.chan_map.initiate = 1U;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_type = LLCP_CHAN_MAP;
+./subsys/bluetooth/controller/ll_sw/ull_conn.c:			conn->llcp_ack -= 2U;
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	conn_lll = &conn->lll;
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	conn->connect_expire = 6U;
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	conn->supervision_expire = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	conn->supervision_reload = RADIO_CONN_EVENTS(timeout * 10000U,
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	conn->procedure_expire = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	conn->procedure_reload = RADIO_CONN_EVENTS(40000000,
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	conn->apto_expire = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	conn->apto_reload = RADIO_CONN_EVENTS((30000000), conn_interval_us);
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	conn->appto_expire = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	conn->appto_reload = (conn->apto_reload > (conn_lll->latency + 6)) ?
+./subsys/bluetooth/controller/ll_sw/ull_master.c:			     (conn->apto_reload - (conn_lll->latency + 6)) :
+./subsys/bluetooth/controller/ll_sw/ull_master.c:			     conn->apto_reload;
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	conn->common.fex_valid = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	conn->master.terminate_ack = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	conn->llcp_req = conn->llcp_ack = conn->llcp_type = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	conn->llcp_rx = NULL;
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	conn->llcp_cu.req = conn->llcp_cu.ack = 0;
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	conn->llcp_feature.req = conn->llcp_feature.ack = 0;
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	conn->llcp_feature.features_conn = LL_FEAT;
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	conn->llcp_feature.features_peer = 0;
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	conn->llcp_version.req = conn->llcp_version.ack = 0;
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	conn->llcp_version.tx = conn->llcp_version.rx = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	conn->llcp_terminate.reason_peer = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	conn->llcp_terminate.node_rx.hdr.link = link;
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	conn->llcp_enc.req = conn->llcp_enc.ack = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	conn->llcp_enc.pause_tx = conn->llcp_enc.pause_rx = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	conn->llcp_enc.refresh = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	conn->llcp_conn_param.req = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	conn->llcp_conn_param.ack = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	conn->llcp_conn_param.disabled = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	conn->llcp_length.req = conn->llcp_length.ack = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	conn->llcp_length.disabled = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	conn->llcp_length.cache.tx_octets = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	conn->default_tx_octets = ull_conn_default_tx_octets_get();
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	conn->default_tx_time = ull_conn_default_tx_time_get();
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	conn->llcp_phy.req = conn->llcp_phy.ack = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	conn->llcp_phy.disabled = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	conn->llcp_phy.pause_tx = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	conn->phy_pref_tx = ull_conn_default_phy_tx_get();
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	conn->phy_pref_rx = ull_conn_default_phy_rx_get();
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	conn->phy_pref_flags = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	conn->tx_head = conn->tx_ctrl = conn->tx_ctrl_last =
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	conn->tx_data = conn->tx_data_last = 0;
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	ull_hdr_init(&conn->ull);
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	lll_hdr_init(&conn->lll, conn);
+./subsys/bluetooth/controller/ll_sw/ull_master.c:		cc = (void *)&conn->llcp_terminate.node_rx;
+./subsys/bluetooth/controller/ll_sw/ull_master.c:		if (!conn || conn->lll.role) {
+./subsys/bluetooth/controller/ll_sw/ull_master.c:		memcpy(conn->llcp.chan_map.chm, chm,
+./subsys/bluetooth/controller/ll_sw/ull_master.c:		       sizeof(conn->llcp.chan_map.chm));
+./subsys/bluetooth/controller/ll_sw/ull_master.c:		/* conn->llcp.chan_map.instant     = 0; */
+./subsys/bluetooth/controller/ll_sw/ull_master.c:		conn->llcp.chan_map.initiate = 1U;
+./subsys/bluetooth/controller/ll_sw/ull_master.c:		conn->llcp_type = LLCP_CHAN_MAP;
+./subsys/bluetooth/controller/ll_sw/ull_master.c:		conn->llcp_req++;
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	if ((conn->llcp_enc.req != conn->llcp_enc.ack) ||
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	    ((conn->llcp_req != conn->llcp_ack) &&
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	     (conn->llcp_type == LLCP_ENCRYPTION))) {
+./subsys/bluetooth/controller/ll_sw/ull_master.c:		memcpy(&conn->llcp_enc.ltk[0], ltk, sizeof(conn->llcp_enc.ltk));
+./subsys/bluetooth/controller/ll_sw/ull_master.c:		if (!conn->lll.enc_rx && !conn->lll.enc_tx) {
+./subsys/bluetooth/controller/ll_sw/ull_master.c:		} else if (conn->lll.enc_rx && conn->lll.enc_tx) {
+./subsys/bluetooth/controller/ll_sw/ull_master.c:			memcpy(&conn->llcp_enc.rand[0], rand,
+./subsys/bluetooth/controller/ll_sw/ull_master.c:			       sizeof(conn->llcp_enc.rand));
+./subsys/bluetooth/controller/ll_sw/ull_master.c:			conn->llcp_enc.ediv[0] = ediv[0];
+./subsys/bluetooth/controller/ll_sw/ull_master.c:			conn->llcp_enc.ediv[1] = ediv[1];
+./subsys/bluetooth/controller/ll_sw/ull_master.c:		conn->llcp_enc.req++;
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	conn->evt.ticks_active_to_start = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	conn->evt.ticks_xtal_to_start =
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	conn->evt.ticks_preempt_to_start =
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	conn->evt.ticks_slot =
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	ticks_slot_offset = MAX(conn->evt.ticks_active_to_start,
+./subsys/bluetooth/controller/ll_sw/ull_master.c:				conn->evt.ticks_xtal_to_start);
+./subsys/bluetooth/controller/ll_sw/ull_master.c:				     (conn->evt.ticks_slot +
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	ref = ull_ref_inc(&conn->ull);
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	p.param = &conn->lll;
+./subsys/bluetooth/controller/ll_sw/ull_master.c:	cc = (void *)&conn->llcp_terminate.node_rx;
+./subsys/bluetooth/controller/ll_sw/ll_tx_pwr.c:				*tx_pwr_lvl = conn->lll.tx_pwr_lvl;
+./subsys/bluetooth/controller/ll_sw/ll_tx_pwr.c:			conn->lll.tx_pwr_lvl = *tx_pwr_lvl;
+./subsys/bluetooth/controller/ll_sw/ull_slave.c:	conn->slave.sca = pdu_adv->connect_ind.sca;
+./subsys/bluetooth/controller/ll_sw/ull_slave.c:		   lll_conn_ppm_get(conn->slave.sca)) *
+./subsys/bluetooth/controller/ll_sw/ull_slave.c:	conn->supervision_reload =
+./subsys/bluetooth/controller/ll_sw/ull_slave.c:	conn->procedure_reload =
+./subsys/bluetooth/controller/ll_sw/ull_slave.c:	conn->apto_reload = RADIO_CONN_EVENTS((30 * 1000 * 1000),
+./subsys/bluetooth/controller/ll_sw/ull_slave.c:	conn->appto_reload = (conn->apto_reload > (lll->latency + 6)) ?
+./subsys/bluetooth/controller/ll_sw/ull_slave.c:			     (conn->apto_reload - (lll->latency + 6)) :
+./subsys/bluetooth/controller/ll_sw/ull_slave.c:			     conn->apto_reload;
+./subsys/bluetooth/controller/ll_sw/ull_slave.c:	memcpy((void *)&conn->slave.force, &lll->access_addr[0],
+./subsys/bluetooth/controller/ll_sw/ull_slave.c:	       sizeof(conn->slave.force));
+./subsys/bluetooth/controller/ll_sw/ull_slave.c:	cc->sca = conn->slave.sca;
+./subsys/bluetooth/controller/ll_sw/ull_slave.c:	conn->evt.ticks_active_to_start = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_slave.c:	conn->evt.ticks_xtal_to_start =
+./subsys/bluetooth/controller/ll_sw/ull_slave.c:	conn->evt.ticks_preempt_to_start =
+./subsys/bluetooth/controller/ll_sw/ull_slave.c:	conn->evt.ticks_slot =
+./subsys/bluetooth/controller/ll_sw/ull_slave.c:	ticks_slot_offset = MAX(conn->evt.ticks_active_to_start,
+./subsys/bluetooth/controller/ll_sw/ull_slave.c:				conn->evt.ticks_xtal_to_start);
+./subsys/bluetooth/controller/ll_sw/ull_slave.c:				     (conn->evt.ticks_slot +
+./subsys/bluetooth/controller/ll_sw/ull_slave.c:	ref = ull_ref_inc(&conn->ull);
+./subsys/bluetooth/controller/ll_sw/ull_slave.c:	p.param = &conn->lll;
+./subsys/bluetooth/controller/ll_sw/ull_slave.c:		if (conn->llcp_enc.refresh == 0U) {
+./subsys/bluetooth/controller/ll_sw/ull_slave.c:			if ((conn->llcp_req == conn->llcp_ack) ||
+./subsys/bluetooth/controller/ll_sw/ull_slave.c:			     (conn->llcp_type != LLCP_ENCRYPTION)) {
+./subsys/bluetooth/controller/ll_sw/ull_slave.c:			conn->llcp.encryption.error_code = error_code;
+./subsys/bluetooth/controller/ll_sw/ull_slave.c:			conn->llcp.encryption.state = LLCP_ENC_STATE_INPROG;
+./subsys/bluetooth/controller/ll_sw/ull_slave.c:			if (conn->llcp_terminate.ack !=
+./subsys/bluetooth/controller/ll_sw/ull_slave.c:			    conn->llcp_terminate.req) {
+./subsys/bluetooth/controller/ll_sw/ull_slave.c:			conn->llcp_terminate.reason_own = error_code;
+./subsys/bluetooth/controller/ll_sw/ull_slave.c:			conn->llcp_terminate.req++;
+./subsys/bluetooth/controller/ll_sw/ull_slave.c:		if ((conn->llcp_req == conn->llcp_ack) ||
+./subsys/bluetooth/controller/ll_sw/ull_slave.c:		     (conn->llcp_type != LLCP_ENCRYPTION)) {
+./subsys/bluetooth/controller/ll_sw/ull_slave.c:		memcpy(&conn->llcp_enc.ltk[0], ltk,
+./subsys/bluetooth/controller/ll_sw/ull_slave.c:		       sizeof(conn->llcp_enc.ltk));
+./subsys/bluetooth/controller/ll_sw/ull_slave.c:		conn->llcp.encryption.error_code = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_slave.c:		conn->llcp.encryption.state = LLCP_ENC_STATE_INPROG;
+./subsys/bluetooth/controller/ll_sw/ull_sched.c:		if (conn && !conn->lll.role) {
+./subsys/bluetooth/controller/ll_sw/ull_sched.c:			if (conn->evt.ticks_xtal_to_start & XON_BITMASK) {
+./subsys/bluetooth/controller/ll_sw/ull_sched.c:					MAX(conn->evt.ticks_active_to_start,
+./subsys/bluetooth/controller/ll_sw/ull_sched.c:					    conn->evt.ticks_preempt_to_start);
+./subsys/bluetooth/controller/ll_sw/ull_sched.c:					conn->evt.ticks_xtal_to_start &
+./subsys/bluetooth/controller/ll_sw/ull_sched.c:					MAX(conn->evt.ticks_active_to_start,
+./subsys/bluetooth/controller/ll_sw/ull_sched.c:					    conn->evt.ticks_xtal_to_start);
+./subsys/bluetooth/controller/ll_sw/ull_sched.c:				conn->evt.ticks_slot +
+./subsys/bluetooth/controller/ll_sw/ull_sched.c:	after_mstr_offset_get(lll->conn->interval,
+./subsys/bluetooth/controller/ll_sw/ull_sched.c:		ticks_slot_overhead = MAX(conn->evt.ticks_active_to_start,
+./subsys/bluetooth/controller/ll_sw/ull_sched.c:					  conn->evt.ticks_xtal_to_start);
+./subsys/bluetooth/controller/ll_sw/ull_sched.c:	after_mstr_offset_get(conn->lll.interval,
+./subsys/bluetooth/controller/ll_sw/ull_sched.c:			      (ticks_slot_overhead + conn->evt.ticks_slot),
+./subsys/bluetooth/controller/ll_sw/ull_sched.c:			      conn->llcp.conn_upd.ticks_anchor,
+./subsys/bluetooth/controller/ll_sw/ull_sched.c:			      &conn->llcp_cu.win_offset_us);
+./subsys/bluetooth/controller/ll_sw/ull_sched.c:	win_offset = conn->llcp_cu.win_offset_us / 1250;
+./subsys/bluetooth/controller/ll_sw/ull_sched.c:	sys_put_le16(win_offset, (void *)conn->llcp.conn_upd.pdu_win_offset);
+./subsys/bluetooth/controller/ll_sw/ull_sched.c:	if (conn->lll.role) {
+./subsys/bluetooth/controller/ll_sw/ull_sched.c:		conn->llcp_conn_param.ticks_to_offset_next =
+./subsys/bluetooth/controller/ll_sw/ull_sched.c:			conn->slave.ticks_to_offset;
+./subsys/bluetooth/controller/ll_sw/ull_sched.c:			&conn->llcp_conn_param.ticks_to_offset_next;
+./subsys/bluetooth/controller/ll_sw/ull_sched.c:			conn->llcp_conn_param.interval_max, &offset_max,
+./subsys/bluetooth/controller/ll_sw/ull_sched.c:			(void *)conn->llcp_conn_param.pdu_win_offset0);
+./subsys/bluetooth/controller/ll_sw/ull_sched.c:	ticks_to_offset = HAL_TICKER_US_TO_TICKS(conn->llcp_conn_param.offset0 *
+./subsys/bluetooth/controller/ll_sw/ull_sched.c:			conn->llcp_conn_param.interval_max, &offset_m_max,
+./subsys/bluetooth/controller/ll_sw/ull_sched.c:			sys_get_le16((uint8_t *)&conn->llcp_conn_param.offset0 +
+./subsys/bluetooth/controller/ll_sw/ull_sched.c:		conn->llcp_cu.win_offset_us = win_offset_s * 1250;
+./subsys/bluetooth/controller/ll_sw/ull_sched.c:			     (void *)conn->llcp.conn_upd.pdu_win_offset);
+./subsys/bluetooth/controller/ll_sw/ull_sched.c:		conn->llcp_cu.win_offset_us = win_offset_m[0] * 1250;
+./subsys/bluetooth/controller/ll_sw/ull_sched.c:			     (void *)conn->llcp.conn_upd.pdu_win_offset);
+./subsys/bluetooth/controller/ll_sw/ull_sched.c:		conn->llcp_ack = conn->llcp_req;
+./subsys/bluetooth/controller/ll_sw/ull_sched.c:		conn->llcp_conn_param.ack = conn->llcp_conn_param.req;
+./subsys/bluetooth/controller/ll_sw/ull_sched.c:			((uint8_t *)conn->llcp.conn_upd.pdu_win_offset -
+./subsys/bluetooth/controller/ll_sw/ull_sched.c:		if ((conn != conn_curr) && (is_select || !conn->lll.role)) {
+./subsys/bluetooth/controller/ll_sw/ull_sched.c:			if (conn->evt.ticks_xtal_to_start & XON_BITMASK) {
+./subsys/bluetooth/controller/ll_sw/ull_sched.c:					MAX(conn->evt.ticks_active_to_start,
+./subsys/bluetooth/controller/ll_sw/ull_sched.c:					    conn->evt.ticks_preempt_to_start);
+./subsys/bluetooth/controller/ll_sw/ull_sched.c:					conn->evt.ticks_xtal_to_start &
+./subsys/bluetooth/controller/ll_sw/ull_sched.c:					MAX(conn->evt.ticks_active_to_start,
+./subsys/bluetooth/controller/ll_sw/ull_sched.c:					    conn->evt.ticks_xtal_to_start);
+./subsys/bluetooth/controller/ll_sw/ull_sched.c:			ticks_slot_abs_curr += conn->evt.ticks_slot +
+./subsys/bluetooth/controller/ll_sw/ull_sched.c:			if (conn->lll.role) {
+./subsys/bluetooth/controller/ll_sw/nordic/lll/lll_scan.c:		       &lll_conn->access_addr[0], 4);
+./subsys/bluetooth/controller/ll_sw/nordic/lll/lll_scan.c:		       &lll_conn->crc_init[0], 3);
+./subsys/bluetooth/controller/ll_sw/nordic/lll/lll_scan.c:		conn_interval_us = (uint32_t)lll_conn->interval * 1250U;
+./subsys/bluetooth/controller/ll_sw/nordic/lll/lll_scan.c:			sys_cpu_to_le16(lll_conn->interval);
+./subsys/bluetooth/controller/ll_sw/nordic/lll/lll_scan.c:			sys_cpu_to_le16(lll_conn->latency);
+./subsys/bluetooth/controller/ll_sw/nordic/lll/lll_scan.c:		       &lll_conn->data_chan_map[0],
+./subsys/bluetooth/controller/ll_sw/nordic/lll/lll_scan.c:		pdu_tx->connect_ind.hop = lll_conn->data_chan_hop;
+./subsys/bluetooth/controller/ll_sw/nordic/lll/lll_scan.c:			lll_conn->rssi_latest =  radio_rssi_get();
+./subsys/bluetooth/controller/ll_sw/nordic/lll/lll_adv.c:			lll->conn->rssi_latest =  radio_rssi_get();
+./subsys/bluetooth/controller/ll_sw/ull.c:			LL_ASSERT(!conn->lll.link_tx_free);
+./subsys/bluetooth/controller/ll_sw/ull.c:			link = memq_deinit(&conn->lll.memq_tx.head,
+./subsys/bluetooth/controller/ll_sw/ull.c:					   &conn->lll.memq_tx.tail);
+./subsys/bluetooth/controller/ll_sw/ull.c:			conn->lll.link_tx_free = link;
+./subsys/bluetooth/controller/ll_sw/ull_adv.c:		conn_lll = &conn->lll;
+./subsys/bluetooth/controller/ll_sw/ull_adv.c:		conn->connect_expire = 6;
+./subsys/bluetooth/controller/ll_sw/ull_adv.c:		conn->supervision_expire = 0;
+./subsys/bluetooth/controller/ll_sw/ull_adv.c:		conn->procedure_expire = 0;
+./subsys/bluetooth/controller/ll_sw/ull_adv.c:		conn->common.fex_valid = 0;
+./subsys/bluetooth/controller/ll_sw/ull_adv.c:		conn->slave.latency_cancel = 0;
+./subsys/bluetooth/controller/ll_sw/ull_adv.c:		conn->llcp_req = conn->llcp_ack = conn->llcp_type = 0;
+./subsys/bluetooth/controller/ll_sw/ull_adv.c:		conn->llcp_rx = NULL;
+./subsys/bluetooth/controller/ll_sw/ull_adv.c:		conn->llcp_cu.req = conn->llcp_cu.ack = 0;
+./subsys/bluetooth/controller/ll_sw/ull_adv.c:		conn->llcp_feature.req = conn->llcp_feature.ack = 0;
+./subsys/bluetooth/controller/ll_sw/ull_adv.c:		conn->llcp_feature.features_conn = LL_FEAT;
+./subsys/bluetooth/controller/ll_sw/ull_adv.c:		conn->llcp_feature.features_peer = 0;
+./subsys/bluetooth/controller/ll_sw/ull_adv.c:		conn->llcp_version.req = conn->llcp_version.ack = 0;
+./subsys/bluetooth/controller/ll_sw/ull_adv.c:		conn->llcp_version.tx = conn->llcp_version.rx = 0;
+./subsys/bluetooth/controller/ll_sw/ull_adv.c:		conn->llcp_terminate.reason_peer = 0;
+./subsys/bluetooth/controller/ll_sw/ull_adv.c:		conn->llcp_terminate.node_rx.hdr.link = link;
+./subsys/bluetooth/controller/ll_sw/ull_adv.c:		conn->llcp_enc.req = conn->llcp_enc.ack = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_adv.c:		conn->llcp_enc.pause_tx = conn->llcp_enc.pause_rx = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_adv.c:		conn->llcp_enc.refresh = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_adv.c:		conn->llcp_conn_param.req = 0;
+./subsys/bluetooth/controller/ll_sw/ull_adv.c:		conn->llcp_conn_param.ack = 0;
+./subsys/bluetooth/controller/ll_sw/ull_adv.c:		conn->llcp_conn_param.disabled = 0;
+./subsys/bluetooth/controller/ll_sw/ull_adv.c:		conn->llcp_length.req = conn->llcp_length.ack = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_adv.c:		conn->llcp_length.disabled = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_adv.c:		conn->llcp_length.cache.tx_octets = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_adv.c:		conn->default_tx_octets = ull_conn_default_tx_octets_get();
+./subsys/bluetooth/controller/ll_sw/ull_adv.c:		conn->default_tx_time = ull_conn_default_tx_time_get();
+./subsys/bluetooth/controller/ll_sw/ull_adv.c:		conn->llcp_phy.req = conn->llcp_phy.ack = 0;
+./subsys/bluetooth/controller/ll_sw/ull_adv.c:		conn->llcp_phy.disabled = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_adv.c:		conn->llcp_phy.pause_tx = 0U;
+./subsys/bluetooth/controller/ll_sw/ull_adv.c:		conn->phy_pref_tx = ull_conn_default_phy_tx_get();
+./subsys/bluetooth/controller/ll_sw/ull_adv.c:		conn->phy_pref_rx = ull_conn_default_phy_rx_get();
+./subsys/bluetooth/controller/ll_sw/ull_adv.c:		conn->phy_pref_flags = 0;
+./subsys/bluetooth/controller/ll_sw/ull_adv.c:		conn->tx_head = conn->tx_ctrl = conn->tx_ctrl_last =
+./subsys/bluetooth/controller/ll_sw/ull_adv.c:		conn->tx_data = conn->tx_data_last = 0;
+./subsys/bluetooth/controller/ll_sw/ull_adv.c:		ull_hdr_init(&conn->ull);
+./subsys/bluetooth/controller/ll_sw/ull_adv.c:		lll_hdr_init(&conn->lll, conn);
+./subsys/bluetooth/controller/ll_sw/openisa/hal/RV32M1/ecb.c:	ecb_encrypt(&conn->llcp_enc.ltk[0],
+./subsys/bluetooth/controller/ll_sw/openisa/hal/RV32M1/ecb.c:		    &conn->llcp.encryption.skd[0], NULL,
+./subsys/bluetooth/controller/ll_sw/openisa/lll/lll_scan.c:		       &lll_conn->access_addr[0], 4);
+./subsys/bluetooth/controller/ll_sw/openisa/lll/lll_scan.c:		       &lll_conn->crc_init[0], 3);
+./subsys/bluetooth/controller/ll_sw/openisa/lll/lll_scan.c:		conn_interval_us = (uint32_t)lll_conn->interval * 1250U;
+./subsys/bluetooth/controller/ll_sw/openisa/lll/lll_scan.c:			sys_cpu_to_le16(lll_conn->interval);
+./subsys/bluetooth/controller/ll_sw/openisa/lll/lll_scan.c:			sys_cpu_to_le16(lll_conn->latency);
+./subsys/bluetooth/controller/ll_sw/openisa/lll/lll_scan.c:		       &lll_conn->data_chan_map[0],
+./subsys/bluetooth/controller/ll_sw/openisa/lll/lll_scan.c:		pdu_tx->connect_ind.hop = lll_conn->data_chan_hop;
+./subsys/bluetooth/controller/ll_sw/openisa/lll/lll_scan.c:			lll_conn->rssi_latest =  radio_rssi_get();
+./subsys/bluetooth/controller/ll_sw/openisa/lll/lll_adv.c:			lll->conn->rssi_latest =  radio_rssi_get();
+./subsys/bluetooth/controller/hci/hci_driver.c:			/* for conn-related events, only pend is relevant */
+./subsys/net/l2/bluetooth/bluetooth.c:	ret = bt_l2cap_chan_send(&conn->ipsp_chan.chan, buffer);
+./subsys/net/l2/bluetooth/bluetooth.c:		bt_l2cap_chan_disconnect(&conn->ipsp_chan.chan);
+./subsys/net/l2/bluetooth/bluetooth.c:	if (state && conn->ipsp_chan.chan.state != BT_L2CAP_CONNECTED) {
+./subsys/net/l2/bluetooth/bluetooth.c:	sys_memcpy_swap(conn->src.val, info.le.src->a.val, sizeof(conn->src));
+./subsys/net/l2/bluetooth/bluetooth.c:	sys_memcpy_swap(conn->dst.val, info.le.dst->a.val, sizeof(conn->dst));
+./subsys/net/l2/bluetooth/bluetooth.c:	net_if_set_link_addr(conn->iface, conn->src.val, sizeof(conn->src.val),
+./subsys/net/l2/bluetooth/bluetooth.c:	ll.addr = conn->dst.val;
+./subsys/net/l2/bluetooth/bluetooth.c:	ll.len = sizeof(conn->dst.val);
+./subsys/net/l2/bluetooth/bluetooth.c:	net_ipv6_nbr_add(conn->iface, &in6, &ll, false,
+./subsys/net/l2/bluetooth/bluetooth.c:	net_if_up(conn->iface);
+./subsys/net/l2/bluetooth/bluetooth.c:	net_if_carrier_down(conn->iface);
+./subsys/net/l2/bluetooth/bluetooth.c:	pkt = net_pkt_rx_alloc_on_iface(conn->iface, BUF_TIMEOUT);
+./subsys/net/l2/bluetooth/bluetooth.c:	net_pkt_lladdr_dst(pkt)->addr = conn->src.val;
+./subsys/net/l2/bluetooth/bluetooth.c:	net_pkt_lladdr_dst(pkt)->len = sizeof(conn->src);
+./subsys/net/l2/bluetooth/bluetooth.c:	net_pkt_lladdr_src(pkt)->addr = conn->dst.val;
+./subsys/net/l2/bluetooth/bluetooth.c:	net_pkt_lladdr_src(pkt)->len = sizeof(conn->dst);
+./subsys/net/l2/bluetooth/bluetooth.c:	if (net_recv_data(conn->iface, pkt) < 0) {
+./subsys/net/l2/bluetooth/bluetooth.c:	conn->iface = iface;
+./subsys/net/l2/bluetooth/bluetooth.c:	*chan = &if_conn->ipsp_chan.chan;
+./subsys/net/l2/bluetooth/bluetooth.c:	if (conn->ipsp_chan.chan.conn) {
+./subsys/net/l2/bluetooth/bluetooth.c:					     &conn->ipsp_chan.chan,
+./subsys/net/l2/bluetooth/bluetooth.c:	if (!conn->ipsp_chan.chan.conn) {
+./subsys/net/l2/bluetooth/bluetooth.c:	return bt_l2cap_chan_disconnect(&conn->ipsp_chan.chan);
+./subsys/net/l2/bluetooth/bluetooth.c:		if (if_conn->ipsp_chan.chan.conn == conn) {
+./subsys/net/l2/bluetooth/bluetooth.c:			bt_l2cap_chan_connect(conn, &if_conn->ipsp_chan.chan,
+./subsys/net/ip/net_shell.c:	if (conn->local_addr.sa_family == AF_INET6) {
+./subsys/net/ip/net_shell.c:				 &net_sin6(&conn->local_addr)->sin6_addr),
+./subsys/net/ip/net_shell.c:			 ntohs(net_sin6(&conn->local_addr)->sin6_port));
+./subsys/net/ip/net_shell.c:				 &net_sin6(&conn->remote_addr)->sin6_addr),
+./subsys/net/ip/net_shell.c:			 ntohs(net_sin6(&conn->remote_addr)->sin6_port));
+./subsys/net/ip/net_shell.c:	if (conn->local_addr.sa_family == AF_INET) {
+./subsys/net/ip/net_shell.c:				 &net_sin(&conn->local_addr)->sin_addr),
+./subsys/net/ip/net_shell.c:			 ntohs(net_sin(&conn->local_addr)->sin_port));
+./subsys/net/ip/net_shell.c:				 &net_sin(&conn->remote_addr)->sin_addr),
+./subsys/net/ip/net_shell.c:			 ntohs(net_sin(&conn->remote_addr)->sin_port));
+./subsys/net/ip/net_shell.c:	if (conn->local_addr.sa_family == AF_CAN) {
+./subsys/net/ip/net_shell.c:	if (conn->local_addr.sa_family == AF_UNSPEC) {
+./subsys/net/ip/net_shell.c:			 conn->local_addr.sa_family);
+./subsys/net/ip/net_shell.c:	   (*count) + 1, conn, conn->cb,
+./subsys/net/ip/net_shell.c:	   net_proto2str(conn->local_addr.sa_family, conn->proto),
+./subsys/net/ip/tcp.c:				      NULL, 0, NULL, &conn->remote_addr, &pkt);
+./subsys/net/ip/tcp.c:		send_ack(context, &conn->remote_addr, true);
+./subsys/net/ip/tcp.c:		send_ack(context, &conn->remote_addr, false);
+./subsys/net/ip/tcp2.c:	if (k_delayed_work_remaining_get(&conn->send_timer)) {
+./subsys/net/ip/tcp2.c:		k_delayed_work_cancel(&conn->send_timer);
+./subsys/net/ip/tcp2.c:	while ((pkt = tcp_slist(&conn->send_queue, get,
+./subsys/net/ip/tcp2.c:	int ref_count = atomic_dec(&conn->ref_count) - 1;
+./subsys/net/ip/tcp2.c:		tp_out(net_context_get_family(conn->context), conn->iface,
+./subsys/net/ip/tcp2.c:	if (conn->context->conn_handler) {
+./subsys/net/ip/tcp2.c:		net_conn_unregister(conn->context->conn_handler);
+./subsys/net/ip/tcp2.c:		conn->context->conn_handler = NULL;
+./subsys/net/ip/tcp2.c:	if (conn->context->recv_cb) {
+./subsys/net/ip/tcp2.c:		conn->context->recv_cb(conn->context, NULL, NULL, NULL,
+./subsys/net/ip/tcp2.c:					-ECONNRESET, conn->recv_user_data);
+./subsys/net/ip/tcp2.c:	conn->context->tcp = NULL;
+./subsys/net/ip/tcp2.c:	net_context_unref(conn->context);
+./subsys/net/ip/tcp2.c:	if (k_delayed_work_remaining_get(&conn->send_data_timer)) {
+./subsys/net/ip/tcp2.c:		k_delayed_work_cancel(&conn->send_data_timer);
+./subsys/net/ip/tcp2.c:	tcp_pkt_unref(conn->send_data);
+./subsys/net/ip/tcp2.c:	k_delayed_work_cancel(&conn->timewait_timer);
+./subsys/net/ip/tcp2.c:	struct net_pkt *pkt = tcp_slist(&conn->send_queue, peek_head,
+./subsys/net/ip/tcp2.c:	NET_DBG("%s %s", log_strdup(tcp_th(pkt)), conn->in_retransmission ?
+./subsys/net/ip/tcp2.c:	if (conn->in_retransmission) {
+./subsys/net/ip/tcp2.c:		if (conn->send_retries > 0) {
+./subsys/net/ip/tcp2.c:			conn->send_retries--;
+./subsys/net/ip/tcp2.c:		pkt = forget ? tcp_slist(&conn->send_queue, get, struct net_pkt,
+./subsys/net/ip/tcp2.c:				&conn->send_timer)) {
+./subsys/net/ip/tcp2.c:			conn->send_retries = tcp_retries;
+./subsys/net/ip/tcp2.c:			conn->in_retransmission = true;
+./subsys/net/ip/tcp2.c:	if (conn && conn->in_retransmission) {
+./subsys/net/ip/tcp2.c:		k_delayed_work_submit(&conn->send_timer, K_MSEC(tcp_rto));
+./subsys/net/ip/tcp2.c:	NET_ASSERT(conn->in_retransmission == true, "Not in retransmission");
+./subsys/net/ip/tcp2.c:	k_delayed_work_cancel(&conn->send_timer);
+./subsys/net/ip/tcp2.c:		struct net_pkt *pkt = tcp_slist(&conn->send_queue, get,
+./subsys/net/ip/tcp2.c:	if (sys_slist_is_empty(&conn->send_queue)) {
+./subsys/net/ip/tcp2.c:		conn->in_retransmission = false;
+./subsys/net/ip/tcp2.c:		conn->send_retries = tcp_retries;
+./subsys/net/ip/tcp2.c:		k_delayed_work_submit(&conn->send_timer, K_MSEC(tcp_rto));
+./subsys/net/ip/tcp2.c:			tcp_state_to_str(conn->state, false),
+./subsys/net/ip/tcp2.c:			conn->seq, conn->ack);
+./subsys/net/ip/tcp2.c:		if (conn->context->recv_cb) {
+./subsys/net/ip/tcp2.c:				(struct net_conn *)conn->context->conn_handler,
+./subsys/net/ip/tcp2.c:				up, NULL, NULL, conn->recv_user_data);
+./subsys/net/ip/tcp2.c:	th->th_sport = conn->src.sin.sin_port;
+./subsys/net/ip/tcp2.c:	th->th_dport = conn->dst.sin.sin_port;
+./subsys/net/ip/tcp2.c:	th->th_win = htons(conn->recv_win);
+./subsys/net/ip/tcp2.c:		th->th_ack = htonl(conn->ack);
+./subsys/net/ip/tcp2.c:		return net_context_create_ipv4_new(conn->context, pkt,
+./subsys/net/ip/tcp2.c:						&conn->src.sin.sin_addr,
+./subsys/net/ip/tcp2.c:						&conn->dst.sin.sin_addr);
+./subsys/net/ip/tcp2.c:		return net_context_create_ipv6_new(conn->context, pkt,
+./subsys/net/ip/tcp2.c:						&conn->src.sin6.sin6_addr,
+./subsys/net/ip/tcp2.c:						&conn->dst.sin6.sin6_addr);
+./subsys/net/ip/tcp2.c:	sys_slist_append(&conn->send_queue, &pkt->next);
+./subsys/net/ip/tcp2.c:	tcp_send_process((struct k_work *)&conn->send_timer);
+./subsys/net/ip/tcp2.c:	tcp_out_ext(conn, flags, NULL /* no data */, conn->seq);
+./subsys/net/ip/tcp2.c:	bool window_full = !(conn->unacked_len < conn->send_win);
+./subsys/net/ip/tcp2.c:	if (conn->unacked_len > conn->send_data_total) {
+./subsys/net/ip/tcp2.c:			conn->send_data_total, conn->unacked_len);
+./subsys/net/ip/tcp2.c:	unsent_len = conn->send_data_total - conn->unacked_len;
+./subsys/net/ip/tcp2.c:	pos = conn->unacked_len;
+./subsys/net/ip/tcp2.c:	len = MIN3(conn->send_data_total - conn->unacked_len,
+./subsys/net/ip/tcp2.c:		   conn->send_win - conn->unacked_len,
+./subsys/net/ip/tcp2.c:	tcp_pkt_peek(pkt, conn->send_data, pos, len);
+./subsys/net/ip/tcp2.c:	tcp_out_ext(conn, PSH | ACK, pkt, conn->seq + conn->unacked_len);
+./subsys/net/ip/tcp2.c:	conn->unacked_len += len;
+./subsys/net/ip/tcp2.c:	if (conn->data_mode == TCP_DATA_MODE_RESEND) {
+./subsys/net/ip/tcp2.c:	if (conn->unacked_len) {
+./subsys/net/ip/tcp2.c:	if (k_delayed_work_remaining_get(&conn->send_data_timer)) {
+./subsys/net/ip/tcp2.c:		conn->send_data_retries = 0;
+./subsys/net/ip/tcp2.c:		k_delayed_work_submit(&conn->send_data_timer, K_MSEC(tcp_rto));
+./subsys/net/ip/tcp2.c:	NET_DBG("send_data_retries=%hu", conn->send_data_retries);
+./subsys/net/ip/tcp2.c:	if (conn->send_data_retries >= tcp_retries) {
+./subsys/net/ip/tcp2.c:	conn->data_mode = TCP_DATA_MODE_RESEND;
+./subsys/net/ip/tcp2.c:	conn->unacked_len = 0;
+./subsys/net/ip/tcp2.c:	conn->send_data_retries++;
+./subsys/net/ip/tcp2.c:	k_delayed_work_submit(&conn->send_data_timer, K_MSEC(tcp_rto));
+./subsys/net/ip/tcp2.c:	int ref_count = atomic_inc(&conn->ref_count) + 1;
+./subsys/net/ip/tcp2.c:	k_mutex_init(&conn->lock);
+./subsys/net/ip/tcp2.c:	conn->state = TCP_LISTEN;
+./subsys/net/ip/tcp2.c:	conn->recv_win = tcp_window;
+./subsys/net/ip/tcp2.c:	conn->seq = (IS_ENABLED(CONFIG_NET_TEST_PROTOCOL) ||
+./subsys/net/ip/tcp2.c:	sys_slist_init(&conn->send_queue);
+./subsys/net/ip/tcp2.c:	k_delayed_work_init(&conn->send_timer, tcp_send_process);
+./subsys/net/ip/tcp2.c:	k_delayed_work_init(&conn->timewait_timer, tcp_timewait_timeout);
+./subsys/net/ip/tcp2.c:	conn->send_data = tcp_pkt_alloc(conn, 0);
+./subsys/net/ip/tcp2.c:	k_delayed_work_init(&conn->send_data_timer, tcp_resend_data);
+./subsys/net/ip/tcp2.c:	conn->context = context;
+./subsys/net/ip/tcp2.c:	return tcp_endpoint_cmp(&conn->src, pkt, TCP_EP_DST) &&
+./subsys/net/ip/tcp2.c:		tcp_endpoint_cmp(&conn->dst, pkt, TCP_EP_SRC);
+./subsys/net/ip/tcp2.c:		net_ipaddr_copy(&conn_old->context->remote, &conn->dst.sa);
+./subsys/net/ip/tcp2.c:		conn_old->accept_cb(conn->context,
+./subsys/net/ip/tcp2.c:	conn->iface = pkt->iface;
+./subsys/net/ip/tcp2.c:	net_context_set_family(conn->context, net_pkt_family(pkt));
+./subsys/net/ip/tcp2.c:	if (tcp_endpoint_set(&conn->dst, pkt, TCP_EP_SRC) < 0) {
+./subsys/net/ip/tcp2.c:	if (tcp_endpoint_set(&conn->src, pkt, TCP_EP_DST) < 0) {
+./subsys/net/ip/tcp2.c:		log_strdup(net_sprint_addr(conn->src.sa.sa_family,
+./subsys/net/ip/tcp2.c:				(const void *)&conn->src.sin.sin_addr)),
+./subsys/net/ip/tcp2.c:		log_strdup(net_sprint_addr(conn->dst.sa.sa_family,
+./subsys/net/ip/tcp2.c:				(const void *)&conn->dst.sin.sin_addr)));
+./subsys/net/ip/tcp2.c:	memcpy(&context->remote, &conn->dst, sizeof(context->remote));
+./subsys/net/ip/tcp2.c:				ntohs(conn->dst.sin.sin_port),/* local port */
+./subsys/net/ip/tcp2.c:				ntohs(conn->src.sin.sin_port),/* remote port */
+./subsys/net/ip/tcp2.c:	k_mutex_lock(&conn->lock, K_FOREVER);
+./subsys/net/ip/tcp2.c:	if (tcp_options_len && !tcp_options_check(&conn->recv_options, pkt,
+./subsys/net/ip/tcp2.c:		conn->send_win = ntohs(th->th_win);
+./subsys/net/ip/tcp2.c:	switch (conn->state) {
+./subsys/net/ip/tcp2.c:		if (FL(&fl, &, ACK, th_ack(th) == conn->seq &&
+./subsys/net/ip/tcp2.c:				th_seq(th) == conn->ack)) {
+./subsys/net/ip/tcp2.c:			net_context_set_state(conn->context,
+./subsys/net/ip/tcp2.c:		if (FL(&fl, &, ACK, th && th_ack(th) == conn->seq)) {
+./subsys/net/ip/tcp2.c:			net_context_set_state(conn->context,
+./subsys/net/ip/tcp2.c:		if (th && FL(&fl, ==, (FIN | ACK), th_seq(th) == conn->ack)) {
+./subsys/net/ip/tcp2.c:		} else if (th && FL(&fl, ==, FIN, th_seq(th) == conn->ack)) {
+./subsys/net/ip/tcp2.c:		if (th && net_tcp_seq_cmp(th_ack(th), conn->seq) > 0) {
+./subsys/net/ip/tcp2.c:			uint32_t len_acked = th_ack(th) - conn->seq;
+./subsys/net/ip/tcp2.c:			if ((conn->send_data_total < len_acked) ||
+./subsys/net/ip/tcp2.c:					(tcp_pkt_pull(conn->send_data,
+./subsys/net/ip/tcp2.c:					conn->send_data_total);
+./subsys/net/ip/tcp2.c:			conn->send_data_total -= len_acked;
+./subsys/net/ip/tcp2.c:			conn->unacked_len -= len_acked;
+./subsys/net/ip/tcp2.c:			if (!k_delayed_work_remaining_get(&conn->send_data_timer)) {
+./subsys/net/ip/tcp2.c:			conn->send_data_retries = 0;
+./subsys/net/ip/tcp2.c:			k_delayed_work_cancel(&conn->send_data_timer);
+./subsys/net/ip/tcp2.c:			if (conn->data_mode == TCP_DATA_MODE_RESEND) {
+./subsys/net/ip/tcp2.c:				conn->unacked_len = 0;
+./subsys/net/ip/tcp2.c:			conn->data_mode = TCP_DATA_MODE_SEND;
+./subsys/net/ip/tcp2.c:			if (th_seq(th) == conn->ack) {
+./subsys/net/ip/tcp2.c:			} else if (net_tcp_seq_greater(conn->ack, th_seq(th))) {
+./subsys/net/ip/tcp2.c:		if (th && FL(&fl, ==, ACK, th_seq(th) == conn->ack)) {
+./subsys/net/ip/tcp2.c:		if (th && FL(&fl, ==, (FIN | ACK), th_seq(th) == conn->ack)) {
+./subsys/net/ip/tcp2.c:		} else if (th && FL(&fl, ==, FIN, th_seq(th) == conn->ack)) {
+./subsys/net/ip/tcp2.c:		} else if (th && FL(&fl, ==, ACK, th_seq(th) == conn->ack)) {
+./subsys/net/ip/tcp2.c:		if (th && FL(&fl, ==, FIN, th_seq(th) == conn->ack)) {
+./subsys/net/ip/tcp2.c:		if (th && FL(&fl, ==, ACK, th_seq(th) == conn->ack)) {
+./subsys/net/ip/tcp2.c:		k_delayed_work_submit(&conn->timewait_timer,
+./subsys/net/ip/tcp2.c:			   tcp_state_to_str(conn->state, true));
+./subsys/net/ip/tcp2.c:	k_mutex_unlock(&conn->lock);
+./subsys/net/ip/tcp2.c:		k_mutex_lock(&conn->lock, K_FOREVER);
+./subsys/net/ip/tcp2.c:		k_mutex_unlock(&conn->lock);
+./subsys/net/ip/tcp2.c:	if (!conn || conn->state != TCP_ESTABLISHED) {
+./subsys/net/ip/tcp2.c:	k_mutex_lock(&conn->lock, K_FOREVER);
+./subsys/net/ip/tcp2.c:	net_pkt_append_buffer(conn->send_data, pkt->buffer);
+./subsys/net/ip/tcp2.c:	conn->send_data_total += len;
+./subsys/net/ip/tcp2.c:		conn->send_data_total);
+./subsys/net/ip/tcp2.c:		k_mutex_unlock(&conn->lock);
+./subsys/net/ip/tcp2.c:	k_mutex_unlock(&conn->lock);
+./subsys/net/ip/tcp2.c:	conn->iface = net_context_get_iface(context);
+./subsys/net/ip/tcp2.c:		memset(&conn->src, 0, sizeof(struct sockaddr_in));
+./subsys/net/ip/tcp2.c:		memset(&conn->dst, 0, sizeof(struct sockaddr_in));
+./subsys/net/ip/tcp2.c:		conn->src.sa.sa_family = AF_INET;
+./subsys/net/ip/tcp2.c:		conn->dst.sa.sa_family = AF_INET;
+./subsys/net/ip/tcp2.c:		conn->dst.sin.sin_port = remote_port;
+./subsys/net/ip/tcp2.c:		conn->src.sin.sin_port = local_port;
+./subsys/net/ip/tcp2.c:		conn->src.sin.sin_addr = *ip4;
+./subsys/net/ip/tcp2.c:		net_ipaddr_copy(&conn->dst.sin.sin_addr,
+./subsys/net/ip/tcp2.c:		memset(&conn->src, 0, sizeof(struct sockaddr_in6));
+./subsys/net/ip/tcp2.c:		memset(&conn->dst, 0, sizeof(struct sockaddr_in6));
+./subsys/net/ip/tcp2.c:		conn->src.sin6.sin6_family = AF_INET6;
+./subsys/net/ip/tcp2.c:		conn->dst.sin6.sin6_family = AF_INET6;
+./subsys/net/ip/tcp2.c:		conn->dst.sin6.sin6_port = remote_port;
+./subsys/net/ip/tcp2.c:		conn->src.sin6.sin6_port = local_port;
+./subsys/net/ip/tcp2.c:		conn->src.sin6.sin6_addr = *ip6;
+./subsys/net/ip/tcp2.c:		net_ipaddr_copy(&conn->dst.sin6.sin6_addr,
+./subsys/net/ip/tcp2.c:		log_strdup(net_sprint_addr(conn->src.sa.sa_family,
+./subsys/net/ip/tcp2.c:				(const void *)&conn->src.sin.sin_addr)),
+./subsys/net/ip/tcp2.c:		log_strdup(net_sprint_addr(conn->dst.sa.sa_family,
+./subsys/net/ip/tcp2.c:				(const void *)&conn->dst.sin.sin_addr)));
+./subsys/net/ip/tcp2.c:	if (conn->state != TCP_LISTEN) {
+./subsys/net/ip/tcp2.c:	conn->accept_cb = cb;
+./subsys/net/ip/tcp2.c:		conn->recv_user_data = user_data;
+./subsys/net/ip/tcp2.c:			tcp_endpoint_set(&conn->dst, pkt, TCP_EP_SRC);
+./subsys/net/ip/tcp2.c:			tcp_endpoint_set(&conn->src, pkt, TCP_EP_DST);
+./subsys/net/ip/tcp2.c:			conn->iface = pkt->iface;
+./subsys/net/ip/tcp2.c:	net_tcp_queue_data(conn->context, up);
+./subsys/net/ip/tcp2.c:		.state = tcp_state_to_str(conn->state, true),
+./subsys/net/ip/tcp2.c:		.seq = conn->seq,
+./subsys/net/ip/tcp2.c:		.ack = conn->ack,
+./subsys/net/ip/tcp2.c:				tcp_endpoint_set(&conn->dst, pkt, TCP_EP_SRC);
+./subsys/net/ip/tcp2.c:				tcp_endpoint_set(&conn->src, pkt, TCP_EP_DST);
+./subsys/net/ip/tcp2.c:				conn->iface = pkt->iface;
+./subsys/net/ip/tcp2.c:			conn->seq = tp->seq;
+./subsys/net/ip/tcp2.c:				context = conn->context;
+./subsys/net/ip/tcp2.c:			net_tcp_put(conn->context);
+./subsys/net/ip/tcp2.c:				net_tcp_queue_data(conn->context, data_pkt);
+./subsys/net/ip/connection.c:	if (conn->flags & NET_CONN_REMOTE_ADDR_SET) {
+./subsys/net/ip/connection.c:		    conn->family == AF_INET6) {
+./subsys/net/ip/connection.c:				    &net_sin6(&conn->remote_addr)->sin6_addr)));
+./subsys/net/ip/connection.c:			   conn->family == AF_INET) {
+./subsys/net/ip/connection.c:				    &net_sin(&conn->remote_addr)->sin_addr)));
+./subsys/net/ip/connection.c:	if (conn->flags & NET_CONN_LOCAL_ADDR_SET) {
+./subsys/net/ip/connection.c:		    conn->family == AF_INET6) {
+./subsys/net/ip/connection.c:				    &net_sin6(&conn->local_addr)->sin6_addr)));
+./subsys/net/ip/connection.c:			   conn->family == AF_INET) {
+./subsys/net/ip/connection.c:				    &net_sin(&conn->local_addr)->sin_addr)));
+./subsys/net/ip/connection.c:		conn, conn->proto, conn->family, conn->flags,
+./subsys/net/ip/connection.c:		log_strdup(src), local_port, conn->cb, conn->user_data);
+./subsys/net/ip/connection.c:	conn->flags |= NET_CONN_IN_USE;
+./subsys/net/ip/connection.c:	sys_slist_prepend(&conn_used, &conn->node);
+./subsys/net/ip/connection.c:	sys_slist_prepend(&conn_unused, &conn->node);
+./subsys/net/ip/connection.c:		if (conn->proto != proto) {
+./subsys/net/ip/connection.c:		if (conn->family != family) {
+./subsys/net/ip/connection.c:			if (!(conn->flags & NET_CONN_REMOTE_ADDR_SET)) {
+./subsys/net/ip/connection.c:			    conn->remote_addr.sa_family) {
+./subsys/net/ip/connection.c:					    &net_sin6(&conn->remote_addr)->
+./subsys/net/ip/connection.c:				   conn->remote_addr.sa_family) {
+./subsys/net/ip/connection.c:					    &net_sin(&conn->remote_addr)->
+./subsys/net/ip/connection.c:		} else if (conn->flags & NET_CONN_REMOTE_ADDR_SET) {
+./subsys/net/ip/connection.c:			if (!(conn->flags & NET_CONN_LOCAL_ADDR_SET)) {
+./subsys/net/ip/connection.c:			    conn->local_addr.sa_family) {
+./subsys/net/ip/connection.c:					    &net_sin6(&conn->local_addr)->
+./subsys/net/ip/connection.c:				   conn->local_addr.sa_family) {
+./subsys/net/ip/connection.c:					    &net_sin(&conn->local_addr)->
+./subsys/net/ip/connection.c:		} else if (conn->flags & NET_CONN_LOCAL_ADDR_SET) {
+./subsys/net/ip/connection.c:		if (net_sin(&conn->remote_addr)->sin_port !=
+./subsys/net/ip/connection.c:		if (net_sin(&conn->local_addr)->sin_port !=
+./subsys/net/ip/connection.c:			memcpy(&conn->remote_addr, remote_addr,
+./subsys/net/ip/connection.c:			memcpy(&conn->remote_addr, remote_addr,
+./subsys/net/ip/connection.c:			memcpy(&conn->local_addr, local_addr,
+./subsys/net/ip/connection.c:			memcpy(&conn->local_addr, local_addr,
+./subsys/net/ip/connection.c:			memcpy(&conn->local_addr, local_addr,
+./subsys/net/ip/connection.c:			memcpy(&conn->local_addr, local_addr,
+./subsys/net/ip/connection.c:		net_sin(&conn->remote_addr)->sin_port = htons(remote_port);
+./subsys/net/ip/connection.c:		net_sin(&conn->local_addr)->sin_port = htons(local_port);
+./subsys/net/ip/connection.c:	conn->cb = cb;
+./subsys/net/ip/connection.c:	conn->user_data = user_data;
+./subsys/net/ip/connection.c:	conn->flags = flags;
+./subsys/net/ip/connection.c:	conn->proto = proto;
+./subsys/net/ip/connection.c:	conn->family = family;
+./subsys/net/ip/connection.c:	if (!(conn->flags & NET_CONN_IN_USE)) {
+./subsys/net/ip/connection.c:	sys_slist_find_and_remove(&conn_used, &conn->node);
+./subsys/net/ip/connection.c:	if (!(conn->flags & NET_CONN_IN_USE)) {
+./subsys/net/ip/connection.c:	conn->cb = cb;
+./subsys/net/ip/connection.c:	conn->user_data = user_data;
+./subsys/net/ip/connection.c:		if (conn->proto != proto) {
+./subsys/net/ip/connection.c:		if (conn->family != AF_UNSPEC &&
+./subsys/net/ip/connection.c:		    conn->family != net_pkt_family(pkt)) {
+./subsys/net/ip/connection.c:			if (net_sin(&conn->remote_addr)->sin_port) {
+./subsys/net/ip/connection.c:				if (net_sin(&conn->remote_addr)->sin_port !=
+./subsys/net/ip/connection.c:			if (net_sin(&conn->local_addr)->sin_port) {
+./subsys/net/ip/connection.c:				if (net_sin(&conn->local_addr)->sin_port !=
+./subsys/net/ip/connection.c:			if (conn->flags & NET_CONN_REMOTE_ADDR_SET) {
+./subsys/net/ip/connection.c:						   &conn->remote_addr,
+./subsys/net/ip/connection.c:			if (conn->flags & NET_CONN_LOCAL_ADDR_SET) {
+./subsys/net/ip/connection.c:						   &conn->local_addr,
+./subsys/net/ip/connection.c:			if (best_rank < NET_CONN_RANK(conn->flags)) {
+./subsys/net/ip/connection.c:					best_rank = NET_CONN_RANK(conn->flags);
+./subsys/net/ip/connection.c:					conn, conn->cb,	conn->user_data);
+./subsys/net/ip/connection.c:				if (conn->cb(conn, mcast_pkt, ip_hdr,
+./subsys/net/ip/connection.c:					     proto_hdr, conn->user_data) ==
+./subsys/net/ip/connection.c:			if (conn->flags & NET_CONN_LOCAL_ADDR_SET) {
+./subsys/net/ip/connection.c:				local = (struct sockaddr_ll *)&conn->local_addr;
+./subsys/net/ip/connection.c:				if (best_rank < NET_CONN_RANK(conn->flags)) {
+./subsys/net/ip/connection.c:					best_rank = NET_CONN_RANK(conn->flags);
+./subsys/net/ip/connection.c:				if (best_rank < NET_CONN_RANK(conn->flags)) {
+./subsys/net/ip/connection.c:			conn, conn->cb, conn->user_data, conn->flags);
+./subsys/net/ip/connection.c:		if (conn->cb(conn, pkt, ip_hdr, proto_hdr,
+./subsys/net/ip/connection.c:			     conn->user_data) == NET_DROP) {
+./drivers/wifi/simplelink/simplelink.c:	status = (conn->error ? -EIO : 0);

@@ -48,7 +48,6 @@ static ssize_t write_callback(struct bt_conn *conn,
 			      const struct bt_gatt_attr *attr, const void *buf,
 			      uint16_t len, uint16_t offset, uint8_t flags)
 {
-	//printk("[peer]write_callback\n");
 	static uint32_t clock_cycles;
 	static uint32_t kb;
 
@@ -58,22 +57,6 @@ static ssize_t write_callback(struct bt_conn *conn,
 
 	delta = k_cycle_get_32() - clock_cycles;
 	delta = k_cyc_to_ns_floor64(delta);
-/*
-	if (len == 1) {
-		kb = 0;
-		met_data->write_count = 0;
-		met_data->write_len = 0;
-		met_data->write_rate = 0;
-		clock_cycles = k_cycle_get_32();
-	} else {
-		met_data->write_count++;
-		met_data->write_len += len;
-		printk("[ejpark] error?\n");
-		if(delta >0)
-			met_data->write_rate =
-		   	 ((uint64_t)met_data->write_len << 3) * 1000000000 / delta;
-	}
-*/
 	LOG_DBG("Received data.");
 
 	if (callbacks->data_received) {
@@ -87,7 +70,6 @@ static ssize_t read_callback(struct bt_conn *conn,
 			     const struct bt_gatt_attr *attr, void *buf,
 			     uint16_t len, uint16_t offset)
 {
-	//printk("[peer]read_callback is called\n");
 	const struct bt_gatt_throughput_metrics *metrics = attr->user_data;
 
 	len = MIN(sizeof(struct bt_gatt_throughput_metrics), len);
@@ -115,20 +97,17 @@ int bt_gatt_throughput_init(struct bt_gatt_throughput *throughput,
 			    const struct bt_gatt_throughput_cb *cb)
 {
 	if (!throughput || !cb) {
-		printk("[ejpark] fail!!!!\n");
 		return -EINVAL;
 	}
 
 	callbacks = cb;
 
-		printk("[ejpark] no fail!!!!\n");
 	return 0;
 }
 
 int bt_gatt_throughput_handles_assign(struct bt_gatt_dm *dm,
 				      struct bt_gatt_throughput *throughput)
 {
-printk("[ejpark4] ???????\n");
 	const struct bt_gatt_dm_attr *gatt_service_attr =
 			bt_gatt_dm_service_get(dm);
 	const struct bt_gatt_service_val *gatt_service =

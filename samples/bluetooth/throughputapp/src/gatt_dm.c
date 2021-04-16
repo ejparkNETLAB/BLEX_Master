@@ -167,9 +167,6 @@ static struct bt_gatt_dm_attr *attr_store(struct bt_gatt_dm *dm,
 {
 	struct bt_gatt_dm_attr *cur_attr;
 
-	//printk("[ejpark3] Attr store, pos: %zu, handle: %"PRIu16,
-//		dm->cur_attr_id,
-//		attr->handle);
 	if (dm->cur_attr_id >= ARRAY_SIZE(dm->attrs)) {
 		LOG_ERR("No space for new attribute.");
 		return NULL;
@@ -273,7 +270,6 @@ static uint8_t discovery_process_service(struct bt_gatt_dm *dm,
 
 	if (!attr) {
 		discovery_complete_not_found(dm);
-		//printk("[ejpark] discovery_process_service stop\n");
 		return BT_GATT_ITER_STOP;
 	}
 
@@ -285,15 +281,11 @@ static uint8_t discovery_process_service(struct bt_gatt_dm *dm,
 			bt_uuid_cmp(attr->uuid, BT_UUID_GATT_SECONDARY) == 0);
 
 	if (!cur_attr) {
-		//printk("[ejpark2]Not enough memory for service attribute.");
-		LOG_ERR("[ejpark2]Not enough memory for service attribute.");
+		LOG_ERR("Not enough memory for service attribute.");
 		discovery_complete_error(dm, -ENOMEM);
 		return BT_GATT_ITER_STOP;
 	}
 
-	//printk("[ejpark2]Service detected, handles range: <%u, %u>",
-		//cur_attr->handle + 1,
-		//service_val->end_handle);
 
 	struct bt_gatt_service_val *cur_service_val =
 		bt_gatt_dm_attr_service_val(cur_attr);
@@ -302,7 +294,7 @@ static uint8_t discovery_process_service(struct bt_gatt_dm *dm,
 	cur_service_val->uuid = uuid_store(dm, cur_service_val->uuid);
 
 	if (!cur_service_val->uuid) {
-		LOG_ERR("[ejpark2]Not enough memory for service attribute data.");
+		LOG_ERR("Not enough memory for service attribute data.");
 		discovery_complete_error(dm, -ENOMEM);
 		return BT_GATT_ITER_STOP;
 	}
@@ -314,13 +306,11 @@ static uint8_t discovery_process_service(struct bt_gatt_dm *dm,
 	err = bt_gatt_discover(dm->conn, &(dm->discover_params));
 
 	if (err) {
-		LOG_ERR("[ejpark2]Descriptor discover failed, error: %d.", err);
-		//printk("[ejpark2]Descriptor discover failed, error: %d.", err);
+		LOG_ERR("Descriptor discover failed, error: %d.", err);
 		discovery_complete_error(dm, -ENOMEM);
 		return BT_GATT_ITER_STOP;
 	}
 
-	//printk("[ejpark2] well done!\n");
 	return BT_GATT_ITER_STOP;
 }
 
@@ -382,9 +372,7 @@ static uint8_t discovery_process_characteristic(
 		return BT_GATT_ITER_STOP;
 	}
 
-//printk("[ejpark2] 31\n");
 	__ASSERT_NO_MSG(bt_uuid_cmp(attr->uuid, BT_UUID_GATT_CHRC) == 0);
-//printk("[ejpark2]32\n");
 
 	cur_attr = attr_find_by_handle(dm, attr->handle);
 	if (!cur_attr) {
@@ -393,12 +381,10 @@ static uint8_t discovery_process_characteristic(
 		return BT_GATT_ITER_STOP;
 	}
 
-	//printk("[ejpark2]33\n");
 	gatt_chrc = attr->user_data;
 	cur_gatt_chrc = bt_gatt_dm_attr_chrc_val(cur_attr);
 	memcpy(cur_gatt_chrc, gatt_chrc, sizeof(*cur_gatt_chrc));
 	cur_gatt_chrc->uuid = uuid_store(dm, cur_gatt_chrc->uuid);
-	//printk("[ejpark2]34\n");
 	if (!cur_gatt_chrc->uuid) {
 		discovery_complete_error(dm, -ENOMEM);
 		return BT_GATT_ITER_STOP;
@@ -414,39 +400,32 @@ static uint8_t discovery_callback(struct bt_conn *conn,
 	if (!attr) {
 	} else {
 	}
-	//printk("[ejpark2] discovery_callback\n");
 	bool flag_ej = false;
 	int i;
 	for(i = 0; i <CONFIG_BT_MAX_CONN && flag_ej == false;)
 		if (conn == bt_gatt_dm_inst[i].conn) {
 			flag_ej = true;
-			//printk("[ejpark] i = %u\n",i );
 		}
 		else i ++;
 	if(!flag_ej){
 		LOG_ERR("Unexpected conn object. Aborting.");
-		//printk("[ejpark2] error!\n");
 
 		return BT_GATT_ITER_STOP;
 	}
 	switch (params->type) {
 	case BT_GATT_DISCOVER_PRIMARY:
 	case BT_GATT_DISCOVER_SECONDARY:
-		//printk("[ejpark2] 1\n");
 		return discovery_process_service(&(bt_gatt_dm_inst[i]),
 						 attr, params);
 	case BT_GATT_DISCOVER_ATTRIBUTE:
-		//printk("[ejpark2] 2\n");
 		return discovery_process_attribute(&(bt_gatt_dm_inst[i]),
 						   attr, params);
 	case BT_GATT_DISCOVER_CHARACTERISTIC:
-		//printk("[ejpark2] 3\n");
 		return discovery_process_characteristic(&(bt_gatt_dm_inst[i]),
 							attr,
 							params);
 	default:
 		/* This should not be possible */
-		//printk("[ejpark2] 4\n");
 		__ASSERT(false, "Unknown param type.");
 		break;
 	}
@@ -603,7 +582,6 @@ int bt_gatt_dm_start(struct bt_conn *conn,
 	for(i = 0; i < CONFIG_BT_MAX_CONN; i ++){
 		if(conn == bt_conn_lookup_handle(i)) {
 			dm = &bt_gatt_dm_inst[i];
-//printk("[ejpark2] i = %u \n", i);
 		}
 	}
 
@@ -622,19 +600,17 @@ int bt_gatt_dm_start(struct bt_conn *conn,
 	dm->discover_params.func = discovery_callback;
 
 		
-	dm->discover_params.start_handle = 0x0001;//+0xffff/CONFIG_BT_MAX_CONN*i;
-	dm->discover_params.end_handle = 0xffff;//CONFIG_BT_MAX_CONN*(i+1);
-	
+	dm->discover_params.start_handle = 0x0001;
+	dm->discover_params.end_handle = 0xffff;	
 	dm->discover_params.type = BT_GATT_DISCOVER_PRIMARY;
 
 	err = bt_gatt_discover(conn, &dm->discover_params);
 	
 	if (err) {
-		LOG_ERR("[ejpark2]Discover failed, error: %d.", err);
+		LOG_ERR("Discover failed, error: %d.", err);
 		atomic_clear_bit(dm->state_flags, STATE_ATTRS_LOCKED);
 	}
 
-//printk("[ejpark2] bt_gatt_dm_start4\n");
 	return err;
 }
 
@@ -701,8 +677,6 @@ static void svc_attr_data_print(const struct bt_gatt_service_val *gatt_service)
 	char str[UUID_STR_LEN];
 
 	bt_uuid_to_str(gatt_service->uuid, str, sizeof(str));
-	//printk("[ejpark4]\tService: 0x%s\tEnd Handle: 0x%04X\n",
-			str, gatt_service->end_handle);
 }
 
 static void chrc_attr_data_print(const struct bt_gatt_chrc *gatt_chrc)
@@ -710,7 +684,6 @@ static void chrc_attr_data_print(const struct bt_gatt_chrc *gatt_chrc)
 	char str[UUID_STR_LEN];
 
 	bt_uuid_to_str(gatt_chrc->uuid, str, sizeof(str));
-	////printk("[ejpark4]\tCharacteristic: 0x%s\tProperties: 0x%04X\n",
 			str, gatt_chrc->properties);
 }
 
@@ -720,7 +693,6 @@ static void attr_print(const struct bt_gatt_dm *dm,
 	char str[UUID_STR_LEN];
 
 	bt_uuid_to_str(attr->uuid, str, sizeof(str));
-	//printk("[ejpark4] ATT[%u]: \tUUID: 0x%s\tHandle: 0x%04X\tValue:\n",
 	       (unsigned int)(attr - dm->attrs), str, attr->handle);
 
 	if ((bt_uuid_cmp(attr->uuid, BT_UUID_GATT_PRIMARY) == 0) ||
@@ -729,7 +701,6 @@ static void attr_print(const struct bt_gatt_dm *dm,
 	} else if (bt_uuid_cmp(attr->uuid, BT_UUID_GATT_CHRC) == 0) {
 		chrc_attr_data_print(bt_gatt_dm_attr_chrc_val(attr));
 	} else if (bt_uuid_cmp(attr->uuid, BT_UUID_GATT_CCC) == 0) {
-		//printk("\tCCCD\n");
 	}
 }
 
@@ -737,7 +708,6 @@ void bt_gatt_dm_data_print(const struct bt_gatt_dm *dm)
 {
 	const struct bt_gatt_dm_attr *attr = NULL;
 
-//printk("[ejpark4] ?????\n");
 	while (NULL != (attr = bt_gatt_dm_attr_next(dm, attr))) {
 		attr_print(dm, attr);
 	}

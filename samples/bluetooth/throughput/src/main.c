@@ -65,7 +65,6 @@ static void exchange_func(struct bt_conn *conn, uint8_t att_err,
 	}
 
 	if (info.role == BT_CONN_ROLE_MASTER){
-		printk("[peer]exchange_fund\n");
 		iter++;
 		nodes_ready = true;;
 		scan_start= false;
@@ -335,7 +334,6 @@ void main(void)
 	test_ready = true;
 
 	for ( ;;) {
-		printk("[peer] start\n");
 		if(default_conn[CONFIG_BT_MAX_CONN-1] == NULL)
 			start_scan();
 		uint32_t stamp = k_uptime_get_32();

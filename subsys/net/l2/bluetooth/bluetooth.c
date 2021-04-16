@@ -503,7 +503,6 @@ static void bt_scan_off(void)
 {
 	int err;
 
-printk("[ejpark2]??\n");
 	err = bt_le_scan_stop();
 	if (err) {
 		NET_ERR("Stopping scanning failed (err %d)\n", err);

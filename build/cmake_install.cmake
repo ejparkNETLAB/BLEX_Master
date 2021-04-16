@@ -1,4 +1,4 @@
-# Install script for directory: /home/netlab/zephyrproject/zephyr/samples/bluetooth/throughputapp
+# Install script for directory: /home/netlab/zephyrproject/zephyr/samples/bluetooth/throughput
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

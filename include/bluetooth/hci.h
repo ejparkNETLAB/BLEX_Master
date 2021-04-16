@@ -752,17 +752,6 @@ struct hci_cp_le_conn_update {
 	uint16_t max_ce_len;
 } __packed;
 
-#define BT_HCI_OP_LE_CONN_UPDATE_KARA           BT_OP(BT_OGF_LE, 0x004f)
-struct hci_cp_le_conn_update_kara {
-        uint16_t handle;
-        uint16_t conn_interval_min;
-        uint16_t conn_interval_max;
-        uint16_t conn_latency;
-        uint16_t supervision_timeout;
-        uint16_t min_ce_len;
-        uint16_t max_ce_len;
-        uint16_t offset; //ejpark0402
-} __packed;
 
 
 #define BT_HCI_OP_LE_SET_HOST_CHAN_CLASSIF      BT_OP(BT_OGF_LE, 0x0014)

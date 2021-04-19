@@ -18,7 +18,7 @@
 APPLICATION_BINARY_DIR:PATH=/home/netlab/zephyrproject/zephyr/build
 
 //Application Source Directory
-APPLICATION_SOURCE_DIR:PATH=/home/netlab/zephyrproject/zephyr/samples/bluetooth/throughput
+APPLICATION_SOURCE_DIR:PATH=/home/netlab/zephyrproject/zephyr/samples/bluetooth/throughputapp
 
 //No help, variable specified on the command line.
 BOARD:UNINITIALIZED=nrf52840dk_nrf52840
@@ -282,7 +282,7 @@ CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 // These settings will override the settings in the application’s
 // .config file or its default .conf file.Multiple files may be
 // listed, e.g. CONF_FILE="prj1.conf prj2.conf"
-CONF_FILE:STRING=/home/netlab/zephyrproject/zephyr/samples/bluetooth/throughput/prj.conf
+CONF_FILE:STRING=/home/netlab/zephyrproject/zephyr/samples/bluetooth/throughputapp/prj.conf
 
 //Path to a program.
 DTC:FILEPATH=/home/netlab/zephyr-sdk-0.11.2/sysroots/x86_64-pokysdk-linux/usr/bin/dtc
@@ -370,7 +370,7 @@ ZEPHYR_TOOLCHAIN_VARIANT:STRING=zephyr
 Zephyr-Kernel_BINARY_DIR:STATIC=/home/netlab/zephyrproject/zephyr/build
 
 //Value Computed by CMake
-Zephyr-Kernel_SOURCE_DIR:STATIC=/home/netlab/zephyrproject/zephyr/samples/bluetooth/throughput
+Zephyr-Kernel_SOURCE_DIR:STATIC=/home/netlab/zephyrproject/zephyr/samples/bluetooth/throughputapp
 
 //The directory containing a CMake configuration file for Zephyr-sdk.
 Zephyr-sdk_DIR:PATH=Zephyr-sdk_DIR-NOTFOUND
@@ -385,7 +385,7 @@ Zephyr_DIR:PATH=/home/netlab/zephyrproject/zephyr/share/zephyr-package/cmake
 central_hr_BINARY_DIR:STATIC=/home/netlab/zephyrproject/zephyr/build
 
 //Value Computed by CMake
-central_hr_SOURCE_DIR:STATIC=/home/netlab/zephyrproject/zephyr/samples/bluetooth/throughput
+central_hr_SOURCE_DIR:STATIC=/home/netlab/zephyrproject/zephyr/samples/bluetooth/throughputapp
 
 //Value Computed by CMake
 civetweb_BINARY_DIR:STATIC=/home/netlab/zephyrproject/zephyr/build/modules/civetweb
@@ -495,7 +495,7 @@ CMAKE_GENERATOR_PLATFORM:INTERNAL=
 CMAKE_GENERATOR_TOOLSET:INTERNAL=
 //Source directory with the top level CMakeLists.txt file for this
 // project
-CMAKE_HOME_DIRECTORY:INTERNAL=/home/netlab/zephyrproject/zephyr/samples/bluetooth/throughput
+CMAKE_HOME_DIRECTORY:INTERNAL=/home/netlab/zephyrproject/zephyr/samples/bluetooth/throughputapp
 //ADVANCED property for variable: CMAKE_LINKER
 CMAKE_LINKER-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_MAKE_PROGRAM

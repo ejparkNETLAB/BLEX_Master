@@ -12,24 +12,24 @@
 
 /* BLEX: We define the configure to initiate BLEX system*/
 /* BLEX: If deactivation CONFIG_BLEX_UPDATE, BLEX works only when the new connections join */
-/*#ifndef CONFIG_BLEX
+#ifndef CONFIG_BLEX
 #define CONFIG_BLEX
 #ifndef CONFIG_BLEX_UPDATE
 #define CONFIG_BLEX_UPDATE
 #endif
 #endif
-*/
+
 
 /* BLEX: We define the configures to initiate the BCM-based scheme*/
 /*For same connection interval scenario, activate the CONFIG_BCM_SAME */
-
+/*
 #ifndef CONFIG_BCM
 #define CONFIG_BCM
 #ifndef CONFIG_BCM_SAME
 #define CONFIG_BCM_SAME
 #endif
 #endif
-
+*/
 
 /*For real application scenario, activate the CONFIG_BCM_DIF */
 /*

@@ -111,7 +111,7 @@ cd ~/zephyrproject/zephyr/
 ```
 
 * By default, the codes are executed BLEX controller.
-* To compare BLEX with the other schemes, change the configurations in the code below.
+* To compare BLEX with the other schemes, change the configurations in the code below, on the master side.
 ```bash
 cd ~/zephyrproject/zephyr/include/bluetooth/conn.h
 ```

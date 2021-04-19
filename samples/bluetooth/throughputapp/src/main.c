@@ -49,6 +49,8 @@ bool start_flag = false;
 static const char img[][81] = {
 #include "img.file"
 };
+/*BLEX: BT_LE_CONN_PARAM_DEFAULT4 is the connection interval of slave 4.
+	We can measure the performance of BLEX when the connection interval is not convertable */
 #define BT_LE_CONN_PARAM_DEFAULT4 BT_LE_CONN_PARAM(0x0080, 0x0080,0, 400)
 
 static void exchange_func(struct bt_conn *conn, uint8_t att_err,

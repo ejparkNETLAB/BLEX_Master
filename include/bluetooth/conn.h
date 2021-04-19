@@ -7,29 +7,58 @@
  *
  * SPDX-License-Identifier: Apache-2.0
  */
-/* BLEX: We define the parameter to initiate BLEX system*/
-#ifndef CONFIG_BLEX
+/* BLEX: Configures for BLEX and comparison schemes.
+	 If deactivate all the configures, Zephyr default operation works */
+
+/* BLEX: We define the configure to initiate BLEX system*/
+/* BLEX: If deactivation CONFIG_BLEX_UPDATE, BLEX works only when the new connections join */
+/*#ifndef CONFIG_BLEX
 #define CONFIG_BLEX
 #ifndef CONFIG_BLEX_UPDATE
 #define CONFIG_BLEX_UPDATE
 #endif
 #endif
+*/
 
-/* BLEX: We define the parameter to initiate the BCM-based scheme*/
-/*
+/* BLEX: We define the configures to initiate the BCM-based scheme*/
+/*For same connection interval scenario, activate the CONFIG_BCM_SAME */
+
 #ifndef CONFIG_BCM
 #define CONFIG_BCM
 #ifndef CONFIG_BCM_SAME
 #define CONFIG_BCM_SAME
 #endif
 #endif
+
+
+/*For real application scenario, activate the CONFIG_BCM_DIF */
+/*
+#ifndef CONFIG_BCM
+#define CONFIG_BCM
+#ifndef CONFIG_BCM_DIF
+#define CONFIG_BCM_DIF
+#endif
+#endif
 */
-/* BLEX: We define the parameter to initiate the CSR-based scheme*/
+
+
+/* BLEX: We define the configures to initiate the CSR-based scheme*/
+/*For same connection interval scenario, activate the CONFIG_CSR_SAME */
 /*
 #ifndef CONFIG_CSR
 #define CONFIG_CSR
 #ifndef CONFIG_CSR_SAME
 #define CONFIG_CSR_SAME
+#endif
+#endif
+*/
+
+/*For real application scenario, activate the CONFIG_CSR_DIF */
+/*
+#ifndef CONFIG_CSR
+#define CONFIG_CSR
+#ifndef CONFIG_CSR_DIF
+#define CONFIG_CSR_DIF
 #endif
 #endif
 */

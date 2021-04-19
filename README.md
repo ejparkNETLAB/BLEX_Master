@@ -28,6 +28,12 @@ Code has only been tested on Zephyr Project v2.2.1 and zephyr-sdk-0.11.2.
 
 #### 2. Clone code
 
+##### 1) On the Master node
+```bash
+git clone https://github.com/ejparkNETLAB/BLEX_Master.git
+```
+
+##### 1) On the Slave node
 ```bash
 git clone https://github.com/ejparkNETLAB/BLEX_Slave.git
 ```
